@@ -1,0 +1,36 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,latexsym}
+\usepackage{graphicx,subfigure}
+\usepackage{tcolorbox}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[margin=2.5cm]{geometry}
+\newtheorem{Equation}{\indent Equation}[section]
+\textwidth=6in
+\renewcommand{\baselinestretch}{1.5}
+
+\begin{document}
+
+\author{Zachary Matheson}
+\title{My PhD Thesis}
+\date{Revised March 2018}
+
+\frontmatter
+\maketitle
+\tableofcontents
+
+\mainmatter
+\include{./TeX_files/chapter01} % Introduction
+\include{./TeX_files/chapter02} % Intro to nuclear DFT
+\include{./TeX_files/chapter03} % Two fission modes in 178Pt
+\include{./TeX_files/chapter04} % Cluster decay in 294Og
+\include{./TeX_files/chapter05} % R-process
+
+
+\backmatter
+% bibliography, glossary and index would go here.
+\bibliography{main}
+\bibliographystyle{abbrv}
+
+\end{document}
