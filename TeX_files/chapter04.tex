@@ -1,8 +1,68 @@
-\chapter{Cluster decay in 294Og}
+\chapter{Cluster decay in 294Og}\label{chap:294Og}
 
 \maketitle
 This was done in a 4D space consisting of the coordinates $(q_{20}, q_{22}, q_{30}, \lambda_2)$
 
+We used 30 harmonic oscillator shells and 1500 states
+
 \subsection{Cluster Decay}
 
+Experimental instances of super-asymmetric fission:
+M. G. Itkis 1985, Z Phys A 320 - no assessment of the cause of highly-asymmetric fission, but likely related to 132Sn (there nuclei would tend to fission symmetrically, but with a slight bump around mass A=140-145)
+D. Rochmann Nucl Phys A 735 (2004) - driven by shell structure of lighter fragments
+I M Itkis, J Phys Conf Ser 515 (2014) 012008 - cluster radiation by another name
+
+AKA “Lead Radioactivity” sometimes in the literature
+To predict cluster half-lives, some people take it as a very heavy alpha emission, and others a very asymmetric fission
+Warda looks at the N/Z ratio of known cluster emitters (or really of lead-208), and then extrapolates it out to SHEs. That’s how he decided which superheavies to compute
+PRC 86 (2012) 014322
+Nucl Phys A 944 (2015) 442 (with Baran and others)
+
+
 \subsection{Synthesis of Og}
+
+They found 3 (and possibly 4) instances in the original Dubna run. Then there was a secondary run at Oak Ridge that was about the same: something like 3 alpha events and a possible fission event. (Another Og paper is being prepared (Nathan Brewer, et al), which has a similar decay chain but a shorter half-life ($\sim$0.185 ms); Detected a 10.6 MeV recoil event, followed 78 microseconds later by a second decay event in the same pixel ($\sim$140 MeV), which is a candidate for SF)
+
+\subsection{Competition with Alpha Decay}
+
+%Alex Brown has something: PRC 46, 2, 811-814 (1992) https://link.aps.org/doi/10.1103/PhysRevC.46.811
+%Ion’s is in Rom Journ. Phys. 62, 303 (2017) http://www.nipne.ro/rjp/2017_62_7-8/RomJPhys.62.303.pdf
+%Roderick Clark: https://journals.aps.org/prc/abstract/10.1103/PhysRevC.97.024333
+%Chinese review paper on alpha decay models: https://journals.aps.org/prc/abstract/10.1103/PhysRevC.92.064301
+
+
+Recent efforts to synthesize superheavy elements (SHE) have successfully produced the isotope $^{294}$Og, which has been confirmed via its alpha-decay chain. In both experiments, the researchers found evidence of alpha decay, but both also noted the possible observation of decay via spontaneous fission. This suggests the possibility that $^{294}$Og might have a similar decay time with respect to both alpha-decay and spontaneous fission.
+
+There has been an expectation (for some reason?) that cluster emission (known also in the literature as cluster radioactivity, lead radioactivity, cluster decay, heavy-particle radioactivity, ???) might play an important role in the fission of superheavy elements, suggesting that even for such large nuclei (where the Coulomb repulsion is strong), shell structure of the prefragments still drives the determination of the fragments.
+
+\cite{Poenaru2011, Poenaru2012} - In this paper they propose changing/extending the concept of Heavy Particle Radioactivity or Cluster Radioactivity. Also they apply some model to HPR/CR in SHE.
+
+``A larger number of observed spontaneous fission ac- tivities enabled the establishment of a global dependency of spontaneous fission half-lives (TSF ) and the fissility of a nucleus, expressed by the ratio Z2/A which had been realized already by Seaborg [111] and also by Whitehouse and Galbraith [112]. The data, available at that time indicated for even-even nuclei an exponential dependence of the fission half-lives from Z2/A. From an extrapolation of the trend it was concluded, that a nucleus will become instantaneously unstable against nuclear fission at Z2/A ≈ 47, which was set in correspondence with a half-life of ≈ 10−20 s. Interestingly, the heaviest nucleus reported to be synthesized so far, 294118 (294Og) [65], has a value Z2/A ≈ 47.36. The half-life is given as T1/2 =0.69+0.64−0.22 s. Up to now four α decays, but no spontaneous fission was observed [65].'' - from \cite{Heßberger2017} - Og is anomolous in that it violates this extrapolated trend (as would, I am sure, most SHE).
+
+Whether or not this PES is able to reasonably describe the CN experiments which so far have produced $^{294}$Og is uncertain, because such large compound nucleus expectation energies as appear in experiment may have quite a large effect on the topology of the PES \cite{Pei2009}
+
+On the theory side, there have been several attempts to compute spontaneous fission half-lives and alpha-decay half-lives for many superheavy nuclei, and in many cases it is predicted that the two lifetimes will be comparable \cite{Poenaru2011, Poenaru2012, Zhang2018} [Zhang was an application of several universal CR and alpha decay models to the SHE, in order to see if the predictions, too, were universal]. These previous works have tended to rely on phenomenological models which have been tuned to smaller, more stable nuclei. Thus, it is difficult or impossible to assess these models' predictive power in the region of SHE. Thus, a goal of this work is to bring the full predictive framework of self-consistent nuclear density functional theory to bear on the problem of spontaneous fission in the SHE $^{294}$Og. This approach is relatively young in the world of nuclear fission models, but it is already producing quality results for a variety of nuclei in different regions of the nuclear chart (see, for instance, \cite{Mcdonnell2014, Sadhukhan2017, Sadhukhan2016, Tsekhanovich2018}). Some attempts in the region of SHE have already been made, using Skyrme and Gogny functionals in a 2D space \cite{Reinhard2017, Giuliani2017, Warda2012, Baran2015}.
+
+Within these models, spontaneous fission lifetimes tend to be considerably larger than alpha decay lifetimes, ranging from $\frac{\tau_{SF}}{\tau_{\alpha}}\approx10^{-10}$ in \cite{Baran2015} and \cite{Reinhard2017} to $\frac{\tau_{SF}}{\tau_{\alpha}}\approx10^{-20}$ in \cite{Warda2012}. However, it was shown in \cite{Sadhukhan2014} that pairing correlations treated as a dynamical variable can have a substantial impact on spontaneous fission lifetimes. That is explored in the case of $^{294}$Og here.
+
+\section{Method}
+
+Our calculations were performed within the framework of nuclear density functional theory using Skyrme and Gogny energy density functionals. In the Skyrme case, the parameterization UNEDF1-HFB \cite{Schunck2015} was used, and pairing correlations were described using a density dependent pairing interaction. To assure convergence despite the high density of states, the DFT solver HFODD was used with 30 harmonic oscillator shells and 1500 states allowed in the calculation. Calculations were performed in a 4D collective space consisting of 3 shape coordinates, $(q_{20}, q_{30}, q_{22})$, and, given the importance of dynamic pairing fluctuations demonstrated in \cite{Sadhukhan2014}, $\lambda_2$. To demonstrate model independence, another set of calculations was performed using the Gogny energy density functional D1M in the two-dimensional collective space described by coordinates $(q_{20},q_{30})$.
+
+It is seen in many models that introducing triaxiality as a degree of freedom can often be energetically-favorable, sometimes lowering saddle points by as much as 3 MeV; however, dynamic calculations in which the collective inertia is considered together with the potential energy surface have found that dynamical pathways usually tend to tunnel through barriers rather than break axial symmetry. This competition was explored for SHE in \cite{Gherghescu1999}, with the conclusion that triaxiality plays a fairly insignificant role in determining the half-life of elements below $Z=120$. However, another recent paper (https://arxiv.org/abs/1803.04616v2) suggests that triaxiality might significantly lower the second barrier. Regardless, we included $q_{22}$ in our calculations. It may also be the case that isotopes which are oblate-deformed in their ground state may pass through triaxial configurations on their way to greater elongations.
+
+The basis of the model is the assumption that spontaneous fission can be treated such that the lifetime is proportional to $e^{-P}$, where $P$ is the transmission probability through some barrier.
+
+The collective inertia of the system was computed using the nonperturbative ATDHFB cranking approximation in the Skyrme case, and perturbative ATDHFB with cranking and perturbative GCM with cranking in the Gogny case \cite{Baran2011}. The tunneling is described using the WKB approximation, in which the tunneling path $L(s)$ was computed by using the dynamic programming method to minimize the collective action
+
+\begin{equation}
+S(L) = \int_{s_{in}}^{s_{out}} \frac{1}{\hbar}\sqrt{2\mathcal{M}_{eff}\left(V_{eff}(s)-E_0\right)}ds
+\end{equation}
+
+\noindent where $\mathcal{M}_{eff}$ is the effective inertia and $V_{eff}$ the effective potential energy along $L(s)$. Following the formalism of \cite{Sadhukhan2013}, the half-life is computed via $T_{\frac{1}{2}} = \ln 2/nP$, where $n=10^{20.38}s^{-1}$ is the number of assaults on the fission barrier per unit time and the penetration probability $P$ is given by
+
+\begin{equation}
+P = (1 + exp[2S(L)])^{-1}
+\end{equation}
+
+\noindent Finally, after computing the action at many points along the outer turning line, the final fragment yields were determined by evolving the system many times via Langevin dynamics, following the work done in \cite{Sadhukhan2016}.
