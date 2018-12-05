@@ -1,6 +1,19 @@
 \chapter{Cluster decay in 294Og}\label{chap:294Og}
 
 \maketitle
+\section{\label{sec:introduction}Introduction}
+
+An exciting frontier in nuclear physics is the region of superheavy nuclei ($Z\geq104$). The latest experiments are able to push the boundaries of the nuclear chart all the way to Z=118, and new ideas are being developed to increase production and improve measurements of superheavy elements \cite{Dmitriev2016,Oganessian2016}. Due to the large number of nucleons, these nuclei push the limits of our nuclear structure models and are expected to highlight new aspects and phenomena of nuclear physics. Spontaneous fission, for example, will likely play an important role in governing the lifetimes of many of these new systems. Fission of superheavy elements may also play an important role in the astrophysical r-process, by placing an endpoint on neutron capture and starting fission cycling (see, e.g., \cite{Giuliani2017}).
+
+As these pioneering experimental efforts are made, theory plays a critical role by guiding and interpreting the results of those experiments, as well as by filling in gaps where experiment cannot reach. However, in these exotic regions it is especially important to use only the very best and most reliable predictive models. Recently, a great deal of work has been invested in building self-consistent microscopic models of spontaneous fission which are able to predict, for instance, half-lives and fragment yields \cite{Sadhukhan2013,Sadhukhan2014,Sadhukhan2016,Sadhukhan2017}.
+
+However, this success comes at a cost. In the adiabatic approaches that are often invoked to describe spontaneous fission, fission is described as a tunneling through a potential barrier in a multidimensional space of collective nuclear shape coordinates. Due to the large computational cost associated with calculations (their "inextinguishable thirst for computing power," as stated in \cite{Schunck2016-review}), this barrier is approximated using five or fewer shape coordinates in phenomenological microscopic-macroscopic models, and even fewer in mean-field approaches.
+
+Of course, it is well-understood that some physics may be obscured in a limited collective space (see \cite{Dubray2012}). Thus, one's choice of collective coordinates is dependent on what physics are deemed important or relevant, and which aspects can be safely neglected. In mean-field models, the collective coordinates are typically chosen to be leading order terms in the shape multipole expansion: axial quadrupole moment, triaxial quadrupole moment, and axial octupole moment. Additionally, it was shown in a previous work \cite{Sadhukhan2014} that pairing correlations have a strong impact on the half-lives calculated via action minimization, and should be taken as a collective coordinate equal in importance to multipole moments or other shape-based collective coordinates.
+
+In the following sections we try to understand the role of the collective space on fission yield predictions. In section \ref{sec:model} we describe the microscopic framework used here to calculate fragment yields, and then in section \ref{sec:results} the model is applied to the superheavy element $^{294}$Og, which is the heaviest element ever produced by humans. The paper then concludes with analysis and discussion of the results in section \ref{sec:conclusions}.
+
+\section{$^{294}$Og}
 
 Recent efforts to synthesize superheavy elements (SHE) have successfully produced the isotope $^{294}$Og, which has been confirmed via its alpha-decay chain. In both experiments, the researchers found evidence of alpha decay, but both also noted the possible observation of decay via spontaneous fission. This suggests the possibility that $^{294}$Og might have a similar decay time with respect to both alpha-decay and spontaneous fission.
 
@@ -86,3 +99,5 @@ P = (1 + exp[2S(L)])^{-1}
 \end{equation}
 
 \noindent Finally, after computing the action at many points along the outer turning line, the final fragment yields were determined by evolving the system many times via Langevin dynamics, following the work done in \cite{Sadhukhan2016}.
+
+\section{Langevin dynamics}
