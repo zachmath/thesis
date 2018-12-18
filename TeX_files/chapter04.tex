@@ -1,4 +1,4 @@
-\chapter{Cluster decay in 294Og}\label{chap:294Og}
+\chapter{Cluster decay in $^{294}$Og}\label{chap:294Og}
 
 \maketitle
 \section{\label{sec:introduction}Introduction}
@@ -107,3 +107,290 @@ P = (1 + exp[2S(L)])^{-1}
 An improved scission criterion would go beyond simply counting the number of particles in the neck. To help with this, we have a tool at our disposal which helps us to understand correlations that affect fission dynamics. This is called the nucleon localization function, and it allows us to visualize the prefragment nuclear shell structure which largely determines the identity of fission fragments \cite{Zhang2016}.
 
 The nucleon localization function shows that some prefragments can be very well-formed even when the neck is large, while in another case the neck might be small but the prefragments, poorly-defined \cite{Sadhukhan2017}. A better scission criterion should take into account, or at least be compatible with, the insights gained from the nucleon localization function. As noted in \cite{Younes2009}, fragment properties on either side of the scission line may differ drastically. This is because shell structure is not well-described geometrically. Our localization measure offers an alternative scheme for identifying fragments before the scission line (see \cite{Sadhukhan2017}). Since it is based on the underlying quantum shells, it is less sensitive to fluctuations and particle rearrangements late in the evolution.
+
+%\section{The full-text of the published paper}
+%%INTRODUCTION
+%
+%{\it Introduction} -- The region of superheavy nuclei ($Z\geq104$) is one of the
+%frontiers of modern nuclear physics. The heavy-ion fusion  experiments have been
+%able to push the boundaries of the nuclear chart all the way to \Og{} \cite{Oganessian2006,Oganessian2012,Brewer2018}, and new
+%efforts are underway to increase production rates of superheavy systems
+%\cite{Dmitriev2016,Oganessian2016,Hoffman2016,Roberto2018}. Due to the large number of nucleons, these
+%nuclei push the limits of nuclear structure models and are expected to answer
+%key questions pertaining to nuclear and atomic physics, astrophysics, and
+%chemistry \cite{Duellmann2018,Jerabek2018,Nazarewicz2018,Giuliani2018c}. For
+%instance, since the liquid drop model predicts vanishing fission barriers for
+%superheavy elements due to the strong Coulomb repulsion, shell effects become
+%absolutely essential and spontaneous fission ends up governing the lifetimes of
+%many of these new systems \cite{Hessberger2017,Baran2015}.  The fission of
+%superheavy elements may also play an important role in the astrophysical
+%\textit{r} process, by placing an endpoint on neutron capture and through the
+%fission cycling \cite{Giuliani2018}.
+%
+%In the superheavy research enterprise, theory plays a critical role by guiding
+%experiments, interpreting their results, and making predictions in the regions
+%that cannot be reached  experimentally \cite{Nazarewicz2018,Giuliani2018c}
+%because of huge proton and neutron numbers involved. In these extreme regions,
+%it is important to use  models of spontaneous (or low-energy) fission rooted firmly in many-body quantum
+%mechanics. To this end, microscopic models based on density functional theory
+%(DFT) where collective dynamics is decoupled from underlying intrinsic
+%excitations offer a path which is computationally tractable, while still
+%maintaining a direct link to the underlying quantum many-body problem
+%\cite{Schunck2016}. These models can be used to predict observables such as half-lives
+%\cite{Erler2012, Staszczak2013, Giuliani2013, Giuliani2014, Schunck2016,
+%	Lemaitre2018, Rodriguez2018} and primary fragment yields
+%\cite{Sadhukhan2016,Warda2018,Regnier2016,Regnier2018} within the same theoretical framework.
+%
+%In this letter, we discuss an
+%exotic form of cold highly-asymmetric fission, known in the literature as cluster
+%radioactivity or cluster emission \cite{Sandulescu1980,Poenaru1986,Royer1998}, which we predict is the dominant form of
+%fission in the superheavy isotope \Og{}. Cluster emission, an intermediate
+%process between $\alpha$ decay and conventional fission with fragments of
+%more comparable masses, occurs when a parent nucleus decays into a large fragment
+%near doubly-magic \Pb{} and a lighter cluster. It has been observed experimentally
+%in actinides, starting with the  $^{223}_{\hphantom{2}88}$Ra$\rightarrow$$^{209}_{\hphantom{2}82}$Pb + $^{14}_{\hphantom{1}6}$C decay
+%\cite{Rose1983}. It is always a rare event with a small branching
+%ratio \cite{Poenaru2010}.  From the theoretical point of view, half-life calculations
+%based on semiempirical models predict cluster radioactivity
+%to be the dominant decay channel of several superheavy
+%nuclei~\cite{Poenaru2011, Poenaru2012, Poenaru2013, Poenaru2015, Poenaru2018,
+%	Santhosh2018, Zhang2018}. Similar predictions have been obtained by more
+%microscopic calculations using nuclear DFT
+%framework~\cite{Warda2011,Warda2018}. However, so far no determination of fission
+%yields has been made that explicitly demonstrates the emergence of cluster radioactivity
+%in superheavy elements, either theoretically or experimentally. In this paper, which extends the discussion of recent Ref.~\cite{Warda2018} to fission yields, we calculate spontaneous fission yields of \Og{} and explicitly predict for the
+%first time that cluster emission is dramatically enhanced to the point that it
+%becomes the primary spontaneous fission channel. 
+%
+%
+%In addition to this prediction, our work is a tour de force
+%demonstration of the state-of-the-art in microscopic  theory of spontaneous fission.  First, we briefly sketch the microscopic framework used to
+%calculate fission fragment distributions. We then compute the spontaneous
+%fission characteristics of \Og{}. Finally, we study the robustness of our fission yield predictions with respect to different energy density functionals (EDFs), collective spaces, collective inertias, and
+%dissipation.
+%
+%%MODEL
+%
+%{\it Model} -- We calculate fission fragment distributions following the
+%approach described in Ref.\cite{Sadhukhan2016}, which may be divided into two stages.
+%In the first stage, we use the semiclassical WKB approximation to model
+%spontaneous fission as quantum tunneling through a multidimensional potential
+%energy surface (PES) characterized by $N$ collective coordinates
+%$\mathbf{q}\equiv(q_1, \ldots, q_N)$. In our implementation of the WKB
+%approximation, the most-probable tunneling path $\left. L(s) \right|_{s_{\rm
+%		in}}^{s_{\rm out}}$ in the collective space is found via minimization of the collective action
+%\begin{equation}\label{eq:action} 
+%S(L) = \frac{1}{\hbar}\int_{s_{\rm in}}^{s_{\rm out}} \sqrt{2\mathcal{M}(s)\left(V(s)-E_0\right)}ds,
+%\end{equation} 
+%where $s$ is the curvilinear coordinate along the path $L$,
+%$\mathcal{M}(s)$ is the collective inertia \cite{Sadhukhan2013} and $V(s)$ is
+%the potential energy along $L(s)$. $E_0$ stands for the collective ground-state
+%energy. The dynamic programming method \cite{Baran1981} is employed to determine
+%the path $L(s)$. The calculation is repeated for different outer turning points,
+%and each of these points is then assigned an exit  probability $P(s_{\rm out})=[1+\exp{(2S)}]^{-1}$ \cite{Baran1978}. 
+%
+%In the second stage, fission trajectories begin from the outer turning
+%line and then evolve along the PES according to the Langevin equations:
+%\begin{align} 
+%	\frac{dp_i}{dt} = & 
+%	-\frac{p_j p_k}{2} \frac{\partial}{\partial q_i}\left(\mathcal{M}^{-1}\right)_{jk} 
+%	- \frac{\partial V}{\partial q_i} 
+%	\nonumber \\ 
+%	& -\eta_{ij}\left(\mathcal{M}^{-1}\right)_{jk} p_k + g_{ij}\Gamma_j(t) \,, \\ 
+%	\frac{dq_i}{dt} = &
+%	\left(\mathcal{M}^{-1}\right)_{ij} p_j \,, \nonumber 
+%\end{align} 
+%where $p_i$ is the collective momentum conjugate to $q_i$. The dissipation
+%tensor $\eta_{ij}$ is related to the random force strength $g_{ij}$ via the
+%fluctuation-dissipation theorem, and $\Gamma_j(t)$ is a Gaussian-distributed,
+%time-dependent stochastic variable. All trajectories ending at a particular
+%fragment configuration are weighted with the appropriate $P(s_{\rm out})$.
+%%, and then normalized to 200 to give the standard form of a fission fragment
+%%distribution. 
+%Particle number fluctuations in the neck at or near the scission line
+%were accounted for by convoluting our Langevin yields with
+%a Gaussian function of width $\sigma_A=6$ for $A$ and $\sigma_Z=4$ for $Z$.
+%
+%The key ingredients in these calculations, $V$ and $\mathcal{M}$, are calculated
+%self-consistently by solving the Hartree-Fock-Bogoliubov equations employing  Skyrme
+%and Gogny EDFs. To evaluate the robustness of
+%our results with respect to different inputs, we perform calculations using
+%three distinct EDFs: \hfb \cite{Schunck2015}, a Skyrme functional which was optimized to data
+%for spherical and deformed nuclei, including fission isomers;
+%SkM* \cite{Bartel1982}, another Skyrme functional designed for fission barriers and surface energy; and D1S \cite{Berger1989}, a parametrization of the finite-range Gogny
+%interaction fitted on fission barriers of actinides.
+%
+%In self-consistent fission models, lowest multipole moments characterizing nuclear shape deformations  are usually selected as
+%collective coordinates. The remaining
+%shape degrees of freedom are, in principle, decided through the energy minimization. In the
+%present work, axial quadrupole moment $Q_{20}$, triaxial quadrupole moment
+%$Q_{22}$, and axial octupole moment $Q_{30}$ are considered as collective coordinates since the fission
+%dynamics associated with fragment-yield distributions is mostly confined  within
+%this deformation space. Additionally, pairing correlations have a strong impact
+%on the spontaneous fission half-lives calculated via action minimization
+%\cite{Sadhukhan2014,Giuliani2014,Zhao2016}. It is taken into account through the
+%coordinate $\lambda_2$ representing dynamic pairing fluctuations
+%\cite{Sadhukhan2014}. To obtain $S(L)$,  a dimensionless collective space is introduced as in 
+%Ref.~\cite{Sadhukhan2014}. 
+%
+%To balance computational speed with complexity, we used a different
+%collective space for each functional. The most detailed calculation was
+%carried out using  \hfb{} in four dimensional space of
+%$(Q_{20},Q_{22},Q_{30},\lambda_2)$. Calculations were performed using the symmetry-unrestricted DFT
+%solver HFODD \cite{Schunck2017}.  To assure good convergence,  we used the 1500 lowest single particle levels corresponding to  30 stretched harmonic oscillator shells.
+%For details, see Supplemental Material  \cite{SM}.
+%
+%The analysis of the four-dimensional (4D) PES  showed that $Q_{30}$ remains
+%negligible through the first saddle point (up to at least $Q_{20}=100$\,b), and
+%that $Q_{22}$ and $\lambda_2$ are unimportant beyond the outer turning-point
+%hyper-surface. This allowed us to  simplify calculations with  other 
+%functionals. The SkM* calculations were performed in a piecewise space
+%($(Q_{20},Q_{22},\lambda_2)$ up to the fission isomer,
+%$(Q_{20},Q_{30},\lambda_2)$ from fission isomer to outer turning points, and
+%$(Q_{20},Q_{30})$ beyond the outer turning-point line) with the same pairing
+%properties as given in \cite{Mcdonnell2014,Sadhukhan2013,Sadhukhan2014}, and the
+%same HFODD basis  as in \hfb{} calculations. In case of Gogny D1S calculations, a two-dimensional collective space described by coordinates $(Q_{20},Q_{30})$ was
+%used within the DFT solver HFBaxial \cite{Robledo2002}, where the stretched harmonic oscillator
+%basis corresponding to 17 harmonic oscillator shells was optimized for each
+%$(Q_{20},Q_{30})$ value.
+%
+%Several approximations are commonly used to compute the collective inertia,
+%which describes the tendency of the nucleus to resist configuration changes.
+%The most accurate prescription available till date is obtained from
+%non-perturbative cranking approximation to the adiabatic time-dependent
+%Hartree-Fock-Bogoliubov (ATDHFB) inertia ({\MATDHF}) \cite{Baran2011}. 
+%On the other hand, perturbative expressions prioritize computational simplicity
+%by sacrificing details of the level crossing dynamics, which results in a smoothed-out collective inertia. We also performed calculations using both the perturbative
+%cranking ATDHFB inertia ({\MATDHFp}) \cite{Baran2011} and the perturbative GCM
+%inertia ({\MGCMp}) \cite{Schunck2016}, which has the same structure as
+%{\MATDHFp} but with an absolute magnitude quenched by a factor
+%1.5~\cite{Giuliani2018b}. We additionally did calculations using a 
+%constant inertia parameter {\Mcons}.
+%
+%In this work, we set the dissipation strength $\eta_{ij}$ as an adjustable
+%parameter rather than using some of the common prescriptions \cite{usang2017,ishizuka2017},
+%which have not yet been adapted to DFT inputs. We
+%examined the sensitivity of our calculations to $\eta_{ij}$  by varying it
+%around the baseline value used in \cite{Sadhukhan2016}: $\gras{\eta}_0 \equiv
+%\left(\eta_{22},\eta_{23},\eta_{33}\right)\equiv(50\hbar, 5\hbar, 40\hbar)$.
+%
+%
+%\begin{figure} [htb]
+%	\includegraphics[width=1.0\linewidth]{three_PES} \caption[\Og{}
+%	PES from \hfb{}, SkM* and D1S]{Comparison of the PESs for \Og{}
+%		in the $(Q_{20},Q_{30})$ collective plane obtained in  
+%		\hfb{} (a), D1S (b), and SkM* (c) EDFs. The ground-state energy 
+%		$E_{gs}$ is  normalized to zero. The dotted
+%		line in each figure corresponds to $E_0-E_{gs}=1$\,MeV, which was used to determine the inner and outer turning points. The local energy minima at large deformations are marked by stars.}
+%	\label{fig:pes} \end{figure}
+%
+%%RESULT
+%{\it Results} -- We first compare in Fig.~\ref{fig:pes} the  two-dimensional PESs in the $(Q_{20},Q_{30})$ plane for the functionals \hfb{}, D1S, and SkM*, and D1S. There we notice that the overall topology of the PES is
+%roughly similar in all models, with a symmetric saddle point occurring around $Q_{20}
+%\approx 40$\,b, a second barrier beginning around $Q_{20}\approx100-120$\,b along the
+%symmetric fission path, presence of local minima at large deformations,
+%a deep valley that leads to an highly-asymmetric
+%split, and the secondary less-asymmetric fission valley that emerges at large elongations.
+%
+%But there are  differences as well, such as 
+%the height of the first saddle
+%point, the depth of the highly-asymmetric fission valley, and the height of the ridge  separating two fission valleys. As a result,  the outer turning
+%points are pushed to larger elongations in D1S and SkM* as compared to \hfb{}.
+%These differences in the PES topology strongly affect the predicted
+%spontaneous fission half-lives $\tau_\mathrm{SF}$, which in the case of \hfb{},
+%SkM* and D1S are $9.1\times10^{-9}\,$s, $4.0\times10^{-5}\,$s and
+%$3.2\times10^{-2}\,$s, respectively (see also \cite{Staszczak2013,Baran2015} for a detailed discussion of half-lives). These large variations of $\tau_s$ reflect
+%the well-known sensitivity of spontaneous fission half-lives to changes in the
+%quantities entering the collective action \eqref{eq:action}. The  predictions of 
+%\hfb{} and, to a lesser degree,  SkM*  for $\tau_s$ are clearly incompatible with experiment, as  $^{294}$Og  is known to  decay by $\alpha$-decay with a half-life of 0.58\,ms \cite{Brewer2018}. This observation could in fact also apply to D1S results, since D1S calculations  were performed in a smaller collective space leading to overestimation of  the half-lives \cite{Giuliani2014,Sadhukhan2014}. However, as we demonstrate below,  fission yields predicted in all three models are very similar.
+%
+%\begin{figure}[htb] 
+%	\includegraphics[width=1.0\linewidth]{3yields}
+%	\caption[\Og{} N-Z fragment yields]{
+%		Fission fragment distributions for \Og{}  obtained in  
+%		\hfb{} (a), D1S (b), and SkM* (c) EDFs
+%		using the non-perturbative cranking ATDHFB inertia and  the baseline  dissipation tensor $\gras{\eta}_0$. Known isotopes are marked in grey \cite{NUDAT}. Magic numbers 50, 82, and 126 are indicated by dotted lines.} \label{fig:2d-yield_atdhfb-np} 
+%\end{figure}
+%Despite the strong variations in the predicted $\tau_\textrm{SF}$, we
+%see in Fig.~\ref{fig:2d-yield_atdhfb-np} that the predicted fission yields are in fact rather independent of the EDF choice. Namely,  all three functionals
+%predict a heavy fragment in the neighborhood of \Pb{} and a light fragment near
+%\Kr{}.  In addition, the  functional SkM* predicts
+%a small probability associated with lighter fragments around \Xe{}.
+%
+%
+%
+%The sensitivity to the different inputs are shown in Fig.~\ref{fig:comparisons}
+%through one-dimensional projections on the fragment mass and charge. The
+%top panels of Fig.~\ref{fig:comparisons} shows again that all three functionals
+%predict highly-asymmetric fission with the heavy fragment centered at or around
+%\Pb{}. While the peaks corresponding to the D1S and SkM* functionals overlap
+%quite well, the \hfb{} peak is broader and shifted slightly towards the more asymmetric splits. This
+%may be related to the relative flatness of the \hfb{} PES compared to the
+%others, which makes it more susceptible to large fluctuations.
+%The secondary peak around \Xe{} predicted by SkM*, associated with the more symmetric fission valley  of Fig.~\ref{fig:pes}(c) is clearly seen. For D1S and \hfb{}, the yield distributions do not show a tail at lower masses/charges. As discussed below, this can be associated with the collective inertia  and the energy ridge (particularly pronounced for D1S), both effectively separating  the two fission valleys.
+%
+%
+%% ---------------------------------------------------
+%
+%\begin{figure}[htb]  
+%	\includegraphics[width=1.0\linewidth]{compare_all}
+%	\caption[Comparison of \Og{} heavy fragment masses and
+%	charges]{Predicted heavy fragment mass (left) and charge (right)
+%		yields of \Og{} using different functionals (top), collective inertias (middle), and dissipation
+%		tensor strengths (bottom). The baseline calculation was performed using the
+%		\hfb{} functional with non-perturbative cranking ATDHFB inertia and 
+%		dissipation tensor strength $\gras{\eta}_0$.} 
+%	\label{fig:comparisons} \end{figure}
+%
+%The impact of the choice of
+%collective inertia on the fission yield distributions is illustrated in middle panels of Fig.~\ref{fig:comparisons}. While recent time-dependent DFT work on induced fission has
+%played down the role of collective inertia \cite{Bulgac2018} outside the barrier, it was 
+%emphasized in Ref.~\cite{Sadhukhan2016} that the tunneling phase of spontaneous fission
+%was highly sensitive to it. This may explain the fine deviations observed in
+%Fig.~\ref{fig:comparisons}. The yields corresponding to {\MATDHFp} and {\MGCMp}
+%overlap and both are shifted towards more asymmetric splits compared to
+%{\MATDHF}. This suggests that it is the topology of the collective
+%inertia, rather than its absolute magnitude, which affects the shape of the
+%fission yields. In particular, we find that the smoothness of the perturbative
+%inertia allows fluctuations to diffuse the yield to more extreme fragment
+%configurations.  Finally, the usage of a constant inertia {\Mcons} increases the
+%symmetry of the fission fragments distributions. This is because in the absence
+%of configuration dependence of the collective inertia, the fission yields are primarily
+%determined by the topology of the PES, which in the case of \hfb{} model favors the
+%coexistence of symmetric split and cluster emission. Since the intrinsic structures along the cluster-decay valley and more-symmetric valley are very different,  microscopic inertia tensors result in very small yields of more symmetric fragments.
+%
+%
+%The bottom panels of Fig.~\ref{fig:comparisons} show the effect of varying the
+%strength of the dissipation tensor. This parameter  has a
+%noticeable impact on the yields, particularly on the tails and the yields associated with the
+%more-symmetric channel.  The results corresponding to $\gras{\eta}=\gras{\eta}_0,0.5\gras{\eta}_0$, and $2\gras{\eta}_0$ are very close. This 
+%is consistent with findings of Refs. \cite{Randrup2011,Sierk2017,Sadhukhan2017}, which found that the yield distributions are not very sensitive to the precise value of dissipation tensor.
+%In the no-dissipation variant ($\eta_{ij}=g_{ij}=0$), the Langevin equations become deterministic and there is a one-to-one correspondence between outer turning points and scission points. In this variant, one predicts an increased contribution arising from more-symmetric fission valley. However, since this variant ignores near-scission fluctuations that are essential for the proper description of the width of the fission yields \cite{Arimoto2014,Sierk2017,Sadhukhan2017}, we do not consider it to be realistic: we show it for reference only. 
+%In general, irrespective of
+%the choice of energy density functional, we
+%found a rather similar pattern of yield distributions with respect to the inertia tensor 
+%(except for {\Mcons}) and the dissipation strength.
+%
+%
+%Finally, to better understand the formation of the most-probable fission fragments, we studied the nucleon localization functions \cite{Zhang2016,Sadhukhan2017} along the cluster-decay path. 
+%As shown in Supplemental Material \cite{SM},
+%by comparing the \Og{} localizations with those belonging to \Pb{} and \Kr{}, we found that both the lead prefragment and the $N\approx50$ neutrons belonging to krypton are well-localized early in the evolution, shortly beyond the outer turning line. This result highlights the importance of shell structure in determining the most probable fragment configuration in fissioning nuclei. 
+%
+%
+%
+%
+%
+%%CONCLUSION
+%{\it Conclusions} -- In this letter, we predict that the dominant spontaneous
+%fission mode of \Og{} will be a highly-asymmetric cluster emission centered around the
+%doubly-magic  \Pb{} and magic \Kr{}. We have shown that this
+%prediction is fairly  robust with respect to the choice of input parameters, such as  energy density functional, collective inertia, and dissipation tensor. In particular, we emphasize that
+%differences in barrier heights predicted by different EDFs do not affect the calculated fission yields.  We confirmed the implicit
+%assumption of \cite{Sadhukhan2016}, that 4D calculations do not necessarily
+%offer an improved description of the tunneling compared to a well-chosen 3D
+%description, and we argue for a hierarchy of ingredients necessary for a
+%Langevin description of low-energy fission. This work reinforces the conclusions of
+%Ref.~\cite{Warda2018}: in future superheavy element searches, the range of expected
+%fission fragments should take into account the possibility of cluster emission,
+%which would lead to heavier fragments than those which appear in actinide
+%fission.

@@ -3,6 +3,8 @@
 
 (Nicolas gave a good annotated presentation in 2017 that describes some of the philosophy, as well as some of the outstanding challenges of spontaneous fission in an adiabatic framework: \verb|https://t2.lanl.gov/fiesta2017/school/Schunck_NotesSlides.pdf|)
 
+Fundamentally, the assumption of adiabaticity is the assumption that collective and intrinsic degrees of freedom can be decoupled, and that the time-scale associated with collective degrees of freedom is slow compared to the time-scale of intrinsic (i.e. single-particle) motions of the system.
+
 Today there are 2 microscopic approaches to fission in common use: time-dependent and static (time-independent). Time-dependent approaches evolve the system in real-time. Since fission is an inherently time-dependent process, these methods offer great insight into the fission process and the characteristics of the fragments \verb|\cite{Some TDHFB papers}|. However, they can only treat a single event at a time, making them impractical for estimating yields. Furthermore, despite efforts such as \cite{Bulgac2018}, there is currently no way to obtain a full yield distribution in a time-dependent framework.
 
 On the other hand, static approaches assume that collective motion of the nucleus is slow compared to the motion of the intrinsic particles, and this assumption is used to create a potential energy surface in some space of collective shape coordinates. We can estimate fission yields in these approaches (see, for instance, \cite{Sadhukhan2016} along with our forthcoming paper on $^{294}$Og), but for practical reasons we are limited to describing complicated shapes in terms of just a few parameters, leading to uncertainty in the fragment properties. In particular, the part of the process at which the neck snaps and one nucleus becomes two, called scission, is not well-defined in static approaches.
@@ -56,6 +58,13 @@ E = \int d^3\vec{r}\sum_{t=0,1}\mathcal{H}_t
 
 \noindent where $\tau_t$ is the kinetic energy density; $\mathsf{J}_t$ is the spin current density, with vector part given by $\vec{J}_{\kappa,t} = \sum_{\mu\nu}\epsilon_{\mu\nu\kappa}\mathsf{J}_{\mu\nu,t}$; $\vec{s}_t$ is the spin density, $\vec{T}_t$ is the spin kinetic density; and $\vec{j}_t$ is the momentum density (to see how these are related to $\rho_t$, see, e.g., \cite{Bender2003}). Note that $\mathcal{H}^{even}_t$ depends only on time-even densities (and likewise for $\mathcal{H}^{odd}_t$).
 
+\subsection{Nucleon localization function}
+One of the tools we will be using quite a bit in this thesis is the nucleon localization function (NLF), introduced in \cite{Zhang2016}. The NLF is defined using the single particle density in the following way:
+
+% define NLF here
+
+The NLF offers greater insight into the underlying shell structure of the system than, for instance, the single particle density. In particular, when applied to fission as in \cite{Sadhukhan2017}, it sometimes enables one to see the formation of well-defined prefragments whose shell structure is responsible for the peak of the fragment distribution.
+
 \section{Microscopic Description of Nuclear Fission}
 Should I describe these here, or in the sections when they actually get used?
 
@@ -81,3 +90,5 @@ Furthermore, TDHFB cannot tunnel
 \subsection{Langevin Dynamics}
 
 It has been shown (Jhilam and Nicolas' paper) that fission yields are fairly robust with respect to the dissipation strength
+
+Dissipation is treated in our work as a parameter, as a self-consistent description of dissipation is not yet known. However, work along this line has been started (maybe?) in refs 291-293 of \cite{Schmidt2018} (see section 4.1.1 for the context).
