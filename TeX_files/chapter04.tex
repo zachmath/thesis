@@ -1,38 +1,88 @@
 \chapter{Cluster decay in $^{294}$Og}\label{chap:294Og}
 
-\section{\label{sec:introduction}Introduction}
+\section{Cluster emission in Superheavy Elements}
 
-An exciting frontier in nuclear physics is the region of superheavy nuclei ($Z\geq104$). The latest experiments are able to push the boundaries of the nuclear chart all the way to Z=118, and new ideas are being developed to increase production and improve measurements of superheavy elements \cite{Dmitriev2016,Oganessian2016}. Due to the large number of nucleons, these nuclei push the limits of our nuclear structure models and are expected to highlight new aspects and phenomena of nuclear physics. Spontaneous fission, for example, will likely play an important role in governing the lifetimes of many of these new systems. Fission of superheavy elements may also play an important role in the astrophysical r-process, by placing an endpoint on neutron capture and starting fission cycling (see, e.g., \cite{Giuliani2017}).
+The region of superheavy elements (Z>104) is an interesting one for the study of spontaneous fission because the liquid drop model predicts that all isotopes with Z>104 are unstable with respect to spontaneous fission. These nuclei are stabilized due to shell effects, but they nevertheless remain short-lived and many of them will decay by spontaneous fission regardless.
 
-As these pioneering experimental efforts are made, theory plays a critical role by guiding and interpreting the results of those experiments, as well as by filling in gaps where experiment cannot reach. However, in these exotic regions it is especially important to use only the very best and most reliable predictive models. Recently, a great deal of work has been invested in building self-consistent microscopic models of spontaneous fission which are able to predict, for instance, half-lives and fragment yields \cite{Sadhukhan2013,Sadhukhan2014,Sadhukhan2016,Sadhukhan2017}.
+Experimentally, spontaneous fission has been observed from several superhavy isotopes (see the right panel of Figure \ref{fig:karpovshedecay}). Other observed SHEs undergo a series of alpha decays, which chains terminate in spontaneous fission. Furthermore, a variety of models predict regions of spontaneous fission in the superheavy regime. One example is shown in Figure \ref{fig:karpovshedecay}, in which lifetimes were computed for several types of decays using empirical formulas and the results compared to estimate branching ratios. Figure \ref{fig:warda2012she} is similar, except that the spontaneous fission lifetimes were computed microscopically, as were the $Q_\alpha$ values used to estimate alpha decay lifetimes.
 
-However, this success comes at a cost. In the adiabatic approaches that are often invoked to describe spontaneous fission, fission is described as a tunneling through a potential barrier in a multidimensional space of collective nuclear shape coordinates. Due to the large computational cost associated with calculations (their "inextinguishable thirst for computing power," as stated in \cite{Schunck2016}), this barrier is approximated using five or fewer shape coordinates in phenomenological microscopic-macroscopic models, and even fewer in mean-field approaches.
 
-Of course, it is well-understood that some physics may be obscured in a limited collective space (see \cite{Dubray2012}). Thus, one's choice of collective coordinates is dependent on what physics are deemed important or relevant, and which aspects can be safely neglected. In mean-field models, the collective coordinates are typically chosen to be leading order terms in the shape multipole expansion: axial quadrupole moment, triaxial quadrupole moment, and axial octupole moment. Additionally, it was shown in a previous work \cite{Sadhukhan2014} that pairing correlations have a strong impact on the half-lives calculated via action minimization, and should be taken as a collective coordinate equal in importance to multipole moments or other shape-based collective coordinates.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\linewidth]{TeX_files/294Og_Karpov_SHEdecay}
+	\caption[Calculated and experimental decay modes for SHE]{Calculated (left) and experimental (right) decay modes for SHE, based on an analysis of lifetimes calculated via emprical formulae. The boxed isotopes in the left panel are those which have been measured experimentally. Isotopes falling inside the 1$\mu$s contour are predicted to live longer than 1$\mu$s. Figure adapted from \cite{Karpova}.}
+	\label{fig:karpovshedecay}
+\end{figure}
 
-In the following sections we try to understand the role of the collective space on fission yield predictions. In section \ref{sec:model} we describe the microscopic framework used here to calculate fragment yields, and then in section \ref{sec:results} the model is applied to the superheavy element $^{294}$Og, which is the heaviest element ever produced by humans. The paper then concludes with analysis and discussion of the results in section \ref{sec:conclusions}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{TeX_files/294Og_Warda2012_SHE}
+	\caption[Dominant decay modes for SHE in a nuclear DFT-based framework.]{Dominant decay modes for SHE in a nuclear DFT-based framework are indicated. The label "RS" stands for "reflection symmetric" and "NRS" stands for "non-reflection symmetric." The colorbar indicates the predicted half-life on a logarithmic scale. Figure from \cite{Warda2012}.}
+	\label{fig:warda2012she}
+\end{figure}
+
+cluster emission \cite{Sandulescu1980,Poenaru1986,Royer1998}
+
+From the theoretical point of view, half-life calculations based on semiempirical models predict cluster radioactivity to be the dominant decay channel of several superheavy nuclei~\cite{Poenaru2011, Poenaru2012, Poenaru2013, Poenaru2015, Poenaru2018,Santhosh2018, Zhang2018}. Similar predictions have been obtained by more microscopic calculations using nuclear DFT framework \cite{Warda2011,Warda2018}.
+
+Poenaru and others have predicted in \cite{Poenaru2011, Poenaru2012, Poenaru2013, Poenaru2015, Poenaru2018,Santhosh2018, Zhang2018} that many superheavy elements will decay into two fragments, with the heavy fragment near the doubly-magic nucleus {\Pb}. This particular decay mode is significant enough to have earned its own name in the literature, where it is known variously as cluster emission, cluster radioactivity, or lead radioactivity \cite{Sandulescu1980,Poenaru1986,Royer1998,Poenaru2010}. The phenomenon of cluster emission was first observed in the decay  $^{223}_{\hphantom{2}88}$Ra$\rightarrow$$^{209}_{\hphantom{2}82}$Pb + $^{14}_{\hphantom{1}6}$ \cite{Rose1983} and has since been observed in several actinides. In all cases seen so far, it is a rare event with a small branching ratio \cite{Poenaru2010}.
+
+The mechanism of cluster emission is based on the stability of the doubly-magic nucleus {\Pb}. {\Og} is an excellent candidate for cluster emission because the cluster it is predicted to emit, {\Kr}, receives additional stability due to its having a magic number of neutrons.  Semiemprical arguments based on the symmetry energy lend additional support to this candidate, since {\Og} and {\Pb} have a similar $N/Z$ ratio \cite{Warda2018}.
+
+We took this prediction one step further than the aforementioned by calculating the full spontaneous fission fragment distribution of {\Og}. As we will show, the distribution is sharply-peaked around {\Pb}. Furthermore, the distribution is quite robust with respect to the inputs of the calculations. We will also visualize the formation of the fragments using the nucleon localization function.
+
+\section{Predicted spontaneous fission yields of $^{294}$Og}
+
+We calculated the spontaneous fission fragment yields for {\Og} under a variety of conditions. First, we elected to  using three distinct EDFs: \hfb \cite{Schunck2015}, a Skyrme functional which was optimized to data for spherical and deformed nuclei, including fission isomers; SkM* \cite{Bartel1982}, another Skyrme functional designed for fission barriers and surface energy; and D1S~\cite{Berger1989}, a parametrization of the finite-range Gogny interaction fitted on fission barriers of actinides.
+
+A different collective space was used with each EDF for the tunneling portion of the PES. The {\hfb} calculation was carried out in a four-dimensional collective space consisting of the collective coordinates $(Q_{20}, Q_{30}, Q_{22}, \lambda_2)$. By examining this PES, we were able to reduce to dimensionality of the PES for the other two functionals. The SkM* calculation was performed in a piecewise-continuous space. Between the ground state and the isomer state, $Q_{30}$ does not play a significant role and so the system was described using  $(Q_{20}, Q_{22}, \lambda_2)$. Likewise, $Q_{22} \approx 0$ once the isomer state is reached and reflection symmetry is broken ($Q_{30} \neq 0$), suggesting use of the coordinates  $(Q_{20}, Q_{30}, \lambda_2)$. Finally, for the functional D1S we decided to see how our yields would be affected if we did not consider dynamical pairing fluctuations or axial symmetry breaking at all, in order to drastically reduce computation time. Those calculations were performed in the collective space $(Q_{20}, Q_{30})$.
+
+In the region of Langevin dynamics, which is the region connecting the hypersurface of outer turning points and to the hypersurface of scission points, we found again that $Q_{22} \approx 0$. Consequently, this region was limited to two dimensions $(Q_{20}, Q_{30})$ in all cases.
+
+We start by showing 2-dimensional projections of the calculated PESs in Figure \ref{fig:294ogthreepes}. Although the collective spaces used are different, it is reassuring to see that the surfaces strongly resemble one another. Some common features we highlight are: a symmetric saddle point occurring around $Q_{20}\approx 40$\,b; a second barrier beginning around $Q_{20}\approx100-120$\,b along the symmetric fission path; the presence of local minima at large deformations (marked by stars in the figure); a deep valley that leads to an highly-asymmetric split; and the secondary, less-asymmetric fission valley that emerges at large elongations.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{TeX_files/294Og_three_PES}
+	\caption[PES comparison for $^{294}$Og using EDFs {\hfb}, D1S, and SkM*.]{Comparison of the PESs for \Og{} in the $(Q_{20},Q_{30})$ collective plane obtained in \hfb{} (a), D1S (b), and SkM* (c) EDFs. The ground-state energy $E_{gs}$ is normalized to zero. The dotted line in each figure corresponds to $E_0-E_{gs}=1$\,MeV, which was used to determine the inner and outer turning points. The local energy minima at large deformations are marked by stars.}
+	\label{fig:294ogthreepes}
+\end{figure}
+
+%% This passage is lifted straight from the paper, FYI
+But there are  differences as well, such as the height of the first saddle point, the depth of the highly-asymmetric fission valley, and the height of the ridge  separating the two fission valleys. As a result, the outer turning points are pushed to larger elongations in D1S and SkM* as compared to \hfb{}. These differences in the PES topology strongly affect the predicted spontaneous fission half-lives $\tau_\mathrm{SF}$, which in the case of \hfb{}, SkM* and D1S are $9.1\times10^{-9}\,$s, $4.0\times10^{-5}\,$s and $3.2\times10^{-2}\,$s, respectively (see also \cite{Staszczak2013,Baran2015} for a detailed discussion of half-lives). These large variations of $\tau_\mathrm{SF}$ reflect the well-known exponential sensitivity of spontaneous fission half-lives to changes in the quantities entering the collective action \eqref{eq:action}. The $\tau_\mathrm{SF}$ predictions of \hfb{} and, to a lesser degree,  SkM* are incompatible with experiment, as $^{294}$Og  is known to  decay by $\alpha$-decay with a half-life of 0.58\,ms \cite{Brewer2018}. This observation could in fact also apply to the D1S results, since the D1S calculations were performed in a smaller collective space leading to overestimation of the half-lives \cite{Giuliani2014,Sadhukhan2014}. It is to be noted that while half-lives are very sensitive to details of the calculations, the models used here are very consistent with each other and with experiment when it comes to global observables, such as alpha-decay energies, deformations, and radii \cite{Heenen2015,Giuliani2019}. As demonstrated below in Figure \ref{fig:294og3yields}, spontaneous-fission mass and charge yields are also robustly predicted.
+%% End of lifted passage
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\linewidth]{TeX_files/294Og_3yields}
+	\caption[N-Z fission fragment yields from $^{294}$Og]{Fission fragment distributions for \Og{} obtained in \hfb{} (a), D1S (b), and SkM* (c) EDFs using the non-perturbative cranking ATDHFB inertia and  the baseline  dissipation tensor $\mathbf{\eta}_0$. Known isotopes are marked in grey \cite{NUDAT}. Magic numbers 50, 82, and 126 are indicated by dotted lines.}
+	\label{fig:294og3yields}
+\end{figure}
+
+As expected, the yields are peaked in the region of {\Pb} with a sharp fall-off. Likewise, the projected distributions onto the mass and charge axes shows a clear preference for cluster emission, as seen in the top panels of Figure \ref{fig:294ogcompareall}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{TeX_files/294Og_compare_all}
+	\caption[$^{294}$Og heavy fragment masses and charges.]{Upper panel: Predicted heavy fragment mass (left) and charge (right) yields of \Og{} using different functionals (top, linear scale). Bottom panels: collective inertias and dissipation tensor strengths (in logarithmic scale). The baseline calculation was performed using the \hfb{} functional in a 4D space with non-perturbative cranking ATDHFB inertia and dissipation tensor strength $\mathbf{\eta}_0$.}
+	\label{fig:294ogcompareall}
+\end{figure}
+
+As discussed in Chapter \ref{chap:Model}, the collective inertia can also have a large impact on the fission dynamics. Using the {\hfb} functional, we compared our result with the non-perturbative cranking ATDHFB inertia {\MATDHF} to the perturbative ATDHFB {\MATDHFp} (which appears smoothed-out compared to {\MATDHF}) and perturbative GCM {\MGCMp} (which is smooth and also lower in magnitude than {\MATDHF} or {\MATDHFp} by roughly a factor of 1.5), which are often easier to use for large-scale calculations. The result, shown in the middle panels of Figure \ref{fig:294ogcompareall}, show that the distribution has shifted slightly, but that {\MATDHFp} and {\MGCMp} give identical, or nearly-identical results. The smoothness of the perturbative inertias apparently allow fluctuations to drive the system to more extreme fragment configurations. This suggests that the magnitude of the inertia matters less than the topography for computing fission yields (though we note that this would not be true for calculating half-lives, which depend exponentially on the magnitude of the inertia).
+
+We also vary the strength of fluctuations by adjusting the parameter $\mathbf{\eta}$. Our starting point $\mathbf{\eta}_0$ is taken from reference \cite{Sadhukhan2016}, where it was obtained by adjusting $\mathbf{\eta}$ to match the experimental fragment distribution of $^{294}$Pu. Shown in the bottom panel of Figure \ref{fig:294ogcompareall}, we find that fluctuations do not affect the peak of the distribution, consistent with the results of Refs. \cite{Randrup2011,Sierk2017,Sadhukhan2017}. The primary effect is in the tails.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\linewidth]{TeX_files/294Og_locali}
+	\caption[Nucleon localization visualization of $^{294}$Og prefragment formation.]{Nucleon localization functions for several deformed configurations of {\Og}. For comparison, localizations are shown for the fragments {\Pb} and {\Kr} on the left side of each subplot. The configurations shown correspond to Fig. 1 from the paper, with multipole moments $(Q_{20}, Q_{30})=$ (a) (75\,b, 0); (b) (120\,b, 17\,$\mathrm{b}^\frac{3}{2}$); (c) (140\,b, 24\,$\mathrm{b}^\frac{3}{2}$); and (d) (264\,b, 60\,$\mathrm{b}^\frac{3}{2}$).}
+	\label{fig:294oglocali}
+\end{figure}
+
+
 
 \section{$^{294}$Og}
-
-Recent efforts to synthesize superheavy elements (SHE) have successfully produced the isotope $^{294}$Og, which has been confirmed via its alpha-decay chain. In both experiments, the researchers found evidence of alpha decay, but both also noted the possible observation of decay via spontaneous fission. This suggests the possibility that $^{294}$Og might have a similar decay time with respect to both alpha-decay and spontaneous fission.
-
-While some authors [cite] have predicted that fission in the superheavies will proceed as with the actinides (that is, driven by the shell formation of $^{132}$Sn in one of the prefragment) our calulations predict that the dominant fission mode will be highly-asymmetric and driven by $^{208}$Pb (sometimes referred to in the literature as cluster emission).
-
-There has been an expectation (for some reason?) that cluster emission (known also in the literature as cluster radioactivity, lead radioactivity, cluster decay, heavy-particle radioactivity, ???) might play an important role in the fission of superheavy elements, suggesting that even for such large nuclei (where the Coulomb repulsion is strong), shell structure of the prefragments still drives the determination of the fragments.
-
-\cite{Poenaru2011, Poenaru2012} - In this paper they propose changing/extending the concept of Heavy Particle Radioactivity or Cluster Radioactivity. Also they apply some model to HPR/CR in SHE.
-
-``A larger number of observed spontaneous fission activities enabled the establishment of a global dependency of spontaneous fission half-lives ($T_{SF}$) and the fissility of a nucleus, expressed by the ratio $Z^2/A$ which had been realized already by Seaborg [111] and also by Whitehouse and Galbraith [112]. The data, available at that time indicated for even-even nuclei an exponential dependence of the fission half-lives from $Z^2/A$. From an extrapolation of the trend it was concluded, that a nucleus will become instantaneously unstable against nuclear fission at $Z^2/A \approx 47$, which was set in correspondence with a half-life of $\approx$ 10−20 s. Interestingly, the heaviest nucleus reported to be synthesized so far, $^{294}118$ ($^{294}$Og) [65], has a value $Z^2/A \approx 47.36$. The half-life is given as $T_{1/2} =0.69+0.64−0.22$ s. Up to now four $\alpha$ decays, but no spontaneous fission was observed [65].'' - from \cite{Heßberger2017} - Og is anomolous in that it violates this extrapolated trend (as would, I am sure, most SHE).
-
-Whether or not this PES is able to reasonably describe the CN experiments which so far have produced $^{294}$Og is uncertain, because such large compound nucleus expectation energies as appear in experiment may have quite a large effect on the topology of the PES \cite{Pei2009}
-
-On the theory side, there have been several attempts to compute spontaneous fission half-lives and alpha-decay half-lives for many superheavy nuclei, and in many cases it is predicted that the two lifetimes will be comparable \cite{Poenaru2011, Poenaru2012, Zhang2018} [Zhang was an application of several universal CR and alpha decay models to the SHE, in order to see if the predictions, too, were universal]. These previous works have tended to rely on phenomenological models which have been tuned to smaller, more stable nuclei. Thus, it is difficult or impossible to assess these models' predictive power in the region of SHE. Thus, a goal of this work is to bring the full predictive framework of self-consistent nuclear density functional theory to bear on the problem of spontaneous fission in the SHE $^{294}$Og. This approach is relatively young in the world of nuclear fission models, but it is already producing quality results for a variety of nuclei in different regions of the nuclear chart (see, for instance, \cite{Mcdonnell2014, Sadhukhan2017, Sadhukhan2016, Tsekhanovich2018}). Some attempts in the region of SHE have already been made, using Skyrme and Gogny functionals in a 2D space \cite{Reinhard2017, Giuliani2017, Warda2012, Baran2015}.
-
-Within these models, spontaneous fission lifetimes tend to be considerably larger than alpha decay lifetimes, ranging from $\frac{\tau_{SF}}{\tau_{\alpha}}\approx10^{-10}$ in \cite{Baran2015} and \cite{Reinhard2017} to $\frac{\tau_{SF}}{\tau_{\alpha}}\approx10^{-20}$ in \cite{Warda2012}. However, it was shown in \cite{Sadhukhan2014} that pairing correlations treated as a dynamical variable can have a substantial impact on spontaneous fission lifetimes. That is explored in the case of $^{294}$Og here.
-
-This was done in a 4D space consisting of the coordinates $(q_{20}, q_{22}, q_{30}, \lambda_2)$
-
-A criticism that is sometimes leveraged against self-consistent mean-field-based approaches to fission is that, due to the large computational cost associated with calculations, typically only one or two collective coordinates are used. This is in contrast to microscopic-macroscopic methods, where up to five collective coordinates are often used. Those who use SCMF methods assert that the dominant characteristics of the nuclear collective motion necessary for understanding fission can be sufficiently described using perhaps the axial quadrupole moment and maybe one other multipole moment which depends on the specific system, often the axial octupole moment or triaxial quadrupole moment. Of course, it is well-understood that some physics may be obscured in a limited collective space (see \cite{Dubray2012}). Thus, one's choice of collective coordinates is dependent on what physics are deemed important or relevant, and which aspects can be safely neglected.
 
 However, although various attempts have been made to demonstrate the validity of this assumption, our work represents the first published instance of a 4D potential energy surface calculated self-consistently. Furthermore, given the recent demonstration of the importance of pairing correlations as a collective ``coordinate'' of the system, ours will feature pairing as part of the collective space, and its impact compared to other collective coordinates will be evaluated.
 
@@ -46,350 +96,31 @@ D. Rochmann Nucl Phys A 735 (2004) - driven by shell structure of lighter fragme
 I M Itkis, J Phys Conf Ser 515 (2014) 012008 - cluster radiation by another name
 
 AKA “Lead Radioactivity” sometimes in the literature
-To predict cluster half-lives, some people take it as a very heavy alpha emission, and others a very asymmetric fission
-Warda looks at the N/Z ratio of known cluster emitters (or really of lead-208), and then extrapolates it out to SHEs. That’s how he decided which superheavies to compute
-PRC 86 (2012) 014322
-Nucl Phys A 944 (2015) 442 (with Baran and others)
 
 
-\subsection{Synthesis of Og}
 
-They found 3 (and possibly 4) instances in the original Dubna run. Then there was a secondary run at Oak Ridge that was about the same: something like 3 alpha events and a possible fission event. (Another Og paper is being prepared (Nathan Brewer, et al), which has a similar decay chain but a shorter half-life ($\sim$0.185 ms); Detected a 10.6 MeV recoil event, followed 78 microseconds later by a second decay event in the same pixel ($\sim$140 MeV), which is a candidate for SF)
 
-\subsection{Competition with Alpha Decay}
+\subsection{Competition with Alpha Decay or Half-lives}
 
 %Alex Brown has something: PRC 46, 2, 811-814 (1992) https://link.aps.org/doi/10.1103/PhysRevC.46.811
 %Ion’s is in Rom Journ. Phys. 62, 303 (2017) http://www.nipne.ro/rjp/2017_62_7-8/RomJPhys.62.303.pdf
 %Roderick Clark: https://journals.aps.org/prc/abstract/10.1103/PhysRevC.97.024333
 %Chinese review paper on alpha decay models: https://journals.aps.org/prc/abstract/10.1103/PhysRevC.92.064301
 
-Recent efforts to synthesize superheavy elements (SHE) have successfully produced the isotope $^{294}$Og, which has been confirmed via its alpha-decay chain. In both experiments, the researchers found evidence of alpha decay, but both also noted the possible observation of decay via spontaneous fission. This suggests the possibility that $^{294}$Og might have a similar decay time with respect to both alpha-decay and spontaneous fission.
-
-There has been an expectation (for some reason?) that cluster emission (known also in the literature as cluster radioactivity, lead radioactivity, cluster decay, heavy-particle radioactivity, ???) might play an important role in the fission of superheavy elements, suggesting that even for such large nuclei (where the Coulomb repulsion is strong), shell structure of the prefragments still drives the determination of the fragments.
-
 \cite{Poenaru2011, Poenaru2012} - In this paper they propose changing/extending the concept of Heavy Particle Radioactivity or Cluster Radioactivity. Also they apply some model to HPR/CR in SHE.
 
-``A larger number of observed spontaneous fission ac- tivities enabled the establishment of a global dependency of spontaneous fission half-lives (TSF ) and the fissility of a nucleus, expressed by the ratio Z2/A which had been realized already by Seaborg [111] and also by Whitehouse and Galbraith [112]. The data, available at that time indicated for even-even nuclei an exponential dependence of the fission half-lives from Z2/A. From an extrapolation of the trend it was concluded, that a nucleus will become instantaneously unstable against nuclear fission at Z2/A ≈ 47, which was set in correspondence with a half-life of ≈ 10−20 s. Interestingly, the heaviest nucleus reported to be synthesized so far, 294118 (294Og) [65], has a value Z2/A ≈ 47.36. The half-life is given as T1/2 =0.69+0.64−0.22 s. Up to now four α decays, but no spontaneous fission was observed [65].'' - from \cite{Heßberger2017} - Og is anomolous in that it violates this extrapolated trend (as would, I am sure, most SHE).
-
-Whether or not this PES is able to reasonably describe the CN experiments which so far have produced $^{294}$Og is uncertain, because such large compound nucleus expectation energies as appear in experiment may have quite a large effect on the topology of the PES \cite{Pei2009}
-
-On the theory side, there have been several attempts to compute spontaneous fission half-lives and alpha-decay half-lives for many superheavy nuclei, and in many cases it is predicted that the two lifetimes will be comparable \cite{Poenaru2011, Poenaru2012, Zhang2018} [Zhang was an application of several universal CR and alpha decay models to the SHE, in order to see if the predictions, too, were universal]. These previous works have tended to rely on phenomenological models which have been tuned to smaller, more stable nuclei. Thus, it is difficult or impossible to assess these models' predictive power in the region of SHE. Thus, a goal of this work is to bring the full predictive framework of self-consistent nuclear density functional theory to bear on the problem of spontaneous fission in the SHE $^{294}$Og. This approach is relatively young in the world of nuclear fission models, but it is already producing quality results for a variety of nuclei in different regions of the nuclear chart (see, for instance, \cite{Mcdonnell2014, Sadhukhan2017, Sadhukhan2016, Tsekhanovich2018}). Some attempts in the region of SHE have already been made, using Skyrme and Gogny functionals in a 2D space \cite{Reinhard2017, Giuliani2017, Warda2012, Baran2015}.
-
-Within these models, spontaneous fission lifetimes tend to be considerably larger than alpha decay lifetimes, ranging from $\frac{\tau_{SF}}{\tau_{\alpha}}\approx10^{-10}$ in \cite{Baran2015} and \cite{Reinhard2017} to $\frac{\tau_{SF}}{\tau_{\alpha}}\approx10^{-20}$ in \cite{Warda2012}. However, it was shown in \cite{Sadhukhan2014} that pairing correlations treated as a dynamical variable can have a substantial impact on spontaneous fission lifetimes. That is explored in the case of $^{294}$Og here.
 
 \section{Method}
+
+% Just say in the methods chapter that ``Our calculations were performed within the framework of nuclear density functional theory using Skyrme energy density functionals, unless otherwise stated \dots We tested this with a variety of inputs, including different functionals, inertias, dissipations, etc. For details of the calculation, see \verb|the paper|.'' I think you can describe the functionals and the inertias here, but don't describe the basis, for instance. What about the collective space? Is it worth showing a figure with the inertias? It's not a bad idea, IF you can make it presentable. You also have that figure showing the 1D barrier using 2D vs. 4D, static vs. dynamic data.
 
 Our calculations were performed within the framework of nuclear density functional theory using Skyrme and Gogny energy density functionals. In the Skyrme case, the parameterization UNEDF1-HFB \cite{Schunck2015} was used, and pairing correlations were described using a density dependent pairing interaction. To assure convergence despite the high density of states, the DFT solver HFODD was used with 30 harmonic oscillator shells and 1500 states allowed in the calculation. Calculations were performed in a 4D collective space consisting of 3 shape coordinates, $(q_{20}, q_{30}, q_{22})$, and, given the importance of dynamic pairing fluctuations demonstrated in \cite{Sadhukhan2014}, $\lambda_2$. To demonstrate model independence, another set of calculations was performed using the Gogny energy density functional D1M in the two-dimensional collective space described by coordinates $(q_{20},q_{30})$.
 
 It is seen in many models that introducing triaxiality as a degree of freedom can often be energetically-favorable, sometimes lowering saddle points by as much as 3 MeV; however, dynamic calculations in which the collective inertia is considered together with the potential energy surface have found that dynamical pathways usually tend to tunnel through barriers rather than break axial symmetry. This competition was explored for SHE in \cite{Gherghescu1999}, with the conclusion that triaxiality plays a fairly insignificant role in determining the half-life of elements below $Z=120$. However, another recent paper (https://arxiv.org/abs/1803.04616v2) suggests that triaxiality might significantly lower the second barrier. Regardless, we included $q_{22}$ in our calculations. It may also be the case that isotopes which are oblate-deformed in their ground state may pass through triaxial configurations on their way to greater elongations.
 
-The basis of the model is the assumption that spontaneous fission can be treated such that the lifetime is proportional to $e^{-P}$, where $P$ is the transmission probability through some barrier.
+\section{Experimental efforts to find cluster emission in $^{294}$Og}
+Perhaps the biggest uncertainty we'll see, or the biggest deviation from experiment, will be the distribution width. That's because we rather arbitrarily used $\sigma_A=6, \sigma_Z=4$. The values used in 240Pu were 3 and 2, but the $Q_N$ value they used was quite a bit smaller too. Since we had a much larger $Q_N$ cutoff, we needed to account for larger particle number fluctuations. But these numbers were just kind of arbitrary. I'm not too worried about this because the peak is the part that matters, and we clearly saw a peak at the cluster location.
 
-The collective inertia of the system was computed using the nonperturbative ATDHFB cranking approximation in the Skyrme case, and perturbative ATDHFB with cranking and perturbative GCM with cranking in the Gogny case \cite{Baran2011}. The tunneling is described using the WKB approximation, in which the tunneling path $L(s)$ was computed by using the dynamic programming method to minimize the collective action
+They found 3 (and possibly 4) instances in the original Dubna run. Another Og paper (Brewer2018) has a similar decay chain but a shorter half-life ($\sim$0.185 ms); Detected a 10.6 MeV recoil event, followed 78 microseconds later by a second decay event in the same pixel ($\sim$140 MeV), which is a candidate for SF.
 
-\begin{equation}
-S(L) = \int_{s_{in}}^{s_{out}} \frac{1}{\hbar}\sqrt{2\mathcal{M}_{eff}\left(V_{eff}(s)-E_0\right)}ds
-\end{equation}
-
-\noindent where $\mathcal{M}_{eff}$ is the effective inertia and $V_{eff}$ the effective potential energy along $L(s)$. Following the formalism of \cite{Sadhukhan2013}, the half-life is computed via $T_{\frac{1}{2}} = \ln 2/nP$, where $n=10^{20.38}s^{-1}$ is the number of assaults on the fission barrier per unit time and the penetration probability $P$ is given by
-
-\begin{equation}
-P = (1 + exp[2S(L)])^{-1}
-\end{equation}
-
-\noindent Finally, after computing the action at many points along the outer turning line, the final fragment yields were determined by evolving the system many times via Langevin dynamics, following the work done in \cite{Sadhukhan2016}.
-
-\section{Langevin dynamics}
-
-
-\section{Fragments and the Nucleon Localization Function}
-An improved scission criterion would go beyond simply counting the number of particles in the neck. To help with this, we have a tool at our disposal which helps us to understand correlations that affect fission dynamics. This is called the nucleon localization function, and it allows us to visualize the prefragment nuclear shell structure which largely determines the identity of fission fragments \cite{Zhang2016}.
-
-The nucleon localization function shows that some prefragments can be very well-formed even when the neck is large, while in another case the neck might be small but the prefragments, poorly-defined \cite{Sadhukhan2017}. A better scission criterion should take into account, or at least be compatible with, the insights gained from the nucleon localization function. As noted in \cite{Younes2009}, fragment properties on either side of the scission line may differ drastically. This is because shell structure is not well-described geometrically. Our localization measure offers an alternative scheme for identifying fragments before the scission line (see \cite{Sadhukhan2017}). Since it is based on the underlying quantum shells, it is less sensitive to fluctuations and particle rearrangements late in the evolution.
-
-%\section{The full-text of the published paper}
-%%INTRODUCTION
-%
-%{\it Introduction} -- The region of superheavy nuclei ($Z\geq104$) is one of the
-%frontiers of modern nuclear physics. The heavy-ion fusion  experiments have been
-%able to push the boundaries of the nuclear chart all the way to \Og{} \cite{Oganessian2006,Oganessian2012,Brewer2018}, and new
-%efforts are underway to increase production rates of superheavy systems
-%\cite{Dmitriev2016,Oganessian2016,Hoffman2016,Roberto2018}. Due to the large number of nucleons, these
-%nuclei push the limits of nuclear structure models and are expected to answer
-%key questions pertaining to nuclear and atomic physics, astrophysics, and
-%chemistry \cite{Duellmann2018,Jerabek2018,Nazarewicz2018,Giuliani2018c}. For
-%instance, since the liquid drop model predicts vanishing fission barriers for
-%superheavy elements due to the strong Coulomb repulsion, shell effects become
-%absolutely essential and spontaneous fission ends up governing the lifetimes of
-%many of these new systems \cite{Hessberger2017,Baran2015}.  The fission of
-%superheavy elements may also play an important role in the astrophysical
-%\textit{r} process, by placing an endpoint on neutron capture and through the
-%fission cycling \cite{Giuliani2018}.
-%
-%In the superheavy research enterprise, theory plays a critical role by guiding
-%experiments, interpreting their results, and making predictions in the regions
-%that cannot be reached  experimentally \cite{Nazarewicz2018,Giuliani2018c}
-%because of huge proton and neutron numbers involved. In these extreme regions,
-%it is important to use  models of spontaneous (or low-energy) fission rooted firmly in many-body quantum
-%mechanics. To this end, microscopic models based on density functional theory
-%(DFT) where collective dynamics is decoupled from underlying intrinsic
-%excitations offer a path which is computationally tractable, while still
-%maintaining a direct link to the underlying quantum many-body problem
-%\cite{Schunck2016}. These models can be used to predict observables such as half-lives
-%\cite{Erler2012, Staszczak2013, Giuliani2013, Giuliani2014, Schunck2016,
-%	Lemaitre2018, Rodriguez2018} and primary fragment yields
-%\cite{Sadhukhan2016,Warda2018,Regnier2016,Regnier2018} within the same theoretical framework.
-%
-%In this letter, we discuss an
-%exotic form of cold highly-asymmetric fission, known in the literature as cluster
-%radioactivity or cluster emission \cite{Sandulescu1980,Poenaru1986,Royer1998}, which we predict is the dominant form of
-%fission in the superheavy isotope \Og{}. Cluster emission, an intermediate
-%process between $\alpha$ decay and conventional fission with fragments of
-%more comparable masses, occurs when a parent nucleus decays into a large fragment
-%near doubly-magic \Pb{} and a lighter cluster. It has been observed experimentally
-%in actinides, starting with the  $^{223}_{\hphantom{2}88}$Ra$\rightarrow$$^{209}_{\hphantom{2}82}$Pb + $^{14}_{\hphantom{1}6}$C decay
-%\cite{Rose1983}. It is always a rare event with a small branching
-%ratio \cite{Poenaru2010}.  From the theoretical point of view, half-life calculations
-%based on semiempirical models predict cluster radioactivity
-%to be the dominant decay channel of several superheavy
-%nuclei~\cite{Poenaru2011, Poenaru2012, Poenaru2013, Poenaru2015, Poenaru2018,
-%	Santhosh2018, Zhang2018}. Similar predictions have been obtained by more
-%microscopic calculations using nuclear DFT
-%framework~\cite{Warda2011,Warda2018}. However, so far no determination of fission
-%yields has been made that explicitly demonstrates the emergence of cluster radioactivity
-%in superheavy elements, either theoretically or experimentally. In this paper, which extends the discussion of recent Ref.~\cite{Warda2018} to fission yields, we calculate spontaneous fission yields of \Og{} and explicitly predict for the
-%first time that cluster emission is dramatically enhanced to the point that it
-%becomes the primary spontaneous fission channel. 
-%
-%
-%In addition to this prediction, our work is a tour de force
-%demonstration of the state-of-the-art in microscopic  theory of spontaneous fission.  First, we briefly sketch the microscopic framework used to
-%calculate fission fragment distributions. We then compute the spontaneous
-%fission characteristics of \Og{}. Finally, we study the robustness of our fission yield predictions with respect to different energy density functionals (EDFs), collective spaces, collective inertias, and
-%dissipation.
-%
-%%MODEL
-%
-%{\it Model} -- We calculate fission fragment distributions following the
-%approach described in Ref.\cite{Sadhukhan2016}, which may be divided into two stages.
-%In the first stage, we use the semiclassical WKB approximation to model
-%spontaneous fission as quantum tunneling through a multidimensional potential
-%energy surface (PES) characterized by $N$ collective coordinates
-%$\mathbf{q}\equiv(q_1, \ldots, q_N)$. In our implementation of the WKB
-%approximation, the most-probable tunneling path $\left. L(s) \right|_{s_{\rm
-%		in}}^{s_{\rm out}}$ in the collective space is found via minimization of the collective action
-%\begin{equation}\label{eq:action} 
-%S(L) = \frac{1}{\hbar}\int_{s_{\rm in}}^{s_{\rm out}} \sqrt{2\mathcal{M}(s)\left(V(s)-E_0\right)}ds,
-%\end{equation} 
-%where $s$ is the curvilinear coordinate along the path $L$,
-%$\mathcal{M}(s)$ is the collective inertia \cite{Sadhukhan2013} and $V(s)$ is
-%the potential energy along $L(s)$. $E_0$ stands for the collective ground-state
-%energy. The dynamic programming method \cite{Baran1981} is employed to determine
-%the path $L(s)$. The calculation is repeated for different outer turning points,
-%and each of these points is then assigned an exit  probability $P(s_{\rm out})=[1+\exp{(2S)}]^{-1}$ \cite{Baran1978}. 
-%
-%In the second stage, fission trajectories begin from the outer turning
-%line and then evolve along the PES according to the Langevin equations:
-%\begin{align} 
-%	\frac{dp_i}{dt} = & 
-%	-\frac{p_j p_k}{2} \frac{\partial}{\partial q_i}\left(\mathcal{M}^{-1}\right)_{jk} 
-%	- \frac{\partial V}{\partial q_i} 
-%	\nonumber \\ 
-%	& -\eta_{ij}\left(\mathcal{M}^{-1}\right)_{jk} p_k + g_{ij}\Gamma_j(t) \,, \\ 
-%	\frac{dq_i}{dt} = &
-%	\left(\mathcal{M}^{-1}\right)_{ij} p_j \,, \nonumber 
-%\end{align} 
-%where $p_i$ is the collective momentum conjugate to $q_i$. The dissipation
-%tensor $\eta_{ij}$ is related to the random force strength $g_{ij}$ via the
-%fluctuation-dissipation theorem, and $\Gamma_j(t)$ is a Gaussian-distributed,
-%time-dependent stochastic variable. All trajectories ending at a particular
-%fragment configuration are weighted with the appropriate $P(s_{\rm out})$.
-%%, and then normalized to 200 to give the standard form of a fission fragment
-%%distribution. 
-%Particle number fluctuations in the neck at or near the scission line
-%were accounted for by convoluting our Langevin yields with
-%a Gaussian function of width $\sigma_A=6$ for $A$ and $\sigma_Z=4$ for $Z$.
-%
-%The key ingredients in these calculations, $V$ and $\mathcal{M}$, are calculated
-%self-consistently by solving the Hartree-Fock-Bogoliubov equations employing  Skyrme
-%and Gogny EDFs. To evaluate the robustness of
-%our results with respect to different inputs, we perform calculations using
-%three distinct EDFs: \hfb \cite{Schunck2015}, a Skyrme functional which was optimized to data
-%for spherical and deformed nuclei, including fission isomers;
-%SkM* \cite{Bartel1982}, another Skyrme functional designed for fission barriers and surface energy; and D1S \cite{Berger1989}, a parametrization of the finite-range Gogny
-%interaction fitted on fission barriers of actinides.
-%
-%In self-consistent fission models, lowest multipole moments characterizing nuclear shape deformations  are usually selected as
-%collective coordinates. The remaining
-%shape degrees of freedom are, in principle, decided through the energy minimization. In the
-%present work, axial quadrupole moment $Q_{20}$, triaxial quadrupole moment
-%$Q_{22}$, and axial octupole moment $Q_{30}$ are considered as collective coordinates since the fission
-%dynamics associated with fragment-yield distributions is mostly confined  within
-%this deformation space. Additionally, pairing correlations have a strong impact
-%on the spontaneous fission half-lives calculated via action minimization
-%\cite{Sadhukhan2014,Giuliani2014,Zhao2016}. It is taken into account through the
-%coordinate $\lambda_2$ representing dynamic pairing fluctuations
-%\cite{Sadhukhan2014}. To obtain $S(L)$,  a dimensionless collective space is introduced as in 
-%Ref.~\cite{Sadhukhan2014}. 
-%
-%To balance computational speed with complexity, we used a different
-%collective space for each functional. The most detailed calculation was
-%carried out using  \hfb{} in four dimensional space of
-%$(Q_{20},Q_{22},Q_{30},\lambda_2)$. Calculations were performed using the symmetry-unrestricted DFT
-%solver HFODD \cite{Schunck2017}.  To assure good convergence,  we used the 1500 lowest single particle levels corresponding to  30 stretched harmonic oscillator shells.
-%For details, see Supplemental Material  \cite{SM}.
-%
-%The analysis of the four-dimensional (4D) PES  showed that $Q_{30}$ remains
-%negligible through the first saddle point (up to at least $Q_{20}=100$\,b), and
-%that $Q_{22}$ and $\lambda_2$ are unimportant beyond the outer turning-point
-%hyper-surface. This allowed us to  simplify calculations with  other 
-%functionals. The SkM* calculations were performed in a piecewise space
-%($(Q_{20},Q_{22},\lambda_2)$ up to the fission isomer,
-%$(Q_{20},Q_{30},\lambda_2)$ from fission isomer to outer turning points, and
-%$(Q_{20},Q_{30})$ beyond the outer turning-point line) with the same pairing
-%properties as given in \cite{Mcdonnell2014,Sadhukhan2013,Sadhukhan2014}, and the
-%same HFODD basis  as in \hfb{} calculations. In case of Gogny D1S calculations, a two-dimensional collective space described by coordinates $(Q_{20},Q_{30})$ was
-%used within the DFT solver HFBaxial \cite{Robledo2002}, where the stretched harmonic oscillator
-%basis corresponding to 17 harmonic oscillator shells was optimized for each
-%$(Q_{20},Q_{30})$ value.
-%
-%Several approximations are commonly used to compute the collective inertia,
-%which describes the tendency of the nucleus to resist configuration changes.
-%The most accurate prescription available till date is obtained from
-%non-perturbative cranking approximation to the adiabatic time-dependent
-%Hartree-Fock-Bogoliubov (ATDHFB) inertia ({\MATDHF}) \cite{Baran2011}. 
-%On the other hand, perturbative expressions prioritize computational simplicity
-%by sacrificing details of the level crossing dynamics, which results in a smoothed-out collective inertia. We also performed calculations using both the perturbative
-%cranking ATDHFB inertia ({\MATDHFp}) \cite{Baran2011} and the perturbative GCM
-%inertia ({\MGCMp}) \cite{Schunck2016}, which has the same structure as
-%{\MATDHFp} but with an absolute magnitude quenched by a factor
-%1.5~\cite{Giuliani2018b}. We additionally did calculations using a 
-%constant inertia parameter {\Mcons}.
-%
-%In this work, we set the dissipation strength $\eta_{ij}$ as an adjustable
-%parameter rather than using some of the common prescriptions \cite{usang2017,ishizuka2017},
-%which have not yet been adapted to DFT inputs. We
-%examined the sensitivity of our calculations to $\eta_{ij}$  by varying it
-%around the baseline value used in \cite{Sadhukhan2016}: $\gras{\eta}_0 \equiv
-%\left(\eta_{22},\eta_{23},\eta_{33}\right)\equiv(50\hbar, 5\hbar, 40\hbar)$.
-%
-%
-%\begin{figure} [htb]
-%	\includegraphics[width=1.0\linewidth]{three_PES} \caption[\Og{}
-%	PES from \hfb{}, SkM* and D1S]{Comparison of the PESs for \Og{}
-%		in the $(Q_{20},Q_{30})$ collective plane obtained in  
-%		\hfb{} (a), D1S (b), and SkM* (c) EDFs. The ground-state energy 
-%		$E_{gs}$ is  normalized to zero. The dotted
-%		line in each figure corresponds to $E_0-E_{gs}=1$\,MeV, which was used to determine the inner and outer turning points. The local energy minima at large deformations are marked by stars.}
-%	\label{fig:pes} \end{figure}
-%
-%%RESULT
-%{\it Results} -- We first compare in Fig.~\ref{fig:pes} the  two-dimensional PESs in the $(Q_{20},Q_{30})$ plane for the functionals \hfb{}, D1S, and SkM*, and D1S. There we notice that the overall topology of the PES is
-%roughly similar in all models, with a symmetric saddle point occurring around $Q_{20}
-%\approx 40$\,b, a second barrier beginning around $Q_{20}\approx100-120$\,b along the
-%symmetric fission path, presence of local minima at large deformations,
-%a deep valley that leads to an highly-asymmetric
-%split, and the secondary less-asymmetric fission valley that emerges at large elongations.
-%
-%But there are  differences as well, such as 
-%the height of the first saddle
-%point, the depth of the highly-asymmetric fission valley, and the height of the ridge  separating two fission valleys. As a result,  the outer turning
-%points are pushed to larger elongations in D1S and SkM* as compared to \hfb{}.
-%These differences in the PES topology strongly affect the predicted
-%spontaneous fission half-lives $\tau_\mathrm{SF}$, which in the case of \hfb{},
-%SkM* and D1S are $9.1\times10^{-9}\,$s, $4.0\times10^{-5}\,$s and
-%$3.2\times10^{-2}\,$s, respectively (see also \cite{Staszczak2013,Baran2015} for a detailed discussion of half-lives). These large variations of $\tau_s$ reflect
-%the well-known sensitivity of spontaneous fission half-lives to changes in the
-%quantities entering the collective action \eqref{eq:action}. The  predictions of 
-%\hfb{} and, to a lesser degree,  SkM*  for $\tau_s$ are clearly incompatible with experiment, as  $^{294}$Og  is known to  decay by $\alpha$-decay with a half-life of 0.58\,ms \cite{Brewer2018}. This observation could in fact also apply to D1S results, since D1S calculations  were performed in a smaller collective space leading to overestimation of  the half-lives \cite{Giuliani2014,Sadhukhan2014}. However, as we demonstrate below,  fission yields predicted in all three models are very similar.
-%
-%\begin{figure}[htb] 
-%	\includegraphics[width=1.0\linewidth]{3yields}
-%	\caption[\Og{} N-Z fragment yields]{
-%		Fission fragment distributions for \Og{}  obtained in  
-%		\hfb{} (a), D1S (b), and SkM* (c) EDFs
-%		using the non-perturbative cranking ATDHFB inertia and  the baseline  dissipation tensor $\gras{\eta}_0$. Known isotopes are marked in grey \cite{NUDAT}. Magic numbers 50, 82, and 126 are indicated by dotted lines.} \label{fig:2d-yield_atdhfb-np} 
-%\end{figure}
-%Despite the strong variations in the predicted $\tau_\textrm{SF}$, we
-%see in Fig.~\ref{fig:2d-yield_atdhfb-np} that the predicted fission yields are in fact rather independent of the EDF choice. Namely,  all three functionals
-%predict a heavy fragment in the neighborhood of \Pb{} and a light fragment near
-%\Kr{}.  In addition, the  functional SkM* predicts
-%a small probability associated with lighter fragments around \Xe{}.
-%
-%
-%
-%The sensitivity to the different inputs are shown in Fig.~\ref{fig:comparisons}
-%through one-dimensional projections on the fragment mass and charge. The
-%top panels of Fig.~\ref{fig:comparisons} shows again that all three functionals
-%predict highly-asymmetric fission with the heavy fragment centered at or around
-%\Pb{}. While the peaks corresponding to the D1S and SkM* functionals overlap
-%quite well, the \hfb{} peak is broader and shifted slightly towards the more asymmetric splits. This
-%may be related to the relative flatness of the \hfb{} PES compared to the
-%others, which makes it more susceptible to large fluctuations.
-%The secondary peak around \Xe{} predicted by SkM*, associated with the more symmetric fission valley  of Fig.~\ref{fig:pes}(c) is clearly seen. For D1S and \hfb{}, the yield distributions do not show a tail at lower masses/charges. As discussed below, this can be associated with the collective inertia  and the energy ridge (particularly pronounced for D1S), both effectively separating  the two fission valleys.
-%
-%
-%% ---------------------------------------------------
-%
-%\begin{figure}[htb]  
-%	\includegraphics[width=1.0\linewidth]{compare_all}
-%	\caption[Comparison of \Og{} heavy fragment masses and
-%	charges]{Predicted heavy fragment mass (left) and charge (right)
-%		yields of \Og{} using different functionals (top), collective inertias (middle), and dissipation
-%		tensor strengths (bottom). The baseline calculation was performed using the
-%		\hfb{} functional with non-perturbative cranking ATDHFB inertia and 
-%		dissipation tensor strength $\gras{\eta}_0$.} 
-%	\label{fig:comparisons} \end{figure}
-%
-%The impact of the choice of
-%collective inertia on the fission yield distributions is illustrated in middle panels of Fig.~\ref{fig:comparisons}. While recent time-dependent DFT work on induced fission has
-%played down the role of collective inertia \cite{Bulgac2018} outside the barrier, it was 
-%emphasized in Ref.~\cite{Sadhukhan2016} that the tunneling phase of spontaneous fission
-%was highly sensitive to it. This may explain the fine deviations observed in
-%Fig.~\ref{fig:comparisons}. The yields corresponding to {\MATDHFp} and {\MGCMp}
-%overlap and both are shifted towards more asymmetric splits compared to
-%{\MATDHF}. This suggests that it is the topology of the collective
-%inertia, rather than its absolute magnitude, which affects the shape of the
-%fission yields. In particular, we find that the smoothness of the perturbative
-%inertia allows fluctuations to diffuse the yield to more extreme fragment
-%configurations.  Finally, the usage of a constant inertia {\Mcons} increases the
-%symmetry of the fission fragments distributions. This is because in the absence
-%of configuration dependence of the collective inertia, the fission yields are primarily
-%determined by the topology of the PES, which in the case of \hfb{} model favors the
-%coexistence of symmetric split and cluster emission. Since the intrinsic structures along the cluster-decay valley and more-symmetric valley are very different,  microscopic inertia tensors result in very small yields of more symmetric fragments.
-%
-%
-%The bottom panels of Fig.~\ref{fig:comparisons} show the effect of varying the
-%strength of the dissipation tensor. This parameter  has a
-%noticeable impact on the yields, particularly on the tails and the yields associated with the
-%more-symmetric channel.  The results corresponding to $\gras{\eta}=\gras{\eta}_0,0.5\gras{\eta}_0$, and $2\gras{\eta}_0$ are very close. This 
-%is consistent with findings of Refs. \cite{Randrup2011,Sierk2017,Sadhukhan2017}, which found that the yield distributions are not very sensitive to the precise value of dissipation tensor.
-%In the no-dissipation variant ($\eta_{ij}=g_{ij}=0$), the Langevin equations become deterministic and there is a one-to-one correspondence between outer turning points and scission points. In this variant, one predicts an increased contribution arising from more-symmetric fission valley. However, since this variant ignores near-scission fluctuations that are essential for the proper description of the width of the fission yields \cite{Arimoto2014,Sierk2017,Sadhukhan2017}, we do not consider it to be realistic: we show it for reference only. 
-%In general, irrespective of
-%the choice of energy density functional, we
-%found a rather similar pattern of yield distributions with respect to the inertia tensor 
-%(except for {\Mcons}) and the dissipation strength.
-%
-%
-%Finally, to better understand the formation of the most-probable fission fragments, we studied the nucleon localization functions \cite{Zhang2016,Sadhukhan2017} along the cluster-decay path. 
-%As shown in Supplemental Material \cite{SM},
-%by comparing the \Og{} localizations with those belonging to \Pb{} and \Kr{}, we found that both the lead prefragment and the $N\approx50$ neutrons belonging to krypton are well-localized early in the evolution, shortly beyond the outer turning line. This result highlights the importance of shell structure in determining the most probable fragment configuration in fissioning nuclei. 
-%
-%
-%
-%
-%
-%%CONCLUSION
-%{\it Conclusions} -- In this letter, we predict that the dominant spontaneous
-%fission mode of \Og{} will be a highly-asymmetric cluster emission centered around the
-%doubly-magic  \Pb{} and magic \Kr{}. We have shown that this
-%prediction is fairly  robust with respect to the choice of input parameters, such as  energy density functional, collective inertia, and dissipation tensor. In particular, we emphasize that
-%differences in barrier heights predicted by different EDFs do not affect the calculated fission yields.  We confirmed the implicit
-%assumption of \cite{Sadhukhan2016}, that 4D calculations do not necessarily
-%offer an improved description of the tunneling compared to a well-chosen 3D
-%description, and we argue for a hierarchy of ingredients necessary for a
-%Langevin description of low-energy fission. This work reinforces the conclusions of
-%Ref.~\cite{Warda2018}: in future superheavy element searches, the range of expected
-%fission fragments should take into account the possibility of cluster emission,
-%which would lead to heavier fragments than those which appear in actinide
-%fission.
+\cite{Brewer2018} they've already started looking, and they're building a new detector that might be able to see it better.
