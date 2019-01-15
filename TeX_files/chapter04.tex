@@ -73,6 +73,10 @@ As discussed in Chapter \ref{chap:Model}, the collective inertia can also have a
 
 We also vary the strength of fluctuations by adjusting the parameter $\mathbf{\eta}$. Our starting point $\mathbf{\eta}_0$ is taken from reference \cite{Sadhukhan2016}, where it was obtained by adjusting $\mathbf{\eta}$ to match the experimental fragment distribution of $^{294}$Pu. Shown in the bottom panel of Figure \ref{fig:294ogcompareall}, we find that fluctuations do not affect the peak of the distribution, consistent with the results of Refs. \cite{Randrup2011,Sierk2017,Sadhukhan2017}. The primary effect is in the tails.
 
+\section{Fragment formation in $^{294}$Og}
+
+The Langevin dynamics approach is useful for calculating total yield distributions, but they do not offer much physical insight into the process of fragment formation. In order to better understand fragment formation for the most-probable fragments, we computed the nucleon localization function (section \ref{sect:locali} and References \cite{Zhang2016,Sadhukhan2017}) along the cluster emission path. This is shown in Figure \ref{fig:294oglocali}, where it is compared to the fragments {\Pb} and {\Kr}. We found that the lead prefragment is well-localized as early as just outside the outer turning line. The $N\approx50$ neutrons belonging to krypton are also well-localized, but the $Z\approx36$ protons are not, highlighting the importance of shell effects in prefragment formation.
+
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\linewidth]{TeX_files/294Og_locali}
@@ -80,47 +84,14 @@ We also vary the strength of fluctuations by adjusting the parameter $\mathbf{\e
 	\label{fig:294oglocali}
 \end{figure}
 
+In fact, we can leverage this insight to predict fission fragments as early as the outer turning line, resulting in a major reduction in total computing time because of the reduced PES. This is described in Chapter \ref{chap:Fragments}.
 
-
-\section{$^{294}$Og}
-
-However, although various attempts have been made to demonstrate the validity of this assumption, our work represents the first published instance of a 4D potential energy surface calculated self-consistently. Furthermore, given the recent demonstration of the importance of pairing correlations as a collective ``coordinate'' of the system, ours will feature pairing as part of the collective space, and its impact compared to other collective coordinates will be evaluated.
-
-We used 30 harmonic oscillator shells and 1500 states
-
-\subsection{Cluster Decay}
-
-Experimental instances of super-asymmetric fission:
-M. G. Itkis 1985, Z Phys A 320 - no assessment of the cause of highly-asymmetric fission, but likely related to 132Sn (there nuclei would tend to fission symmetrically, but with a slight bump around mass A=140-145)
-D. Rochmann Nucl Phys A 735 (2004) - driven by shell structure of lighter fragments
-I M Itkis, J Phys Conf Ser 515 (2014) 012008 - cluster radiation by another name
-
-AKA “Lead Radioactivity” sometimes in the literature
-
-
-
-
-\subsection{Competition with Alpha Decay or Half-lives}
-
-%Alex Brown has something: PRC 46, 2, 811-814 (1992) https://link.aps.org/doi/10.1103/PhysRevC.46.811
-%Ion’s is in Rom Journ. Phys. 62, 303 (2017) http://www.nipne.ro/rjp/2017_62_7-8/RomJPhys.62.303.pdf
-%Roderick Clark: https://journals.aps.org/prc/abstract/10.1103/PhysRevC.97.024333
-%Chinese review paper on alpha decay models: https://journals.aps.org/prc/abstract/10.1103/PhysRevC.92.064301
-
-\cite{Poenaru2011, Poenaru2012} - In this paper they propose changing/extending the concept of Heavy Particle Radioactivity or Cluster Radioactivity. Also they apply some model to HPR/CR in SHE.
-
-
-\section{Method}
-
-% Just say in the methods chapter that ``Our calculations were performed within the framework of nuclear density functional theory using Skyrme energy density functionals, unless otherwise stated \dots We tested this with a variety of inputs, including different functionals, inertias, dissipations, etc. For details of the calculation, see \verb|the paper|.'' I think you can describe the functionals and the inertias here, but don't describe the basis, for instance. What about the collective space? Is it worth showing a figure with the inertias? It's not a bad idea, IF you can make it presentable. You also have that figure showing the 1D barrier using 2D vs. 4D, static vs. dynamic data.
-
-Our calculations were performed within the framework of nuclear density functional theory using Skyrme and Gogny energy density functionals. In the Skyrme case, the parameterization UNEDF1-HFB \cite{Schunck2015} was used, and pairing correlations were described using a density dependent pairing interaction. To assure convergence despite the high density of states, the DFT solver HFODD was used with 30 harmonic oscillator shells and 1500 states allowed in the calculation. Calculations were performed in a 4D collective space consisting of 3 shape coordinates, $(q_{20}, q_{30}, q_{22})$, and, given the importance of dynamic pairing fluctuations demonstrated in \cite{Sadhukhan2014}, $\lambda_2$. To demonstrate model independence, another set of calculations was performed using the Gogny energy density functional D1M in the two-dimensional collective space described by coordinates $(q_{20},q_{30})$.
-
-It is seen in many models that introducing triaxiality as a degree of freedom can often be energetically-favorable, sometimes lowering saddle points by as much as 3 MeV; however, dynamic calculations in which the collective inertia is considered together with the potential energy surface have found that dynamical pathways usually tend to tunnel through barriers rather than break axial symmetry. This competition was explored for SHE in \cite{Gherghescu1999}, with the conclusion that triaxiality plays a fairly insignificant role in determining the half-life of elements below $Z=120$. However, another recent paper (https://arxiv.org/abs/1803.04616v2) suggests that triaxiality might significantly lower the second barrier. Regardless, we included $q_{22}$ in our calculations. It may also be the case that isotopes which are oblate-deformed in their ground state may pass through triaxial configurations on their way to greater elongations.
 
 \section{Experimental efforts to find cluster emission in $^{294}$Og}
-Perhaps the biggest uncertainty we'll see, or the biggest deviation from experiment, will be the distribution width. That's because we rather arbitrarily used $\sigma_A=6, \sigma_Z=4$. The values used in 240Pu were 3 and 2, but the $Q_N$ value they used was quite a bit smaller too. Since we had a much larger $Q_N$ cutoff, we needed to account for larger particle number fluctuations. But these numbers were just kind of arbitrary. I'm not too worried about this because the peak is the part that matters, and we clearly saw a peak at the cluster location.
+Perhaps the biggest uncertainty we'll see, or the biggest deviation from experiment, will be the distribution width. That's because we folded our Langevin results with a Gaussian function, the width of which was chosen rather arbitrarily to be $\sigma_A=6, \sigma_Z=4$. The values used in $^{240}$Pu were 3 and 2, but the $Q_N$ value they used to define scission was quite a bit smaller too. Since we had a much larger $Q_N$ cutoff, we needed to account for larger particle number fluctuations. But these numbers were just kind of arbitrary. I'm not too worried about this because the peak is the part that matters, and we clearly saw a peak at the cluster location.
 
-They found 3 (and possibly 4) instances in the original Dubna run. Another Og paper (Brewer2018) has a similar decay chain but a shorter half-life ($\sim$0.185 ms); Detected a 10.6 MeV recoil event, followed 78 microseconds later by a second decay event in the same pixel ($\sim$140 MeV), which is a candidate for SF.
+The effort to detect cluster emission in superheavy elements is already underway. However, one of the biggest challenges standing in the way of observation of cluster emission from {\Og} is the problem of statistics. There have only been 5 recorded instances of {\Og}, from the first observations in 2005 \cite{Oganessian2006} to the most recent in \cite{Brewer2018}.\footnote{In fact, there were reports as early as 2004 \cite{Oganessian2004} that there may have been detected instances of fission fragments resulting from the spontaneous fission of {\Og}, but these are unconfirmed.} To maximize the possibility of detecting SF events as they happen, there is some discussion in the experimental community about building an ionization chamber with the ability to distinguish fragments by their Z-value. This is discussed at some length in \cite{Brewer2018}:
 
-\cite{Brewer2018} they've already started looking, and they're building a new detector that might be able to see it better.
+``Among these SF events, there were signals correlated with incoming recoil-like signals within the time range of the 294Og half-life. We have inspected the possible assignment of some SF events to the fission of 294 Og. In the past, as well very recently, 294 Og was considered as a system consisting of doubly magic 208 Pb and singly magic N = 50, 86 Kr. These two components are well bound stable nuclei. One can envision that an asymmetric fission of 294 Og into 208 Pb and 86 Kr fragments might be somewhat enhanced.
+
+``However, especially since the decay time of 294 Og is not sufficiently different from 258 No decay, one cannot make an assignment to 294 Og activity based only on the half-life of SF events. The energy of SF events vary, since we detect sometimes only a partial energy of fission fragments. Such events are more likely to arise from the SF activity produced in a multinucleon transfer involving the Cf isotope in the target. The indistinguishability of complete-fusion from transfer reaction products provides motivation for an ionization chamber, which would have a discrimination capability for the atomic number Z, placed before the implantation Si counter. Construction and anticipated performance of such an ionization chamber based on gas electron multiplier (GEM) technology was recently discussed...''
