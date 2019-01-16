@@ -23,6 +23,12 @@
 \usepackage{graphicx, amsmath, physics}
 \usepackage{bm}% bold math
 
+% These are to get an APS-like bibliography
+% See: https://tex.stackexchange.com/questions/15677/revtex-4-1-bibliography-style-in-other-classes
+\usepackage[sort&compress,numbers]{natbib}
+\usepackage{doi}
+\usepackage{hyperref}
+
 \newcommand{\hfb}{UNEDF1$_{\mathrm{HFB}}$}
 \newcommand{\Og}{$^{294}_{118}$Og$_{176}$}
 \newcommand{\Pb}{$^{208}_{\hphantom{2}82}$Pb$_{126}$}
@@ -203,7 +209,7 @@ I dunno who to acknowledge, either
 %% To do so the necessary commands must be entered in the 
 %% preamble and here.
 \bibliography{main}
-\bibliographystyle{abbrv} % I don't know what bibliography style to use, so this is a placeholder
+\bibliographystyle{apsrev4-1} % I don't know what bibliography style to use, so this is a placeholder
 
 %% If the Bibliography is made from scratch,
 %% remove the "%" in front of \begin{thebibliography}{???}
