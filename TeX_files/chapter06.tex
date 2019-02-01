@@ -9,7 +9,7 @@ As I said in chapter \ref{chap:Intro}, ``Finally, in chapter \ref{chap:Outlook} 
 At this stage, we have techniques to calculate half-lives and primary fragment distributions (I haven't mentioned it yet, but there is also Nicolas' method for the fragment yields that uses TD-GCM. Are there others? What about for half-lives?). Some methods (such as Walid's, TDDFT, and possibly also this GCM method) are starting to estimate fragment energetics (kinetic and excitation energies). Down the line, there are others who try to predict neutron multiplicities and goodness knows what else using Hauser-Feshbach models and such (FREYA and more). These regions are still disconnected. Of course, these methods still need major refinements in order to better reflect experimental data. Some ideas currently in the pipeline for improving the models are:
 
 \begin{itemize}
-	\item Improved EDFs (here you could mention the DME EDFs)
+	\item Improved EDFs (here you could mention the DME EDFs; unfortunately, introducing density-dependence has a bad effect but I forgot what it was)
 	\item Improved inertia tensor (such as automatic differentiation)
 	\item Better/more collective coordinates (Walid's $D, \xi$ coordinates from \cite{Younes2012}; continuity of the PES in $\infty$-dimensional space such like in David Regnier's talks and papers)
 	\item Fragment identification (our localization paper, Marc Verriere's method; you might also mention that this is not an issue in TDDFT, but there you've only got one single fragment pair)
