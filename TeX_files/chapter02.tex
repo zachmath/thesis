@@ -186,7 +186,7 @@ One of the tools we will be using quite a bit in this thesis is the nucleon loca
 
 \noindent where $\tau_{q\sigma}^{TF}=\frac{3}{5}(6\pi^2)^\frac{2}{3}\rho_{q\sigma}^\frac{5}{3}$. A localization value $\mathcal{C} \approx 1$ means that nucleons are well-localized; that is, the probability of finding two nucleons of equal spin and isospin at the same location in space is low. A value of $\mathcal{C}=\frac{1}{2}$ corresponds to a Fermi gas of nucleons, as found in nuclear matter.
 
-The NLF offers greater insight into the underlying shell structure of the system than, for instance, the single particle density. In particular, when applied to fission as in \cite{Sadhukhan2017}, it sometimes enables one to see the formation of well-defined prefragments whose shell structure is responsible for the peak of the fragment distribution.
+The NLF offers greater insight into the underlying shell structure of the system than, for instance, the single particle density. In particular, when applied to fission as in \cite{Sadhukhan2017}, it sometimes enables one to see the formation of well-defined prefragments whose shell structure is responsible for the peak of the fragment distribution. A method for identifying fission fragments and estimating fragment distributions using the NLF is described in Appendix \ref{append:Fragments}.
 
 \section{Microscopic Description of Nuclear Fission}
 With the nuclear physics somewhat under control, we now move onto the problem of using it to describe fission. Recently in \cite{Sadhukhan2016}, an approach based on this assumption was used to compute fragment yields from a potential energy surface (PES) that was computed self-consistently, using the WKB approximation to describe the tunneling and Langevin dynamics to describe post-scission dissipation. The half-life can be computed as in \cite{Sadhukhan2013}.
@@ -203,9 +203,9 @@ Just as important to the fission dynamics as the energy of the system is the col
 \mathsf{M}_{\mu\nu} =  \frac{\hbar^2}{2}\frac{1}{(E_a+E_b)}\left(\frac{\partial\mathcal{R}^{21}_{(0),ab}}{\partial q_\mu}\frac{\partial\mathcal{R}^{12}_{(0),ba}}{\partial q_\nu}+\frac{\partial\mathcal{R}^{12}_{(0),ab}}{\partial q_\mu}\frac{\partial\mathcal{R}^{21}_{(0),ba}}{\partial q_\mu}\right)
 \end{equation}
 
-\noindent The subscripts and superscripts are explained in the full temperature-dependent derivation of the collective inertia found in Appendix ???, but the important feature to note is that computing the inertia requires differentiating the density matrix with respect to a set of collective coordinates.
+\noindent The subscripts and superscripts are explained in the full temperature-dependent derivation of the collective inertia found in Appendix \ref{append:TD-ATDHFB}, but the important feature to note is that computing the inertia requires differentiating the density matrix with respect to a set of collective coordinates.
 
-A perturbative expression for the ATDHFB inertia also exists, which allows one to estimate the inertia without taking derivatives of the density. It is computationally much faster and easier to implement, but it is less accurate and loses many of the important features of the inertia, as we shall see in Chapter ??? (294Og). Nevertheless, it is commonly-used in calculations and we shall use it later on.
+A perturbative expression for the ATDHFB inertia also exists, which allows one to estimate the inertia without taking derivatives of the density. It is computationally much faster and easier to implement, but it is less accurate and loses many of the important features of the inertia, as we shall see in Chapter \ref{chap:294Og}. Nevertheless, it is commonly-used in calculations and we shall use it later on.
 
 Another common expression for the collective inertia comes from the Generator Coordinate Method (GCM). The GCM inertia also exists in two varieties: perturbative and non-perturbative \cite{Giuliani2018b}. Like the ATDHFB inertia, the perturbative GCM inertia is smoothed-out compared to the non-perturbative inertia. Both the perturbative and non-perturbative GCM inertias are found to be smaller in magnitude than their ATDHFB counterparts.
 
