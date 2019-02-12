@@ -1,76 +1,54 @@
-\chapter{Two fission modes in $^{178}$Pt}\label{chap:178Pt}
+\chapter{Numerical implementation}\label{chap:Numerical}
 
-\section{Asymmetric fission in the region of $^{180}$Hg}
-As mentioned in the introduction, fission is most well-studied in the region of the actinides (Z=90 to Z=103), as many naturally-occurring isotopes in this region are fissile. Within this region, there is a characteristic tendency for fission fragment yields to be asymmetric (that is, one light fragment and one heavy fragment), with the heavy peak centered around $A\approx140$. This has been understood as a manifestation of nuclear shell structure in the prefragments: doubly-magic $^{132}$Sn drives the nucleus towards scission, and once the neck nucleons are divided up between the two fragments, we end up with the heavy fragment A=140 peak. As one moves to the lower-Z actinides, however, this tendency becomes less and less pronounced as yields tend to become more symmetric. Below thorium, it was generally believed until recently (though mostly not tested) that yields would continue to be symmetric as there was no doubly-magic nucleus candidate that could drive the system toward asymmetry as there is with actinides.
+As with any physics problem that must be solved on a computer, there are aspects which must be treated using numerical approximations. Certain parts of the problem may take longer to evaluate than others, and occasionally one runs into problems of [machine] precision.
 
-However, it was reported in a 2010 study \cite{Andreyev2010} that neutron-deficient $^{180}$Tl undergoes beta-delayed fission, leading to intermediate state {\Hg} which then decays into two fragments of unequal mass. This finding triggered a flurry of theoretical papers hoping to describe this new and unexpected phenomenon (for instance, see \verb|\cite{some papers}|). A follow-up study using $^{178}$Tl \cite{Liberati2013} further established this as a region of asymmetric fission, and not just a one-time occurrence. Since then, other nuclei in the region have been studied, for instance using Coulex-induced fission reactions and compound nucleus (prompt?) fusion-fission reactions, and the finding is the same. 
+\section{Calculating the PES}
+By far, the most time-intensive part of a microscopic fission calculation is the calculation of the PES. For this we use a pair of DFT solvers, HFODD \cite{Schunck2017} and HFBTHO \cite{Perez2017}. These programs solve the HFB equations in a basis of deformed harmonic oscillators. The solver HFBTHO is limited to shapes with axial symmetry, while HFODD allows for the breaking of any symmetry needed. However, since the major bottleneck of each of these programs involves constructing and then diagonalizing the matrix representing \verb|thing|, this flexibility drastically increases the time-to-solution.
 
-Nuclei in this region have a number of unique features which make them interesting for study, even aside from the unexpected fragment asymmetry. Predicted fission barrier heights in this region are relatively-low (of the order of ~12 MeV), making them suitable for study using low-energy techniques such as $\beta$-delayed fission (maybe \cite{Andreyev2013} and the work at ISOLDE at CERN?) or Coulex-induced fission (maybe \cite{Martin2015} and the SOFIA (Studies On FIssion with Aladin) experiment/project/campaign). On the other hand, it has been found that compound nuclei formed in this region from particle-induced reactions tend to have high excitation energies, even for beam energies near the Coulomb barrier. This combination makes the region particularly well-suited for studies involving a variety of excitation energies.
+The procedure is performed iteratively: First, a density ansatz is given (either by the user or by some simple means, such as a quick Woods-Saxon calculation). Then the energy density matrix is constructed, after which it is diagonalized and a new density matrix is calculated. The procedure then repeats for a fixed number of iterations, or until a predetermined convergence criterion is satisfied In HFODD, for instance, the default convergence criterion is for the difference between the total energy summed over all single-particle states and the total energy calculated by \verb|???| to be less than some user-defined value.
 
-Later experiments performed with isotopes in this region at different excitation energies have shown that, unlike the case of actinides where shell structure and fragment asymmetry is ``washed out'' at high excitation energies, mass asymmetric fragment distributions are a persistent feature of this mass region for various excitation energies. (A lot of good citations for this section can come from section 4.1.1 of \cite{Andreyev2018}) An up-to-date (as of around 2016) overview of nuclei in the region of {\Hg} which have since been experimentally studied, including the experimental technique used, is shown in Figure \ref{fig:178ptregion}.
+Certain parts of the procedure can be parallelized using shared-memory parallelism, such as QMULCM, which does what again?
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.9\linewidth]{./TeX_files/178Pt_region}
-	\caption[Survey of fragment yields near $^{180}$Hg]{Fragment yields for several nuclei ranging from actinides, where primary fission yields tend to be asymmetric, down to near-thorium, where yields become more symmetric except in the region near neutron deficient {\Hg}. Figure from \cite{Andreyev2018}.}
-	\label{fig:178ptregion}
-\end{figure}
+On the positive side, the problem of calculating a PES is embarrassingly-parallel. So while an individual point in the PES may be difficult to compute, many points can be computed simultaneously. This does have its limitations; highly-deformed configurations may be very unstable because of reasons. One fix may sometimes be to use a nearby point which converged successfully as a seed function
 
+\section{Calculating the collective inertia}
+The partial derivatives from equation \ref{eq:mATDHFB-np} are computed using the Lagrange three-point formula:
 
+\begin{equation}\label{eq:finite-diffs}
+\left(\frac{\partial \mathcal{R}}{\partial q}\right)_{q=q_0} \approx 
+    \frac{-\delta q'}{\delta q \left(\delta q + \delta q'\right)}\mathcal{R}(q_0-\delta q) + 
+    \frac{\delta q - \delta q'}{\delta q \delta q'}\mathcal{R}(q_0) + 
+    \frac{\delta q}{\delta q' \left(\delta q + \delta q'\right)}\mathcal{R}(q_0+\delta q')
+\end{equation}
 
-\section{Multimode fission of $^{178}$Pt}
-
-One particular follow-up experiment was performed investigating spontaneous fission of {\Pt} \cite{our-Pt-paper}, which differs from {\Hg} by 2 protons. This system was studied at various excitation energies and found to fission consistently with a bimodal pattern, as shown in Figure \ref{fig:178ptexptdata}. Of the nuclei which underwent spontaneous fission, roughly 1/3 were found to fission symmetrically while the other 2/3 fissioned asymmetrically with a light-to-heavy mass ratio of approximately 79/99. Furthermore, it was observed that symmetric fragments tended to have higher kinetic energies than non-symmetric fragments.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.95\linewidth]{TeX_files/178Pt_expt_data}
-	\caption[$^{178}$Pt experimental data]{This figure contains the data from the {\Pt} experiment. I should go through and describe what all the individual boxes are for. Then I should cite out paper, once it's citeable}
-	\label{fig:178ptexptdata}
-\end{figure}
-
-To better interpret the results of this experiment, DFT calculations were performed using the functionals {\hfb} \cite{Schunck2015} and D1S \cite{Berger1989}. These calculations involved computing a PES using the collective coordinates $Q_{20}$ and $Q_{30}$. [Do I need to describe the calculations in detail here, or should I refer to the published papers (e.g. ``Details of the calculation are given in \verb|the paper|'')?]
-
-The {\hfb} PES is shown in Figure \ref{fig:178ptunedf1pes}, while the D1S PES is in Figure \ref{fig:178ptd1spes}. A calculation with full Langevin dynamics was not performed; however, the static (minimum-energy) pathway shown in the figure corresponds to a fragment split $A_L/A_H \approx 80/98$.
+The accuracy and precision of the collective inertia $\mathcal{M}$ are therefore functions of the spacings $\delta q$ and $\delta q'$, and of $\mathcal{R}$. An accurate value of the collective inertia is especially important for computing half-lives, where there is an exponential dependence on $\mathcal{M}$.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\linewidth]{TeX_files/178Pt_unedf1_pes}
-	\caption[UNEDF1-HFB potential energy surface for $^{178}$Pt]{UNEDF1-HFB potential energy surface for $^{178}$Pt. Note the two different trajectories ABCD and ABcd and their corresponding localizations.}
-	\label{fig:178ptunedf1pes}
+	\includegraphics[width=0.7\linewidth]{TeX_files/Num-dq_spacing}
+	\caption[Collective inertia as a function of finite-difference spacing]{$\mathcal{M}_{22}$ calculated for ??? configuration of $^{240}$Pu as a function of finite-difference spacing.}
+	\label{fig:num-dqspacing}
 \end{figure}
 
-Also shown in Figure \ref{fig:178ptunedf1pes} are nucleon localization functions (recall Section ) corresponding to various configurations in the PES. Along the symmetric path (ABcd in the figure), the fragments appear highly-elongated, with a rather large neck, even shortly before scission. Since elongation tends to minimize the Coulomb repulsion between fragments, then this configuration might be expected to lead to fragments with relatively low kinetic energies. On the other hand, compact fragments such as those in ABCD will tend to have a larger Coulomb repulsion, propelling the fragments away from one another with greater force and resulting in fragments with a higher kinetic energy. [We note that this is compatible with experiment]
-
-Now consider the PES corresponding to the D1S functional in Figure \ref{fig:178ptd1spes}. We note with some relief that, despite the inherent differences between the functionals, and despite the relative flatness of the surface with few discernible topological features, the overall topology of the PES is similar in both cases. The overall magnitude is different, but the static pathway follows a similar trajectory.
+Figure \ref{fig:num-dqspacing} shows the effect of different values of $\delta q = \delta q'$ on the collective inertia for a particular configuration of $^{240}$Pu.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\linewidth]{TeX_files/178Pt_D1S_pes}
-	\caption[D1S potential energy surface for $^{178}$Pt]{D1S potential energy surface for $^{178}$Pt. Note also the additional information about the hexadecapole moment.}
-	\label{fig:178ptd1spes}
+	\includegraphics[width=0.7\linewidth]{TeX_files/Num-rho_conv}
+	\caption[Norm of the difference matrix between subsequent iterations of the density]{Norm of the difference matrix between subsequent iterations of the density.}
+	\label{fig:num-rhoconv}
 \end{figure}
 
+Figure \ref{fig:num-dqspacing} shows the norm of the matrix which corresponds to the difference between the density matrix at the last iteration and the second-to-last iteration. Predictably, the norm decreases as the convergence parameter becomes tighter. This gives a sense of the uncertainty associated with the density, which in turn should be propagated through equations \ref{eq:finite-diffs} and \ref{eq:mATDHFB-np}.
 
+There are additional complications which arise in the finite-temperature formalism. These are discussed in Appendix \ref{append:TD-ATDHFB}.
 
-\section{The physical origin of fragment asymmetry in the region of $^{180}$Hg}
+\section{Minimum action path}
+For tunneling through the barrier, the dynamic programming method \cite{Baran1981} was used. All DPM calculations for a particular Q20 can be performed in parallel, using OpenMP shared memory parallelism.
 
-Why is there a region of symmetric fission below thorium?
+Were there any numerical issues associated with the minimum action path? We bumped it up to 4D, created continuation files. It is sensitive to $E_0$ still. We use the dynamic programming method to solve this part. That could be good to mention, although admittedly you're not the person who programmed it. There, the biggest issue is how large to set the search radius, which can strongly affect the total runtime, followed by how to keep it from going backwards. You also have to worry about interpolation.
 
-(These are notes from the 178Pt paper draft. Not mine, of course, but they have some good points to address): ``Namely, the PES are predicetd to be flat and much less structureless, and defined predominantly by the large liquid drop/macroscopic contribution, rather than by relatively small microscopic effects. Due to this, FFMDs exhibit fairly low dependence..  [refer to 180Hg PLB, as one example].
+Oh! You did add some basic parallelization. All DPM calculations for a particular Q20 can be performed in parallel, using OpenMP shared memory parallelism.
 
-``(this was an answer by Witek, when somebody asked a question to my talk at Tsukuba - why the lead region is less sensitive to temperature.. the answer was - there is no 'barrier' in a sence, it's just flat/thick macroscopic surface, hardly influenced by shell effects.. so, even if one heats it up, tiny shell effects will be gone, but the main underlying macroscopic part will remain).''
-
-Peter Moller argues in the concluding discussion of (https://link.aps.org/doi/10.1103/PhysRevC.85.024306 \cite{Moller2012}) that we can't really use the fragment/prefragment shell structure arguments in this region, and thus that we have yet to identify all the essential physics which determines fragments. He says the yields are given (at least in this case) by subtle interplays in local regions of the potential energy surface.
-
-Witek, Michal Warda, and Staszczak argue in Section IV. \textit{Prescission Configurations} of \cite{Warda2012a} that 180Hg deforms as a molecular system consisting of 90Zr and 72Ge, with the remaining neck nucleons being distributed at scission to give the fragments they found in the experiment. Similarly, they make the same claim for 198Hg, except using 98Zr and 80Ge. The first one kind of makes sense to me since 90Zr is semi-magic, but 98Zr is not and neither is 80Ge. I wonder what might have happened had they tried to match up the densities of a different set of nearby nuclei (they used these because they had the same N/Z ratio as the fissioning parent nucleus). Then in the conclusions: ``We conclude that the mass distribution of fission fragments in both nuclei is governed by shell structure of prescission configurations associated with molecular structures.''
-
-In the introduction to \cite{Mcdonnell2014} it is stated as though conclusively that ``the main factor determining the mass split in fission are shell effects at pre-scission configurations, i.e., between saddle and scission'' (see also some additional references therein). I think the thing that is most selling it to me so far, though, is Fig. 3 from this paper, wherein they show the shell correction energy for each of the nuclei considered. Even though the PES itself is mostly flat in each of these cases, the magnitude of the shell correction is different whether you are looking at symmetric or asymmetric trajectories, and the one with the larger magnitude shell correction happens to be the one that wins out in the final fragment distribution. I'd also be curious to see what the collective inertia looks like, but this seems to at least give something. It's not like this shell correction gets added on top of the PES - the PES is still relatively-flat - but it at least gives an explanation for why our traditional physical intuition is not totally failing us here.
-
-Interesting future work in this region might include calculations with full dynamics (including from nuclei with excitation energy), as suggested in the conclusions of \cite{Mcdonnell2014}
-
-
-
-
-
-
+\section{Langevin}
+And are there any numerical issues here, either? You need an interpolated surface, and the dynamics are carried out in discrete time steps. Can it be parallelized? Yes! I used MPI parallelism... For what part, exactly? Each outer turning point gets its own MPI rank. Why did I use MPI instead of OpenMP? I think it was to avoid a race condition when writing to a file? So now each rank gets its own? Or was it because of shared/private variables. How about this: ``I chose to use distributed-memory parallelism instead of shared-memory parallelism to simplify access to shared resources, such as variables and output files.''

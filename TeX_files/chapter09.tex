@@ -1,0 +1,6 @@
+\chapter{Temperature-Dependent ATDHFB Collective Inertia}\label{append:TD-ATDHFB}
+
+
+Everything which was shown in this dissertation assumed that the system was maintained at temperature $T=0$ and the nucleus behaved as a superfluid below the Fermi surface. However, in many environments (such as a neutron star merger or a nuclear blast) there may be quite a bit of excitation energy imparted to the system, which would raise the temperature above the Fermi surface. In this case, pairs may be broken and the topology of the potential energy surface may change (see, for instance, \cite{Mcdonnell2014}). In this case, the collective inertia of the system is changed, too, as shown below.
+
+Be sure to discuss the complications which arise in the finite temperature formalism, as promised in Chapter \ref{chap:Numerical}. In essence, you end up dividing by terms which are very small. You can avoid dividing by zero by introducing a cutoff. If the cutoff is too large, you lose some of the data in the tail. If the cutoff is too small, you divide by numbers that are smaller than the noise in the density. There are actual numbers in your dudeman4 Google Drive, in a file called Inertia Tensor Convergence.
