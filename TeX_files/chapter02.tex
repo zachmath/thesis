@@ -209,7 +209,7 @@ A perturbative expression for the ATDHFB inertia also exists, which allows one t
 
 Another common expression for the collective inertia comes from the Generator Coordinate Method (GCM). The GCM inertia also exists in two varieties: perturbative and non-perturbative \cite{Giuliani2018b}. Like the ATDHFB inertia, the perturbative GCM inertia is smoothed-out compared to the non-perturbative inertia. Both the perturbative and non-perturbative GCM inertias are found to be smaller in magnitude than their ATDHFB counterparts.
 
-\subsection{WKB Approximation}
+\subsection{WKB Approximation}\label{sect:wkb}
 Spontaneous nuclear fission is a type of quantum tunneling; consequently, it should be described using quantum mechanics. If the wavefunction corresponding to the fissioning nucleus is assumed to be slowly-varying inside the potential barrier (which is the case under the adiabatic assumption), then the WKB approximation allows us to estimate the tunneling probability through a classically-forbidden region in the PES.
 
 Consider a set of collective coordinates $\mathbf{q}\equiv(q_1, \ldots, q_N)$. The most-probable tunneling path $\left. L(s) \right|_{s_{\rm in}}^{s_{\rm out}}$ in the collective space is found via minimization of the collective action
@@ -237,7 +237,7 @@ Two techniques for predicting fission fragment yields are the Langevin approach 
 
 After emerging from the classically-forbidden region of the PES, fission trajectories begin from the outer turning
 line and then evolve along the PES according to the Langevin equations:
-\begin{gather} 
+\begin{gather}\label{eq:langevin} 
 	\frac{dp_i}{dt} =  
 	-\frac{p_j p_k}{2} \frac{\partial}{\partial q_i}\left(\mathcal{M}^{-1}\right)_{jk} 
 	- \frac{\partial V}{\partial q_i}  - \eta_{ij}\left(\mathcal{M}^{-1}\right)_{jk} p_k + g_{ij}\Gamma_j(t) \,, \\ 
