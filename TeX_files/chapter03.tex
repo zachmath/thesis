@@ -1,6 +1,6 @@
 \chapter{Numerical implementation}\label{chap:Numerical}
 
-As with any physics problem that must be solved on a computer, there are aspects which must be treated using numerical approximations. Certain parts of the problem may take longer to evaluate than others, and occasionally one runs into problems of [machine] precision.
+Since this modern era of fission theory takes advantage of high-performance computers, it is worth taking some time to discuss some of the issues which came up during the course of this research, and how modern computing tools were used to solve the problem.
 
 \section{Calculating the PES}
 By far, the most time-intensive part of a microscopic fission calculation is the calculation of the PES. For this we use a pair of DFT solvers, HFODD \cite{Schunck2017} and HFBTHO \cite{Perez2017}. These programs solve the HFB equations in a basis of deformed harmonic oscillators. The solver HFBTHO is limited to shapes with axial symmetry, while HFODD allows for the breaking of any symmetry needed. Broken symmetries mean that each matrix element must be computed independently, while good symmetries mean However, since the major bottleneck of each of these programs involves constructing matrices representing Skyrme densities and currents and then diagonalizing the matrix representing the HFB Hamiltonian, this flexibility drastically increases the time-to-solution.
@@ -16,7 +16,7 @@ Apart from the issue of walltime, generating a PES creates a lot of output files
 
 In particular, a submodule was created to interface between PES Tools and Fission Tools \cite{fission_tools}, a set of codes which have relevance to fission calculations. Many of these codes are described in the following sections.
 
-\section{Calculating the collective inertia}
+\section{Calculating the collective inertia}\label{sect:M_numerical}
 The partial derivatives from equation \ref{eq:mATDHFB-np} are computed using the Lagrange three-point formula:
 
 \begin{equation}\label{eq:finite-diffs}
