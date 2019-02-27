@@ -10,7 +10,7 @@ On the other hand, static approaches assume that collective motions of the nucle
 
 As we are trying to be as self-consistent as possible, we compute the PES in the framework of nuclear density functional theory, which combines the Hartree-Fock-Bogoliubov (HFB) mean-field approximation to the energy with a many-body method inspired by Kohn-Sham density functional theory (DFT). An overview of the self-consistent framework is described below, followed by the dynamical calculations which we use to calculate fission properties.
 
-\section{Nuclear Density Functional Theory}
+\section{Nuclear density functional theory}
 Since nuclei are quantum mechanical systems, they can in principle be described using the Schrodinger equation. However, in practice one finds this type of description difficult or impossible, for two reasons:
 
 \begin{itemize}
@@ -18,7 +18,7 @@ Since nuclei are quantum mechanical systems, they can in principle be described 
 \item Even when an interaction is known, nuclei are large systems made up of many protons and neutrons. Solving the Schrodinger equation directly quickly becomes computationally intractable as the number of nucleons increases.
 \end{itemize}
 
-\subsection{Density Functional Theory}\label{sect:DFT}
+\subsection{Density functional theory}\label{sect:DFT}
 Kohn-Sham DFT is based on the Hohenberg-Kohn theorems
 
 Let us define the nucleon density in the following way: suppose we have a system described in second quantization by a set of creation and annihilation operators $c_i, c_i^\dagger$ which act on the [Fock-space?] vacuum state $\ket{\psi_0}$. The first Kohn-Sham theorem says that the energy of the system is a uniquely-defined functional of the density. That means that if a system of interacting particles and a system of noninteracting particles give the same density, the energy of those systems will be the same. This gives us the freedom to try to describe our system using a mean-field method instead of having to describe the pairwise interactions between every particle in the system - a huge simplification to the problem!
@@ -144,7 +144,7 @@ In anticipation of the HFB formalism below, we define the so-called Bogoliubov t
 
 %In general, $E$ is a functional of the generalized density $\mathcal{R}$.
 
-\subsection{Hartree-Fock-Bogoliubov Equations}
+\subsection{Hartree-Fock-Bogoliubov equations}
 
 The ground state configuration of the system described by this particular energy density functional $E$ is described by the density which minimizes $E(\mathcal{R})$. We can find this solution through the variational principle. We minimize the energy with respect to the generalized density, subject to the constraint that $\mathcal{R}^2=\mathcal{R}$, or in other words, that the state remains a quasiparticle vacuum. Defining the HFB Hamiltonian $\mathcal{H}_{ba} \equiv 2 \partial E/\partial \mathcal{R}_{ab}$, this variation leads to the result $\left[\mathcal{H},\mathcal{R}\right]=0$, which is called the Hartree-Fock-Bogoliubov equation. It is not typically solved in this form, but it can be recast into something more useful. Recalling that two Hermitian operators whose commutator is zero can be simultaneously diagonalized, we choose to diagonalize $\mathcal{H}$ using the same Bogoliubov transformation $W$ which diagonalizes $\mathcal{R}$:
 
@@ -188,10 +188,10 @@ One of the tools we will be using quite a bit in this thesis is the nucleon loca
 
 The NLF offers greater insight into the underlying shell structure of the system than, for instance, the single particle density. In particular, when applied to fission as in \cite{Sadhukhan2017}, it sometimes enables one to see the formation of well-defined prefragments whose shell structure is responsible for the peak of the fragment distribution. A method for identifying fission fragments and estimating fragment distributions using the NLF is described in Appendix \ref{append:Fragments}.
 
-\section{Microscopic Description of Nuclear Fission}
+\section{Microscopic description of nuclear fission}
 With the nuclear physics somewhat under control, we now move onto the problem of using it to describe fission. Recently in \cite{Sadhukhan2016}, an approach based on this assumption was used to compute fragment yields from a potential energy surface (PES) that was computed self-consistently, using the WKB approximation to describe the tunneling and Langevin dynamics to describe post-scission dissipation. The half-life can be computed as in \cite{Sadhukhan2013}.
 
-\subsection{Potential Energy Surfaces}
+\subsection{Potential energy surfaces}
 In the adiabatic approximation, the primary degrees of freedom are nuclear shapes, and therefore the basic ingredient to fission calculations is a potential energy surface (PES). In principle, one could describe any three-dimensional shape using an infinite basis such as the multipole expansion which is often encountered in electrodynamics; however, for practical computations one must used a truncated set of only a few collective coordinates. Thus, an important challenge for researchers is to select the most relevant collective coordinates, ideally while demonstrating that others can be safely neglected. Often one will use the first few lowest-order multipole moments; however, multipole moments may not always be well-suited to describing shapes which occur during fission, especially near scission. One alternative was proposed in \cite{Younes2012}.
 
 Once the appropriate shape constraints are chosen, the PES is computed as a mesh: one DFT calculation per grid point. The value at each point is the HFB energy computed above, $E'(\vec{q})$.
@@ -209,7 +209,7 @@ A perturbative expression for the ATDHFB inertia also exists, which allows one t
 
 Another common expression for the collective inertia comes from the Generator Coordinate Method (GCM). The GCM inertia also exists in two varieties: perturbative and non-perturbative \cite{Giuliani2018b}. Like the ATDHFB inertia, the perturbative GCM inertia is smoothed-out compared to the non-perturbative inertia. Both the perturbative and non-perturbative GCM inertias are found to be smaller in magnitude than their ATDHFB counterparts.
 
-\subsection{WKB Approximation}\label{sect:wkb}
+\subsection{WKB approximation}\label{sect:wkb}
 Spontaneous nuclear fission is a type of quantum tunneling; consequently, it should be described using quantum mechanics. If the wavefunction corresponding to the fissioning nucleus is assumed to be slowly-varying inside the potential barrier (which is the case under the adiabatic assumption), then the WKB approximation allows us to estimate the tunneling probability through a classically-forbidden region in the PES.
 
 Consider a set of collective coordinates $\mathbf{q}\equiv(q_1, \ldots, q_N)$. The most-probable tunneling path $\left. L(s) \right|_{s_{\rm in}}^{s_{\rm out}}$ in the collective space is found via minimization of the collective action
@@ -232,7 +232,7 @@ and each of these points is then assigned an exit  probability $P(s_{\rm out})=[
 
 The half-life corresponds to the minimum action pathway, and the expression for the half-life is $T_{1/2} = \mathrm{ln}(2)/nP(s_\mathrm{min})$. The parameter $n$ is the number of assaults on the fission barrier per unit time and the standard value is $n=10^{20.38} s^{-1}$.
 
-\subsection{Langevin Dynamics}
+\subsection{Langevin dynamics}
 Two techniques for predicting fission fragment yields are the Langevin approach used by \cite{Sadhukhan2016} and the Time-Dependent Generator Coordinate Method (TDGCM) approach used in \cite{Younes2012}. I will be using Langevin dynamics, which are described in this section.
 
 After emerging from the classically-forbidden region of the PES, fission trajectories begin from the outer turning
