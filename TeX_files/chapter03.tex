@@ -7,9 +7,9 @@ By far, the most time-intensive part of a microscopic fission calculation is the
 
 On the positive side, the problem of calculating a PES is embarrassingly-parallel. So while an individual point in the PES may be difficult to compute, many points can be computed simultaneously. This does have its limitations; highly-deformed configurations may be very unstable because of reasons. One fix may sometimes be to use a nearby point which converged successfully as a seed function
 
-The procedure is performed iteratively: First, an ansatz is given for the density (either by the user or by some simple means, such as a quick Woods-Saxon calculation). Then the energy density matrix is constructed, after which it is diagonalized and a new density matrix is calculated. The procedure then repeats for a fixed number of iterations, or until a predetermined convergence criterion is satisfied In HFODD, for instance, the default convergence criterion is for the difference between the total energy summed over all single-particle states and the total energy calculated by \verb|???| to be less than some user-defined value.
+The procedure is performed iteratively: First, an ansatz is given for the density (either by the user or by some simple means, such as a quick Woods-Saxon calculation). Then the energy density matrix is constructed, after which it is diagonalized and a new density matrix is calculated. The procedure then repeats for a fixed number of iterations, or until a predetermined convergence criterion is satisfied In HFODD, for instance, the default convergence criterion is for the difference between the HFB energy and the total energy summed over all single-particle states to be less than some user-defined value.
 
-Certain parts of the procedure can be parallelized using shared-memory parallelism, such as QMULCM, which does what again? It readjusts the Lagrange parameters of the constraints based on the perturbative approximation fot he QRPA matrix.
+%Certain parts of the procedure can be parallelized using shared-memory parallelism, such as QMULCM, which does what again? It readjusts the Lagrange parameters of the constraints based on the perturbative approximation fot he QRPA matrix.
 
 \subsection{PES Tools}
 Apart from the issue of walltime, generating a PES creates a lot of output files, which quickly becomes unwieldy. To help manage all this data, a Python module called PES Tools was created for manipulating, extracting, interpolating, and plotting PES data \cite{PES_tools}. Aside from solver-dependent parser scripts, which collect data from the output of a DFT run and store it in the XML file format, PES Tools is not dependent on a particular DFT solver.
@@ -31,11 +31,11 @@ The accuracy and precision of the collective inertia $\mathcal{M}$ are therefore
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{TeX_files/Num-dq_spacing}
-	\caption[Collective inertia as a function of finite-difference spacing]{$\mathcal{M}_{22}$ calculated for ??? configuration of $^{240}$Pu as a function of finite-difference spacing.}
+	\caption[Collective inertia as a function of finite-difference spacing]{$\mathcal{M}_{22}$ calculated for an arbitrary configuration of $^{240}$Pu as a function of finite-difference spacing.}
 	\label{fig:num-dqspacing}
 \end{figure}
 
-Figure \ref{fig:num-dqspacing} shows the effect of different values of $\delta q = \delta q'$ on the collective inertia for a particular configuration of $^{240}$Pu.
+Figure \ref{fig:num-dqspacing} shows the effect of different values of $\delta q = \delta q'$ on the collective inertia for an arbitrary configuration of $^{240}$Pu.
 
 \begin{figure}
 	\centering
@@ -61,4 +61,4 @@ The inductive step which connects layers $n$ and $n+1$ involves several small, i
 \section{Langevin}
 Once the action and relative probability are known for a set of points along the outer turning line, Langevin trajectories are computed originating from each outer turning point. These are straightforwardly evaluated at discrete time steps over a discretized PES mesh.
 
-Because of the random force term in equation \ref{eq:langevin}, a large number of trajectories per outer turning point must be computed to reduce statistical uncertainty. Fortunately, each trajectory is completely independent of every other trajectory, lending the code readily to shared-memory parallelism. However, for the Fission Tools Langevin code I chose to use distributed-memory parallelism instead of shared-memory parallelism in order to simplify access to shared resources, such as variables and output files.
+Because of the random force term in equation \ref{eq:langevin}, a large number of trajectories per outer turning point must be computed to reduce statistical uncertainty. Fortunately, each trajectory is completely independent of every other trajectory, lending the code readily to shared-memory parallelism. However, for the Fission Tools Langevin code, distributed-memory parallelism was chosen over shared-memory parallelism in order to simplify access to shared resources, such as variables and output files.
