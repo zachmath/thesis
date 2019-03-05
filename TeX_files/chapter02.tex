@@ -32,7 +32,7 @@ Rather than find the density of a system of interacting particles (which can be 
 
 Together, the Hohenberg-Kohn theorems state that if one is able to find the true ground state density, regardless of where it comes from, then there exists a unique functional of the density which gives the ground state energy of the system. However, HK do not specify how this functional is to be obtained.
 
-For a variety of reasons/complications (refs 73-78 of \cite{Schunck2016}), pure Kohn-Sham is not used in nuclear physics; however; in the spirit, we oftentimes switch to a representation involving densities (which are directly and exactly attainable from a many-body wavefunction) and energy density functionals (which are not known exactly). (Wait, but then what is the point of converting to densities? Why not just leave them as wavefunctions? Or maybe we do, but this representation just makes the math look nicer for papers)
+For a variety of reasons/complications (refs 73-78 of \cite{Schunck2016}), pure Kohn-Sham is not used in nuclear physics; however; in the spirit, we oftentimes switch to a representation involving densities (which are directly and exactly attainable from a many-body wavefunction) and energy density functionals (EDFs) (which are not known exactly). (Wait, but then what is the point of converting to densities? Why not just leave them as wavefunctions? Or maybe we do, but this representation just makes the math look nicer for papers)
 
 The basic idea is to replace the single particle states $c_i^\dagger\ket{\psi_0}$ with the single-particle density, $\rho_{ij} = \expval{c_j^\dagger c_i}{\psi_0}$
 
@@ -233,6 +233,9 @@ and each of these points is then assigned an exit  probability $P(s_{\rm out})=[
 The half-life corresponds to the minimum action pathway, and the expression for the half-life is $T_{1/2} = \mathrm{ln}(2)/nP(s_\mathrm{min})$. The parameter $n$ is the number of assaults on the fission barrier per unit time and the standard value is $n=10^{20.38} s^{-1}$.
 
 \subsection{Langevin dynamics}
+
+the region of Langevin dynamics, which is the region connecting the hypersurface of outer turning points and to the hypersurface of scission points,
+
 Two techniques for predicting fission fragment yields are the Langevin approach used by \cite{Sadhukhan2016} and the Time-Dependent Generator Coordinate Method (TDGCM) approach used in \cite{Younes2012}. I will be using Langevin dynamics, which are described in this section.
 
 After emerging from the classically-forbidden region of the PES, fission trajectories begin from the outer turning

@@ -1,7 +1,7 @@
 \chapter{Two fission modes in $^{178}$Pt}\label{chap:178Pt}
 
 \section{Asymmetric fission in the region of $^{180}$Hg}
-As mentioned in the introduction, fission has been studied most carefully in the region of the actinides (Z=90 to Z=103), as many naturally-occurring isotopes in this region are fissile. Within this region, there is a characteristic tendency for fission fragment yields to be asymmetric (that is, one light fragment and one heavy fragment), with the heavy peak centered around $A\approx140$. This has been understood as a manifestation of nuclear shell structure in the prefragments: doubly-magic $^{132}$Sn drives the nucleus towards scission, and once the neck nucleons are divided up between the two fragments, the heavy fragment distribution peaks near A=140. As one moves to the lower-Z actinides, however, this tendency becomes less and less pronounced as yields tend to become more symmetric. Until recently, it was generally believed that below thorium, yields would continue to be symmetric. For sub-thorium isotopes, there was no doubly-magic nucleus candidate that could drive the system toward asymmetry as there is with actinides.
+As mentioned in the introduction, fission has been studied most carefully in the region of the actinides (Z=90 to Z=103), as many naturally-occurring isotopes in this region are fissile. Within this region, there is a characteristic tendency for fission fragment yields to be asymmetric (that is, one light fragment and one heavy fragment), with the heavy peak centered around $A\approx140$. This has been understood as a manifestation of nuclear shell structure in the prefragments: doubly-magic $^{132}$Sn drives the nucleus towards scission, and once the neck nucleons are divided up between the two fragments, the heavy fragment distribution peaks near A=140. As one moves to the lower-Z actinides, however, this tendency becomes less and less pronounced as yields tend to become more symmetric. Until recently, it was generally believed that below thorium, yields would continue to be symmetric. For sub-thorium isotopes, there was no doubly-magic nucleus candidate that could drive the system toward asymmetry as there is with actinides. To the contrary: neutron-deficient {\Hg}, for instance, might be expected to split evenly into two $^{90}$Zr fragments, each with N=50 closed shells.
 
 However, it was reported in a 2010 study \cite{Andreyev2010} that neutron-deficient $^{180}$Tl undergoes beta-delayed fission, leading to intermediate state {\Hg} which then decays into two fragments of unequal mass. This finding triggered a flurry of theoretical papers hoping to describe this new and unexpected phenomenon (for instance, see \cite{Warda2012,Moller2012,Mcdonnell2014,Ichikawa2019}). A follow-up study using $^{178}$Tl \cite{Liberati2013} further established this as a region of asymmetric fission, and not just a one-time occurrence. Since then, other nuclei in the region have been studied using a variety of reactions and techniques, and the finding is the same. 
 
@@ -34,7 +34,7 @@ To better interpret the results of this experiment, DFT calculations were perfor
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{TeX_files/178Pt_unedf1_pes.jpg}
-	\caption[UNEDF1-HFB potential energy surface for $^{178}$Pt]{UNEDF1-HFB potential energy surface for $^{178}$Pt. Note the two different trajectories ABCD and ABcd and their corresponding localizations.}
+	\caption[UNEDF1-HFB potential energy surface for $^{178}$Pt]{UNEDF1-HFB potential energy surface for $^{178}$Pt. Note the two different trajectories ABCD and ABcd and their corresponding NLFs.}
 	\label{fig:178ptunedf1pes}
 \end{figure}
 
@@ -51,26 +51,19 @@ Comparing the {\hfb} PES in Figure \ref{fig:178ptunedf1pes} to the D1S PES in Fi
 
 
 
-\section{The physical origin of fragment asymmetry in the region of $^{180}$Hg}
+\section{The physical origin of fragment asymmetry in the neutron-deficient sub-lead region}
 
-Why is there a region of symmetric fission below thorium?
+By now it is now well-established that many isotopes in the neutron-deficient sub-lead region will fission asymmetrically. Microscopic-macroscopic calculations correctly predict asymmetry in the yields, and static DFT calculations do even better, able to predict the peak of the distribution to within 1-2 nucleons. In that sense, it may be said that the phenomenon is understood. That said, a simple interpretation or explanation of that phenomenon is still a matter of some debate.
 
-(These are notes from the 178Pt paper draft. Not mine, of course, but they have some good points to address): ``Namely, the PES are predicetd to be flat and much less structureless, and defined predominantly by the large liquid drop/macroscopic contribution, rather than by relatively small microscopic effects. Due to this, FFMDs exhibit fairly low dependence..  [refer to 180Hg PLB, as one example].
+In one of the earliest theoretical responses to the discovery of asymmetric fission in {\Hg} \cite{Moller2012}, it is argued that the best explanation for the observation, however unsatisfying, is simply the sum total of all the physics that gets wrapped together to compute a PES. Fragment yields are given by subtle interplays in local regions of the potential energy surface, while magic number-based arguments are basically just hand-waving that has fortuitously worked out in the region of actinides. The fact of asymmetric fragments, in this explanation, is something that happens in spite of, and not because of, fragment shell effects (which, two of the authors later note \cite{Ichikawa2012}, are rather weak in this region).
 
-``(this was an answer by Witek, when somebody asked a question to my talk at Tsukuba - why the lead region is less sensitive to temperature.. the answer was - there is no 'barrier' in a sence, it's just flat/thick macroscopic surface, hardly influenced by shell effects.. so, even if one heats it up, tiny shell effects will be gone, but the main underlying macroscopic part will remain).''
+By contrast, it is argued in \cite{Warda2012a} that the fragment masses are determined by the shell structure of two well-formed prefragments connected by a thin neck. The nucleons from the neck are then redistributed to either of the prefragments somewhere along the way from saddle point to scission. This argument was further reinforced in a follow-up paper \cite{Mcdonnell2014}, in which it is shown that the asymmetric path is associated with stronger shell effects than the symmetric path.
 
-Peter Moller argues in the concluding discussion of (https://link.aps.org/doi/10.1103/PhysRevC.85.024306 \cite{Moller2012}) that we can't really use the fragment/prefragment shell structure arguments in this region, and thus that we have yet to identify all the essential physics which determines fragments. He says the yields are given (at least in this case) by subtle interplays in local regions of the potential energy surface. He also has another paper \cite{Ichikawa2019}.
+A more recent paper \cite{Scamps2018a} fundamentally agrees with this perspective, except they argue that one should consider the shell structure of octupole-deformed prefragments instead of those with spherical symmetry. By their reasoning, octupole correlations would favor fragment distributions with $Z_{light}\approx34$ and $N_{heavy}\approx56$.
 
-Witek, Michal Warda, and Staszczak argue in Section IV. \textit{Prescission Configurations} of \cite{Warda2012a} that 180Hg deforms as a molecular system consisting of 90Zr and 72Ge, with the remaining neck nucleons being distributed at scission to give the fragments they found in the experiment. Similarly, they make the same claim for 198Hg, except using 98Zr and 80Ge. The first one kind of makes sense to me since 90Zr is semi-magic, but 98Zr is not and neither is 80Ge. I wonder what might have happened had they tried to match up the densities of a different set of nearby nuclei (they used these because they had the same N/Z ratio as the fissioning parent nucleus). Then in the conclusions: ``We conclude that the mass distribution of fission fragments in both nuclei is governed by shell structure of prescission configurations associated with molecular structures.''
+Most recently, an argument is presented in \cite{Ichikawa2019} which likewise invokes deformed shell gaps; however, in this case the argument is made for octupole-deformed (or rather, mass asymmetric) parent nuclei, as opposed to octupole-deformed fragments.
 
-Scamps and Simenel claim at the end of \cite{Scamps2018a} that perhaps the asymmetry can be explained by shell closures in octupole-deformed fragments, rather than spherical magic numbers.
+Taken together, these suggest that fragment asymmetry is the result of a coupling between highly-deformed shell gaps in the parent nucleus and (possibly-deformed) shell gaps in the fragment nuclei. The separation process might also introduce some additional messiness, which may involve dissipation and particle emission.
 
-In the introduction to \cite{Mcdonnell2014} it is stated as though conclusively that ``the main factor determining the mass split in fission are shell effects at pre-scission configurations, i.e., between saddle and scission'' (see also some additional references therein). I think the thing that is most selling it to me so far, though, is Fig. 3 from this paper, wherein they show the shell correction energy for each of the nuclei considered. Even though the PES itself is mostly flat in each of these cases, the magnitude of the shell correction is different whether you are looking at symmetric or asymmetric trajectories, and the one with the larger magnitude shell correction happens to be the one that wins out in the final fragment distribution. I'd also be curious to see what the collective inertia looks like, but this seems to at least give something. It's not like this shell correction gets added on top of the PES - the PES is still relatively-flat - but it at least gives an explanation for why our traditional physical intuition is not totally failing us here.
-
-Interesting future work in this region might include calculations with full dynamics (including from nuclei with excitation energy), as suggested in the conclusions of \cite{Mcdonnell2014}
-
-
-
-
-
+It is worth noting that, so far, no microscopic dynamical description has been given for fission in this region. It would be interesting to see how the collective inertia behaves for these nuclides, and how it affects the dynamics.
 
