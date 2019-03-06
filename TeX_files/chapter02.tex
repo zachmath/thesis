@@ -2,41 +2,34 @@
 
 %(Nicolas gave a good annotated presentation in 2017 that describes some of the philosophy, as well as some of the outstanding challenges of spontaneous fission in an adiabatic framework: \verb|https://t2.lanl.gov/fiesta2017/school/Schunck_NotesSlides.pdf|)
 
-Today there are 2 microscopic approaches to spontaneous fission that are in common use: time-dependent and static (time-independent). Time-dependent approaches evolve the system in real-time. Since fission is an inherently time-dependent process, these methods offer great insight into the fission process and the characteristics of the fragments, especially kinetic and excitation energies \cite{Scamps2018, Scamps2015a, Simenel2014, Grineviciute2018, Umar2010}. However, they can only treat a single event at a time and are quite expensive, making them impractical for fission yield predictions. Despite efforts such as \cite{Scamps2015, Bulgac2018}, there is currently no way to obtain a full yield distribution in a time-dependent framework. Furthermore, time-dependent computations tend to break down after too many time steps, making them unsuitable for tunneling. This is a problem because spontaneous fission is fundamentally a quantum mechanical tunneling process.
+Today there are two microscopic frameworks in which to study fission: time-dependent and static (time-independent). Time-dependent approaches evolve the system in real-time. Since fission is an inherently time-dependent process, these methods offer great insight into the fission process and the characteristics of the fragments, especially kinetic and excitation energies \cite{Scamps2018, Scamps2015a, Simenel2014, Grineviciute2018, Umar2010}. However, they can only treat a single event at a time and are quite expensive, making them impractical for fission yield predictions. Despite efforts such as \cite{Scamps2015, Bulgac2018}, there is currently no way to obtain a full yield distribution in a time-dependent framework.
 
-On the other hand, static approaches assume that collective motions of the nucleus are slow compared to the motion of the intrinsic particles, and therefore that collective and intrinsic degrees of freedom can be decoupled. This assumption, called the adiabatic approximation, justifies the creation of a potential energy surface (PES) in some space of collective shape coordinates. The dynamics of fission are then described as trajectories across the PES. Calculating the kinetic and excitation energies in this framework is straightforward in principle, but in practice it is extremely sensitive to the scission configurations used. However, the static approach is much better suited to estimating fission yields and half-lives.
+More important to the present discussion, though, is the fact that time-dependent approaches are totally unsuited to spontaneous fission calculations. Spontaneous fission is fundamentally a quantum tunneling process, and at present there is no tunneling mechanism within time-dependent approaches. Furthermore, time-dependent computations tend to break down after too many time steps. Even if the tunneling problem was solved, this approach would still fail for any nucleus with a reasonably-long lifetime (compared to a typical time step size around $\sim10^{-24}$sec).
+
+On the other hand, static approaches assume that collective motions of the nucleus are slow compared to the motion of the intrinsic particles, and therefore that collective and intrinsic degrees of freedom can be decoupled. This assumption, called the adiabatic approximation, is supported by experimental evidence which suggests a characteristic timescale for fission (from saddle to scission) of $\sim10^{-20}-10^{-18}$sec, compared to typical nuclear timescales on the order of $\sim10^{-22}$sec (see \cite{Jacquet2009} for a review of fission timescale experiments). The validity of the adiabatic assumption was further discussed for fission and other nuclear processes in \cite{Nazarewicz1993}.
+
+The assumption of adiabaticity justifies the creation of a potential energy surface (PES) in some space of collective shape coordinates, and the dynamics of fission are then described as trajectories across the PES. Quantum tunneling pops out in a fairly natural way in this formalism, and half-life estimates follow. Calculating the kinetic and excitation energies in this framework is straightforward in principle, but in practice it is extremely sensitive to the scission configurations used \cite{Younes2011}. However, the static approach is well-suited to estimating fission yields.
 
 %Adiabaticity: For fusion reactions, N,Z equilibrium reached in $\sim10^{-21}$ seconds, then energy/thermal equilibrium in a similar time scale, then finally mass equilibrium in $\sim10^{-19}$ - Yuri has a slide with these time scales from his talk Monday. By comparison, what is an appropriate timescale for collective motion? I suppose that is nucleus-dependent
 
-As we are trying to be as self-consistent as possible, we compute the PES in the framework of nuclear density functional theory, which combines the Hartree-Fock-Bogoliubov (HFB) mean-field approximation to the energy with a many-body method inspired by Kohn-Sham density functional theory (DFT). An overview of the self-consistent framework is described below, followed by the dynamical calculations which we use to calculate fission properties.
+In an effort to be as self-consistent as possible, the PES is computed in the framework of nuclear DFT, which combines the Hartree-Fock-Bogoliubov (HFB) variational approximation to the energy with a many-body method inspired by Kohn-Sham DFT. An overview of this self-consistent mean-field framework is described below, followed by a description of the dynamical calculations which are used to calculate fission yields.
 
 \section{Nuclear density functional theory}
-Since nuclei are quantum mechanical systems, they can in principle be described using the Schrodinger equation. However, in practice one finds this type of description difficult or impossible, for two reasons:
+Since nuclei are quantum systems, they can in principle be described using the Schr\"{o}dinger equation. In practice, however, one finds this type of description difficult or impossible, for two reasons:
 
 \begin{itemize}
-\item In order to use the Schrodinger equation, one needs to know how to describe the interaction between particles, such as between protons and neutrons. However, protons and neutrons are made up of quarks and gluons, which interact via the strong nuclear force. Consequently, an analytic expression for the nucleon-nucleon interaction analogous to the $\frac{1}{r}$ form of the Coulomb interaction is not available. Finding different mathematical expressions which can describe the interaction between nucleons continues to be an active area of research \cite{lots of papers}
-\item Even when an interaction is known, nuclei are large systems made up of many protons and neutrons. Solving the Schrodinger equation directly quickly becomes computationally intractable as the number of nucleons increases.
+\item In order to use the Schr\"{o}dinger equation, one needs to describe the interaction between particles, in this case protons and neutrons. However, protons and neutrons are made up of quarks and gluons, which interact via the strong nuclear force. Consequently, an analytic expression for the nucleon-nucleon interaction (analogous to the $\frac{1}{r}$ form of the Coulomb interaction) is not available.
+\item Even if an interaction was known, nuclei are large systems made up of many protons and neutrons. Solving the Schr\"{o}dinger equation directly quickly becomes computationally intractable as the number of nucleons increases.
 \end{itemize}
 
+Nuclear density functional theory is one of several methods which has been developed to address these challenges. It is particularly useful for heavy nuclei, where more precise \textit{ab initio} methods become prohibitively expensive.
+
 \subsection{Density functional theory}\label{sect:DFT}
-Kohn-Sham DFT is based on the Hohenberg-Kohn theorems
+Nuclear DFT is rooted in the Hohenberg-Kohn theorems \cite{Hohenberg1964}, which follow.
 
-Let us define the nucleon density in the following way: suppose we have a system described in second quantization by a set of creation and annihilation operators $c_i, c_i^\dagger$ which act on the [Fock-space?] vacuum state $\ket{\psi_0}$. The first Kohn-Sham theorem says that the energy of the system is a uniquely-defined functional of the density. That means that if a system of interacting particles and a system of noninteracting particles give the same density, the energy of those systems will be the same. This gives us the freedom to try to describe our system using a mean-field method instead of having to describe the pairwise interactions between every particle in the system - a huge simplification to the problem!
+Suppose a system is described in second quantization by a set of creation and annihilation operators $c_i, c_i^\dagger$ which act on the vacuum state $\ket{\psi_0}$ to create single-particle states $c_i^\dagger\ket{\psi_0}$. Define the density: $\rho_{ij} = \expval{c_j^\dagger c_i}{\psi_0}$. The first Hohenberg-Kohn theorem states that the energy of the system is a uniquely-defined functional of the density. That means that if a system of interacting particles and a system of noninteracting particles give the same density, the energy of those systems will be the same. This gives one the freedom to describe a system using a mean-field method instead of having to describe the pairwise interactions between each and every particle - a huge simplification!
 
-The second Kohn-Sham theorem states that the functional which gives the energy of the system will give the ground state energy if, and only if, it acts on the true ground state density. Thus, given a particular functional, we can vary the input density to minimize the total energy and be assured that we are approaching the ground state energy of the system.
-
-Suppose you have the density $\rho(\mathbf{r})$ of an interacting system of particles. There exists a unique noninteracting system with the same density
-Then I believe HFB is put on top of that to do the variation part. I think I (approximately) get it now! - So just to make sure, what would DFT look like without HF/HFB? And HF/HFB without DFT?
-
-Rather than find the density of a system of interacting particles (which can be extremely complicated - as one particle moves, the force it exerts on neighboring particles causes them to move, which will in turn change the magnitude and direction of the net force acting on the original particle, and so on until an equilibrium configuration, if it exists, can be attained), Kohn-Sham allows us to find an equivalent density of fictional non-interacting particles. That is, instead of particles moving in a field generated by many interdependent neighboring particles, one may think of non-interacting particles moving about a mean-field, which is essentially an averaging over all other particles.
-
-Together, the Hohenberg-Kohn theorems state that if one is able to find the true ground state density, regardless of where it comes from, then there exists a unique functional of the density which gives the ground state energy of the system. However, HK do not specify how this functional is to be obtained.
-
-For a variety of reasons/complications (refs 73-78 of \cite{Schunck2016}), pure Kohn-Sham is not used in nuclear physics; however; in the spirit, we oftentimes switch to a representation involving densities (which are directly and exactly attainable from a many-body wavefunction) and energy density functionals (EDFs) (which are not known exactly). (Wait, but then what is the point of converting to densities? Why not just leave them as wavefunctions? Or maybe we do, but this representation just makes the math look nicer for papers)
-
-The basic idea is to replace the single particle states $c_i^\dagger\ket{\psi_0}$ with the single-particle density, $\rho_{ij} = \expval{c_j^\dagger c_i}{\psi_0}$
-
-Because pairing interactions are of great importance to nuclear dynamics, we also construct an additional density $\kappa_{ij} = \expval{c_jc_i}{\psi_0}$, which can be thought of as a coupling between the vacuum state and a state with two particles (in states $i$ and $j$). Together with the single-particle density $\rho$ we construct a generalized density
+The second Hohenberg-Kohn theorem states that the functional which gives the energy of the system will give the ground state energy if, and only if, it acts on the true ground state density. Thus, given a particular functional, one can vary the input density to minimize the total energy and be assured that we are approaching the ground state energy of the system. A variational prescription was subsequently proposed by Kohn and Sham in \cite{Kohn1965}, but because of the importance of pairing correlations in nuclear dynamics, we will instead use the HFB variational method. HFB mirrors the spirit of Kohn-Sham but with the inclusion of an additional pair density $\kappa_{ij} = \expval{c_jc_i}{\psi_0}$, which can be thought of as a coupling between the vacuum state and a state with two particles (in states $i$ and $j$). The pair density $\kappa$ is combined with the single-particle density $\rho$ to form a generalized density
 
 \begin{equation}
 \mathcal{R} = \left(\begin{array}{cc}
@@ -52,20 +45,20 @@ In coordinate space, the density matrix $\rho$ and the pair tensor $\kappa$ take
 \kappa(\vec{r},\vec{r}') &= \expval{c_{\vec{r}'} c_{\vec{r}}}{\psi_0}
 \end{align}
 
-\noindent Recall that in nuclei, there is a $\rho_n$ describing neutrons and a $\rho_p$ for protons.
+\noindent Note that in nuclei, there are two $\rho$s and two $\kappa$s: one set for describing neutrons and another for protons.
 
-The total energy is a sum of several contributions:
+The next step is to find the correct energy density functional. Unfortunately, neither the Hohenberg-Kohn theorems nor the Kohn-Sham method specified how this is to be done. Typically at this point the total energy is divided into a sum of several contributions, which can each be treated individually:
 
 \begin{equation}
 E(\rho, \kappa) = E_{kin} + E_{Coul} + E_{nuc} + E_{pair}
 %E(\rho, \kappa) = \int d^3\vec{r}\sum_{t=0,1}\mathcal{H}_t = \int d^3\vec{r}\left(\mathcal{H}_{kin} + \mathcal{H}_{nuc} + \mathcal{H}_{Coul, dir} + \mathcal{H}_{Coul, exch} + \mathcal{H}_{pair}\right)
 \end{equation}
 
-\noindent where $E_{kin}$ is the kinetic energy term, $E_{Coul}$ contains the Coulomb interaction between protons, $E_{nuc}$ is a phenomenological nucleon-nucleon interaction term, and $E_{pair}$ describes the tendency of nucleons to form pairs, which is smeared out in non-interacting mean-field models. Finding a good nucleon-nucleon interaction $E_{nuc}$ (and to a lesser extent, $E_{pair}$) to be used in calculations is an active topic of research in nuclear theory today (for one recent example, see \cite{NavarroPerez2018}); two types of interactions which are commonly-used today are the Skyrme and Gogny families of interactions \verb|\cite{???}|. We use primarily Skyrme-type interactions, which are described below.
+\noindent where $E_{kin}$ is the kinetic energy term, $E_{Coul}$ contains the Coulomb interaction between protons, $E_{nuc}$ is a nucleon-nucleon interaction term, and $E_{pair}$ describes the tendency of nucleons to form pairs, which would otherwise be smeared out in non-interacting mean-field models. Portions of the energy density functional corresponding to each of these terms are described below.
 
-\subsubsection{Kinetic term}
+\subsubsection{Kinetic energy term}
 
-Defining the kinetic density $\tau_\alpha = \left.\nabla\cdot\nabla'\rho_\alpha(\vec{r},\vec{r}')\right|_{\vec{r}=\vec{r}'}$ , the kinetic energy contribution is
+Defining the kinetic density $\tau_\alpha = \left.\nabla\cdot\nabla'\rho_\alpha(\vec{r},\vec{r}')\right|_{\vec{r}=\vec{r}'}$, $\alpha=p,n$, the kinetic energy contribution is
 
 \begin{equation}
 E_{kin} = \frac{\hbar^2}{2m} \left(1-\frac{1}{A}\right) \int d^3\vec{r} \left(\tau_n(\vec{r}) + \tau_p(\vec{r}) \right)
@@ -73,8 +66,8 @@ E_{kin} = \frac{\hbar^2}{2m} \left(1-\frac{1}{A}\right) \int d^3\vec{r} \left(\t
 
 \noindent The $\left(1-\frac{1}{A}\right)$ term is a simple, approximate center-of-mass correction.
 
-\subsubsection{Coulomb interaction}
-The Coulomb interaction between protons is divided into a direct term and an exchange term, which is related to the Pauli exclusion principle.
+\subsubsection{Coulomb interaction term}
+The Coulomb interaction between protons is divided into a direct term and an exchange term, which is related to the antisymmetry of fermion wavefunctions:
 
 \begin{align}
 E_{Coul} &= E_{Coul, dir} + E_{Coul, exch} \\
@@ -82,14 +75,14 @@ E_{Coul, dir}& = \frac{e^2}{2} \int d^3\vec{r}_1 d^3\vec{r}_2 \frac{\rho_p(\vec{
 E_{Coul, exch} &= \frac{e^2}{2} \int d^3\vec{r}_1 d^3\vec{r}_2 \frac{\rho_p(\vec{r}_2,\vec{r}_1)\rho_p(\vec{r}_1,\vec{r}_2)}{\abs{\vec{r}_1-\vec{r}_2}}
 \end{align}
 
-Often the exchange term is computed in the Slater approximation \verb|\cite{refs 27,28 of HFODD-I}|:
+Often the exchange term is computed in the Slater approximation \cite{Slater1951, TitinSchnaider1974}:
 
 \begin{equation}
 E_{Coul, exch} \approx -\frac{3e^2}{4} \left(\frac{3}{\pi}\right)^\frac{1}{3} \int d^3\vec{r} \rho_p^\frac{4}{3}(\vec{r})
 \end{equation}
 
-\subsubsection{Skyrme interaction}
-The total Skyrme interaction energy density is a sum of both time-even and time-odd terms:
+\subsubsection{Nuclear interaction term}
+Describing the interaction between nucleons $E_{nuc}$ (and to a lesser extent, $E_{pair}$) continues to be an active area of research in nuclear theory today \cite{Machleidt2011,Machleidt2016,Epelbaum2009,Detmold2015,Stroberg2019}. For nuclear DFT, the most commonly-used interactions belong to the Skyrme, Gogny, or covariant family of functionals (each of which is discussed in \cite{Bender2003}). We will primarily be using Skyrme functionals, which can be written as a sum of both time-even and time-odd terms:
 
 \begin{align}
 E_{Skyrme} &= \int d^3\vec{r} \sum_{t=0,1} \left( \mathcal{H}^{even}_t + \mathcal{H}^{odd}_t \right)\\
@@ -97,20 +90,21 @@ E_{Skyrme} &= \int d^3\vec{r} \sum_{t=0,1} \left( \mathcal{H}^{even}_t + \mathca
 \mathcal{H}^{odd}_t &= C^s_t \vec{s}_t^2 + C_t^{\Delta s}\vec{s}_t\Delta\vec{s}_t + C^T_t\vec{s}_t\cdot\vec{T}_t + C^j_t\mathsf{j}^2_t + C^{\nabla j}_t\vec{s}_t\cdot(\nabla\times\vec{j}_t)
 \end{align}
 
-\noindent where $\tau_t$ is the kinetic energy density; $\mathsf{J}_t$ is the spin current density, with vector part given by $\vec{J}_{\kappa,t} = \sum_{\mu\nu}\epsilon_{\mu\nu\kappa}\mathsf{J}_{\mu\nu,t}$; $\vec{s}_t$ is the spin density, $\vec{T}_t$ is the spin kinetic density; and $\vec{j}_t$ is the momentum density (to see how these are related to $\rho$, see, e.g., \cite{Bender2003}). The index $t=0(1)$ refers to isoscalar(isovector) energy densities, e.g., $\rho_0 = \rho_n + \rho_p$ ($\rho_1 = \rho_n - \rho_p$). Note that $\mathcal{H}^{even}_t$ depends only on time-even densities (and likewise for $\mathcal{H}^{odd}_t$).
+\noindent where $\tau_t$ is the kinetic energy density; $\mathsf{J}_t$ is the spin current density, with vector part given by $\vec{J}_{\kappa,t} = \sum_{\mu\nu}\epsilon_{\mu\nu\kappa}\mathsf{J}_{\mu\nu,t}$; $\vec{s}_t$ is the spin density, $\vec{T}_t$ is the spin kinetic density; and $\vec{j}_t$ is the momentum density (to see how these are each related to $\rho$, see, e.g., \cite{Bender2003}). The index $t=0(1)$ refers to isoscalar(isovector) energy densities, e.g., $\rho_0 = \rho_n + \rho_p$ ($\rho_1 = \rho_n - \rho_p$). Note that $\mathcal{H}^{even}_t$ depends only on time-even densities (and likewise for $\mathcal{H}^{odd}_t$).
 
-Since this interaction is phenomenological, based on a zero-range contact interaction between nucleons, the coefficients are adjustable. There are dozens of Skyrme parameterizations on the market, each one optimized to a particular observable or set of observables. The parameter sets SkM* \cite{Bartel1982} and UNEDF1 \cite{Kortelainen2012} (along with its sister, {\hfb} \cite{Schunck2015}) are optimized to datasets which include deformed nuclei, making them suitable for fission.
+Since this interaction is phenomenological, based on a zero-range contact interaction between nucleons, the coefficients are adjustable. There are dozens of Skyrme parameterizations on the market, each one optimized to a particular observable or set of observables. The parameter sets SkM* \cite{Bartel1982} and UNEDF1 \cite{Kortelainen2012} (along with its sister, {\hfb} \cite{Schunck2015}) are optimized to datasets which include fission data, making them suitable for fission calculations.
 
-\subsubsection{Pairing interaction}
-We use a density-dependent pairing interaction:
+\subsubsection{Pairing interaction term}
+The mean field approximation fails to take into account some correlations between nucleons, especially those which occupy similar states. Nucleons in nearby states (for example, with equivalent orbital quantum numbers but opposite spins) have a tendency to form pairs, similar to BCS superconductivity or $^3$He superfluidity. To account for this phenomenon, we use a density-dependent pairing interaction:
 
 \begin{equation}
 E_{pair} = V_0 \int d^3\vec{r} \left( 1-\left(\frac{\rho(\vec{r})}{\rho_0}\right)^\alpha \right)
 \end{equation}
 
-\noindent As with the nuclear interaction term, the pairing interaction contains several adjustable parameters.
+\noindent As with the nuclear interaction term, the pairing interaction contains several adjustable parameters $V_0, \alpha,$ and $\rho_0$. $\rho_0$ determines whether pairing takes place more within the volume ($\rho_0\rightarrow\infty$), around the surface ($\rho_0\approx0.16$ fm$^{-3}$), or somewhere in between. The exponent $\alpha$ affects the formation of surface effects, such as neutron skins and halos, but is usually set to $\alpha=1$. The pairing strength $V_0$ may be adjusted to odd-even mass differences.
 
-\subsection{Bogoliubov transformation}
+\subsection{Hartree-Fock-Bogoliubov method}
+\subsubsection{Bogoliubov transformation}
 
 In anticipation of the HFB formalism below, we define the so-called Bogoliubov transformation. The fundamental entity in the Bogoliubov transformed basis are `quasiparticle' states, defined by quasiparticle creation and annihilation operators acting on a quasiparticle vacuum state $\ket{\Phi_0}$ (in contrast to the single particle operators from before). The creation and annihilation operators are given by
 
@@ -144,7 +138,7 @@ In anticipation of the HFB formalism below, we define the so-called Bogoliubov t
 
 %In general, $E$ is a functional of the generalized density $\mathcal{R}$.
 
-\subsection{Hartree-Fock-Bogoliubov equations}
+\subsubsection{HFB equations}
 
 The ground state configuration of the system described by this particular energy density functional $E$ is described by the density which minimizes $E(\mathcal{R})$. We can find this solution through the variational principle. We minimize the energy with respect to the generalized density, subject to the constraint that $\mathcal{R}^2=\mathcal{R}$, or in other words, that the state remains a quasiparticle vacuum. Defining the HFB Hamiltonian $\mathcal{H}_{ba} \equiv 2 \partial E/\partial \mathcal{R}_{ab}$, this variation leads to the result $\left[\mathcal{H},\mathcal{R}\right]=0$, which is called the Hartree-Fock-Bogoliubov equation. It is not typically solved in this form, but it can be recast into something more useful. Recalling that two Hermitian operators whose commutator is zero can be simultaneously diagonalized, we choose to diagonalize $\mathcal{H}$ using the same Bogoliubov transformation $W$ which diagonalizes $\mathcal{R}$:
 

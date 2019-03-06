@@ -2,7 +2,7 @@
 
 
 
-Be sure to discuss the complications which arise in the finite temperature formalism, as promised in Chapter \ref{chap:Numerical}. In essence, you end up dividing by terms which are very small. You can avoid dividing by zero by introducing a cutoff. If the cutoff is too large, you lose some of the data in the tail. If the cutoff is too small, you divide by numbers that are smaller than the noise in the density. There are actual numbers in your dudeman4 Google Drive, in a file called Inertia Tensor Convergence.
+%Be sure to discuss the complications which arise in the finite temperature formalism, as promised in Chapter \ref{chap:Numerical}. In essence, you end up dividing by terms which are very small. You can avoid dividing by zero by introducing a cutoff. If the cutoff is too large, you lose some of the data in the tail. If the cutoff is too small, you divide by numbers that are smaller than the noise in the density. There are actual numbers in your dudeman4 Google Drive, in a file called Inertia Tensor Convergence.
 
 \section{Fission at finite temperature}
 
@@ -609,7 +609,7 @@ If we take this now and plug it into our energy expression \ref{eqn:kinetic_ener
 
 \section{Numerical implementation}
 
-Numerical implementations of the FT-ATDHFB inertia may encounter some challenges. First,  as discussed in Section \ref{sect:M_numerical}we know there is an ideal range of values $\delta q$ to use when computing derivatives of $\mathcal{R}$ using finite differences. Too large, and the derivative is artifically-smoothed out; too small, and densities of adjacent points can become indistinguishable (dependent on the HFB convergence parameter). Additionally, there may be problems when dealing with small, non-zero temperatures (or, more generally, when $f_b-f_a$ is small).
+Numerical implementations of the FT-ATDHFB inertia may encounter some challenges. First,  as discussed in Section \ref{sect:M_numerical} we know there is an ideal range of values $\delta q$ to use when computing derivatives of $\mathcal{R}$ using finite differences. Too large, and the derivative is artificially-smoothed out; too small, and densities of adjacent points can become indistinguishable (dependent on the HFB convergence parameter). Additionally, there may be problems when dealing with small, non-zero temperatures (or, more generally, when $f_b-f_a$ is small).
 %
 %Densities computed in HFODD are accurate to within about 10\% of the convergence parameter. So this means that we can't probably trust our densities to any precision greater than, roughly speaking, the convergence parameter.
 %
