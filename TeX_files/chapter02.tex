@@ -106,7 +106,7 @@ E_{pair} = V_0 \int d^3\vec{r} \left( 1-\left(\frac{\rho(\vec{r})}{\rho_0}\right
 \subsection{Hartree-Fock-Bogoliubov method}
 \subsubsection{Bogoliubov transformation}
 
-In anticipation of the HFB formalism below, we define the so-called Bogoliubov transformation. The fundamental entity in the Bogoliubov transformed basis are `quasiparticle' states, defined by quasiparticle creation and annihilation operators acting on a quasiparticle vacuum state $\ket{\Phi_0}$ (in contrast to the single particle operators from before). The creation and annihilation operators are given by
+In anticipation of the HFB formalism below, we define the so-called Bogoliubov transformation. The fundamental entities in the Bogoliubov transformed basis are `quasiparticle' states, defined by quasiparticle creation and annihilation operators acting on a quasiparticle vacuum state $\ket{\Phi_0}$ (in contrast to the single particle operators from before). The quasiparticle creation and annihilation operators are given by
 
 \begin{align}
 \beta_\mu &= \sum_i U^*_{i\mu}c_i + \sum_i V^*_{i\mu}c_i^\dagger \\
@@ -140,7 +140,9 @@ In anticipation of the HFB formalism below, we define the so-called Bogoliubov t
 
 \subsubsection{HFB equations}
 
-The ground state configuration of the system described by this particular energy density functional $E$ is described by the density which minimizes $E(\mathcal{R})$. We can find this solution through the variational principle. We minimize the energy with respect to the generalized density, subject to the constraint that $\mathcal{R}^2=\mathcal{R}$, or in other words, that the state remains a quasiparticle vacuum. Defining the HFB Hamiltonian $\mathcal{H}_{ba} \equiv 2 \partial E/\partial \mathcal{R}_{ab}$, this variation leads to the result $\left[\mathcal{H},\mathcal{R}\right]=0$, which is called the Hartree-Fock-Bogoliubov equation. It is not typically solved in this form, but it can be recast into something more useful. Recalling that two Hermitian operators whose commutator is zero can be simultaneously diagonalized, we choose to diagonalize $\mathcal{H}$ using the same Bogoliubov transformation $W$ which diagonalizes $\mathcal{R}$:
+The ground state configuration of the system with a particular energy density functional is described by the density $\mathcal{R}$ which minimizes $E(\mathcal{R})$. We can find this solution through the variational principle. We minimize the energy with respect to the generalized density, subject to the constraint that $\mathcal{R}^2=\mathcal{R}$ - or in other words, subject to the constraint that the state remains a quasiparticle vacuum. Defining the HFB Hamiltonian $\mathcal{H}_{ba} \equiv 2 \partial E/\partial \mathcal{R}_{ab}$, this variation leads to the result $\left[\mathcal{H},\mathcal{R}\right]=0$, which is called the Hartree-Fock-Bogoliubov equation.
+
+The HFB equation is not typically solved in its commutator form, but is rather recast in the following way: Recalling that two Hermitian operators whose commutator is zero can be simultaneously diagonalized, we choose to diagonalize $\mathcal{H}$ using the same Bogoliubov transformation $W$ which diagonalizes $\mathcal{R}$:
 
 \begin{equation}
 W^\dagger \mathcal{H} W \equiv \mathcal{E} \qquad\mathrm{or}\qquad \mathcal{H}W = W\mathcal{E}
@@ -155,97 +157,111 @@ E_\mu & 0 \\
 \end{array}\right)
 \end{equation}
 
-\noindent is a matrix of quasiparticle energies. In this form, the problem can then be solved iteratively: an initial density ansatz is chosen in order to construct the Hamiltonian density $\mathcal{H}$, after which the eigenvalue problem is solved, leading to new densities (since the densities are related to $\mathcal{W}$), which in turn leads to an updated $\mathcal{H}$. This procedure can be repeated indefinitely, until some predetermined convergence criterion is met.
+\noindent is a matrix of quasiparticle energies. In this form, the problem can then be solved iteratively:
+\begin{enumerate}
+	\setlength\itemsep{-2em}
+	\item Choose some ansatz to estimate the density\\
+	\item Construct the Hamiltonian density $\mathcal{H}$\\
+	\item Solve the eigenvalue problem \label{hfb_iteration}\\
+	\item Extract the corresponding densities corresponding to the eigenfunctions (since the densities are related to $\mathcal{W}$)\\
+	\item Update $\mathcal{H}$ \\
+	\item Repeat starting from \ref{hfb_iteration} until some predetermined convergence criterion is met
+\end{enumerate}
+
 % https://ocw.mit.edu/courses/physics/8-04-quantum-physics-i-spring-2013/study-materials/MIT8_04S13_OnCommEigenbas.pdf
 
-Very often we will want to minimize the energy with the system subject to a particular constraint. In that case we would replace the Hamiltonian $E$ with the Routhian $E'$ before variation. Typically $E'$ introduces the constraints via the method of Lagrange multipliers. Some common examples might be this simple form of particle number restoration (more sophisticated forms, such as Lipkin-Nogami \verb|\cite{???}|, also exist)
-
-\begin{equation}
-E' = E - \lambda_n \expval{\hat{N}_n} - \lambda_p \expval{\hat{N}_p}
-\end{equation}
-
-\noindent where $\lambda_\alpha$ is determined later by the condition that $\expval{\hat{N}_\alpha} = N_\alpha$, or shape, where we might constrain a particular multipole moment (or set of multipole moments) to the value $\bar{Q}_{\lambda\mu}$
+Often, one will want to minimize the energy of the system subject to a particular constraint. Constraints can be introduced via the method of Lagrange multipliers. Some common examples might be the shape of the nucleus, where a particular multipole moment might be constrained to the value $\bar{Q}_{\lambda\mu}$
 
 \begin{equation}
 E' = E - \sum_{\lambda\mu} C_{\lambda\mu} \left(\expval{\hat{Q}_{\lambda\mu}} - \bar{Q}_{\lambda\mu}\right)^2
 \end{equation}
 
+\noindent Since the Bogoliubov transformation breaks particle number symmetry, another possible constraint might be this simple form of particle number restoration (more sophisticated forms, such as Lipkin-Nogami \cite{Lipkin1960, Nogami1964, Pradhan1973, Flocard1997}, also exist):
+
+\begin{equation}
+E' = E - \lambda_n \expval{\hat{N}_n} - \lambda_p \expval{\hat{N}_p}
+\end{equation}
+
+\noindent where $\lambda_\alpha$ is determined later by the condition that $\expval{\hat{N}_\alpha} = N_\alpha$. In these casesS, the Hamiltonian $E$ would be replaced by with the Routhian $E'$ before variation. % Discuss PAV and VAP? Only if requested
 
 \subsection{Nucleon localization function}\label{sect:locali}
-One of the tools we will be using quite a bit in this thesis is the nucleon localization function (NLF), introduced in \cite{Zhang2016}. The NLF is defined using the single particle density in the following way (with q=isospin and $\sigma$=spin/signature quantum number):
+The major advantage DFT offers of microscopic-macroscopic models is a direct link to the underlying many-body system. This can be visualized using the nucleon localization function (NLF), introduced in \cite{Reinhard2011,Zhang2016}. The NLF is defined using the single particle density in the following way (with q=isospin and $\sigma$=spin/signature quantum number):
 
 \begin{equation}
 \mathcal{C}_{q\sigma} = \left[1+\left(\frac{\tau_{q\sigma}\rho_{q\sigma}-\frac{1}{4}|\nabla\rho_{q\sigma}|^2-\mathbf{j}^2_{q\sigma}}{\rho_{q\sigma}\tau_{q\sigma}^{TF}}\right)^2\right]
 \end{equation}
 
-\noindent where $\tau_{q\sigma}^{TF}=\frac{3}{5}(6\pi^2)^\frac{2}{3}\rho_{q\sigma}^\frac{5}{3}$. A localization value $\mathcal{C} \approx 1$ means that nucleons are well-localized; that is, the probability of finding two nucleons of equal spin and isospin at the same location in space is low. A value of $\mathcal{C}=\frac{1}{2}$ corresponds to a Fermi gas of nucleons, as found in nuclear matter.
+\noindent where $\tau_{q\sigma}^{TF}=\frac{3}{5}(6\pi^2)^\frac{2}{3}\rho_{q\sigma}^\frac{5}{3}$. A localization value $\mathcal{C} \approx 1$ means that nucleons are well-localized; that is, the probability of finding two nucleons of equal spin and isospin in the same spatial region is low. A value of $\mathcal{C}=\frac{1}{2}$ corresponds to a Fermi gas of nucleons, as found in nuclear matter.
 
-The NLF offers greater insight into the underlying shell structure of the system than, for instance, the single particle density. In particular, when applied to fission as in \cite{Sadhukhan2017}, it sometimes enables one to see the formation of well-defined prefragments whose shell structure is responsible for the peak of the fragment distribution. A method for identifying fission fragments and estimating fragment distributions using the NLF is described in Appendix \ref{append:Fragments}.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{TeX_files/methods_locali}
+	\caption[Nucleonic densities (in nucleons/fm$^3$) and spatial localizations for $^{240}Pu$]{Nucleonic densities (in nucleons/fm$^3$) and spatial localizations for $^{240}Pu$ at several configurations along the most-probable path to fission. Source: \cite{Zhang2016}}
+	\label{fig:methodslocali}
+\end{figure}
+
+As demonstrated in Figure \ref{fig:methodslocali}, the NLF offers greater insight into the underlying shell structure of the system than the nucleon density. In particular, when applied to fission as in \cite{Sadhukhan2017}, it enables one to see the formation of well-defined prefragments whose shell structure is responsible for the peak of the fragment distribution. A method for identifying fission fragments and estimating fragment distributions using the NLF is described in Appendix \ref{append:Fragments}.
+
 
 \section{Microscopic description of nuclear fission}
-With the nuclear physics somewhat under control, we now move onto the problem of using it to describe fission. Recently in \cite{Sadhukhan2016}, an approach based on this assumption was used to compute fragment yields from a potential energy surface (PES) that was computed self-consistently, using the WKB approximation to describe the tunneling and Langevin dynamics to describe post-scission dissipation. The half-life can be computed as in \cite{Sadhukhan2013}.
+With a nuclear many-body method now in hand, it can be used as a tool to describe fission. Recently in \cite{Sadhukhan2016}, a nuclear DFT-based approach based on this assumption was used to compute fragment yields from a PES that was computed self-consistently, using the WKB approximation to describe tunneling and Langevin dynamics to describe post-tunneling dissipation. The half-life can be computed as in \cite{Sadhukhan2013}. The entire procedure, illustrated schematically in Figure \ref{fig:methodsoverview}, is described below.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{TeX_files/methods_overview}
+	\caption[Schematic overview of the framework for fission calculations used in this dissertation]{Schematic overview of the framework for fission calculations used in this dissertation. Source: \cite{Sadhukhan2016}}
+	\label{fig:methodsoverview}
+\end{figure}
 
 \subsection{Potential energy surfaces}
-In the adiabatic approximation, the primary degrees of freedom are nuclear shapes, and therefore the basic ingredient to fission calculations is a potential energy surface (PES). In principle, one could describe any three-dimensional shape using an infinite basis such as the multipole expansion which is often encountered in electrodynamics; however, for practical computations one must used a truncated set of only a few collective coordinates. Thus, an important challenge for researchers is to select the most relevant collective coordinates, ideally while demonstrating that others can be safely neglected. Often one will use the first few lowest-order multipole moments; however, multipole moments may not always be well-suited to describing shapes which occur during fission, especially near scission. One alternative was proposed in \cite{Younes2012}.
+The primary degrees of freedom in the adiabatic approximation are nuclear collective shapes, and therefore the basic ingredient to fission calculations is a potential energy surface (PES). In principle, one could describe any three-dimensional shape using an infinite basis; however, for practical computations one must use a truncated set of only a few collective coordinates. Thus, an important challenge for researchers is to select the most relevant collective coordinates, ideally while demonstrating that others can be safely neglected. Often one will use the first few lowest-order multipole moments, but it should be noted that these are not always well-suited for describing shapes which occur during fission, especially near scission. One alternative was proposed in \cite{Younes2012}. Other collective coordinates which are sometimes used in the literature include $q_N$, which controls the size of the neck, and non-geometric variables such as $\lambda_2$ or the pairing gap $\Delta$, which control pairing and pairing fluctuations.
 
-Once the appropriate shape constraints are chosen, the PES is computed as a mesh: one DFT calculation per grid point. The value at each point is the HFB energy computed above, $E'(\vec{q})$.
+Once the appropriate shape constraints $\vec{q}\equiv(q_1, q_2, \dots)$ are chosen, the PES is computed as a mesh: one DFT calculation per grid point. The density at each point $\vec{q}$ is then used to compute the HFB energy $E'(\vec{q})$, along with anything else which depends on the density.
 
 \subsection{Collective inertia}
-Just as important to the fission dynamics as the energy of the system is the collective inertia, which describes the tendency of the system to resist configuration changes (such as shape changes). The form of the collective inertia we use is the non-perturbative adiabatic time-dependent HFB (ATDHFB) inertia with cranking \cite{Baran2011}, which takes the form
+Just as important to fission dynamics as the energy of the system is the collective inertia, which describes the tendency of the system to resist configuration changes (such as shape changes). The form of the collective inertia used here is the non-perturbative adiabatic time-dependent HFB (ATDHFB) inertia with cranking \cite{Baran2011}, which takes the form
 
 \begin{equation}\label{eq:mATDHFB-np}
 \mathsf{M}_{\mu\nu} =  \frac{\hbar^2}{2}\frac{1}{(E_a+E_b)}\left(\frac{\partial\mathcal{R}^{21}_{(0),ab}}{\partial q_\mu}\frac{\partial\mathcal{R}^{12}_{(0),ba}}{\partial q_\nu}+\frac{\partial\mathcal{R}^{12}_{(0),ab}}{\partial q_\mu}\frac{\partial\mathcal{R}^{21}_{(0),ba}}{\partial q_\mu}\right)
 \end{equation}
 
-\noindent The subscripts and superscripts are explained in the full temperature-dependent derivation of the collective inertia found in Appendix \ref{append:TD-ATDHFB}, but the important feature to note is that computing the inertia requires differentiating the density matrix with respect to a set of collective coordinates.
+\noindent The subscripts and superscripts are explained in the full temperature-dependent derivation of the collective inertia found in Appendix \ref{append:TD-ATDHFB}, but the important feature to note is that computing the inertia requires differentiating the density matrix with respect to a pair of collective coordinates.
 
-A perturbative expression for the ATDHFB inertia also exists, which allows one to estimate the inertia without taking derivatives of the density. It is computationally much faster and easier to implement, but it is less accurate and loses many of the important features of the inertia, as we shall see in Chapter \ref{chap:294Og}. Nevertheless, it is commonly-used in calculations and we shall use it later on.
+A perturbative expression for the ATDHFB inertia also exists, which allows one to estimate the inertia without taking derivatives of the density. It is computationally much faster and easier to implement, but it is less accurate and loses many of the important features of the inertia, as we shall see in Chapter \ref{chap:294Og}. Nevertheless, it is commonly-used in calculations and later on we shall show how this choice affects fission yields compared to the non-perturbative inertia.
 
 Another common expression for the collective inertia comes from the Generator Coordinate Method (GCM). The GCM inertia also exists in two varieties: perturbative and non-perturbative \cite{Giuliani2018b}. Like the ATDHFB inertia, the perturbative GCM inertia is smoothed-out compared to the non-perturbative inertia. Both the perturbative and non-perturbative GCM inertias are found to be smaller in magnitude than their ATDHFB counterparts.
 
 \subsection{WKB approximation}\label{sect:wkb}
-Spontaneous nuclear fission is a type of quantum tunneling; consequently, it should be described using quantum mechanics. If the wavefunction corresponding to the fissioning nucleus is assumed to be slowly-varying inside the potential barrier (which is the case under the adiabatic assumption), then the WKB approximation allows us to estimate the tunneling probability through a classically-forbidden region in the PES.
+Spontaneous fission is a form of quantum tunneling. If the wavefunction of the fissioning nucleus is assumed to be slowly-varying inside the potential barrier (which condition is satisfied under the adiabatic assumption), then the WKB approximation allows us to estimate the probability of tunneling through a classically-forbidden region in the PES.
 
-Consider a set of collective coordinates $\mathbf{q}\equiv(q_1, \ldots, q_N)$. The most-probable tunneling path $\left. L(s) \right|_{s_{\rm in}}^{s_{\rm out}}$ in the collective space is found via minimization of the collective action
+The most-probable tunneling path $\left. L(s) \right|_{s_{\rm in}}^{s_{\rm out}}$ in the collective space is found via minimization of the collective action
 
 \begin{equation}\label{eq:action} 
-S(L) = \frac{1}{\hbar}\int_{s_{\rm in}}^{s_{\rm out}} \sqrt{2\mathcal{M}(s)\left(V(s)-E_0\right)}ds,
+S(L) = \frac{1}{\hbar}\int_{s_{\rm in}}^{s_{\rm out}} \sqrt{2\mathcal{M}(s)\left(E'(s)-E_0\right)}ds,
 \end{equation} 
 
-\noindent where $s$ is the curvilinear coordinate along the path $L$,
-$\mathcal{M}(s)$ is the collective inertia given by \cite{Sadhukhan2013}
+\noindent where $s$ is the curvilinear coordinate along the path $L$, $\mathcal{M}(s)$ is the collective inertia given by \cite{Sadhukhan2013}
 
 \begin{equation}
 \mathcal{M}(s) = \sum_{\mu\nu} \mathsf{M}_{\mu\nu} \frac{dq_\mu}{ds} \frac{dq_\nu}{ds}
 \end{equation}
 
-\noindent and $V(s)$ is the potential energy along $L(s)$. $E_0$ stands for the collective ground-state
-energy. The dynamic programming method \cite{Baran1981} is employed to determine
-the path $L(s)$. The calculation is repeated for different outer turning points,
-and each of these points is then assigned an exit  probability $P(s_{\rm out})=[1+\exp{(2s)}]^{-1}$ \cite{Baran1978}. 
+\noindent and $V(s)$ is the potential energy along $L(s)$. $E_0$ stands for the collective ground-state energy. The calculation is repeated for different outer turning points, and each of these points is then assigned an exit probability $P(s_{\rm out})=[1+\exp{2S(L)}]^{-1}$ \cite{Baran1978}. 
 
-The half-life corresponds to the minimum action pathway, and the expression for the half-life is $T_{1/2} = \mathrm{ln}(2)/nP(s_\mathrm{min})$. The parameter $n$ is the number of assaults on the fission barrier per unit time and the standard value is $n=10^{20.38} s^{-1}$.
+The half-life corresponds to the minimum action pathway, and the expression for the half-life is $T_{1/2} = \mathrm{ln}(2)/nP(s_\mathrm{min})$. The parameter $n$ is the number of assaults on the fission barrier per unit time and the standard value is $n=10^{20.38} s^{-1}$. However, because of the exponential dependence of the half-life on the action, half-life calculations are not yet reliable.
 
 \subsection{Langevin dynamics}
 
-the region of Langevin dynamics, which is the region connecting the hypersurface of outer turning points and to the hypersurface of scission points,
+Although the link between collective and intrinsic degrees of freedom was assumed away in the adiabatic approximation, it is worth reintroducing some connection between the two, especially in the region between the outer turning points and scission where the adiabatic assumption is weakest. Through the semiclassical Langevin approach \cite{Abe1996,Frobrich1998,Sadhukhan2016}, we introduce a dissipation tensor $\eta$ that mimics energy exchange between intrinsic and collective modes. The dissipation tensor is related to a random force strength $g$ via the fluctuation-dissipation theorem, given by the expression $\sum_k g_{ik}g_{jk} = \eta_{ij}k_BT$. The fluctuation-dissipation theorem effectively couples collective and intrinsic degrees of freedom via the system temperature $T$, given by $k_BT = \sqrt{E^*/a}$ where $a=A/10$MeV$^{-1}$ parameterizes the level density and the excitation energy $E^*(\vec{q}) = E'(s_{out}) - E'(\vec{q}) - \frac{1}{2}\sum\left(\mathcal{M}^{-1}\right)_{ij}p_i p_j$.
 
-Two techniques for predicting fission fragment yields are the Langevin approach used by \cite{Sadhukhan2016} and the Time-Dependent Generator Coordinate Method (TDGCM) approach used in \cite{Younes2012}. I will be using Langevin dynamics, which are described in this section.
-
-After emerging from the classically-forbidden region of the PES, fission trajectories begin from the outer turning
-line and then evolve along the PES according to the Langevin equations:
+After emerging from the classically-forbidden region of the PES, fission trajectories continue across the PES from the outer turning line, evolving according to the Langevin equations:
 \begin{gather}\label{eq:langevin} 
 	\frac{dp_i}{dt} =  
 	-\frac{p_j p_k}{2} \frac{\partial}{\partial q_i}\left(\mathcal{M}^{-1}\right)_{jk} 
-	- \frac{\partial V}{\partial q_i}  - \eta_{ij}\left(\mathcal{M}^{-1}\right)_{jk} p_k + g_{ij}\Gamma_j(t) \,, \\ 
+	- \frac{\partial E'}{\partial q_i}  - \eta_{ij}\left(\mathcal{M}^{-1}\right)_{jk} p_k + g_{ij}\Gamma_j(t) \,, \\ 
 	\frac{dq_i}{dt} = 	\left(\mathcal{M}^{-1}\right)_{ij} p_j \,,  
 \end{gather} 
-where $p_i$ is the collective momentum conjugate to $q_i$. The dissipation
-tensor $\eta_{ij}$ is related to the random force strength $g_{ij}$ via the
-fluctuation-dissipation theorem, and $\Gamma_j(t)$ is a Gaussian-distributed,
-time-dependent stochastic variable.
+\noindent where $p_i$ is the collective momentum conjugate to $q_i$, and $\Gamma_j(t)$ is a Gaussian-distributed, time-dependent stochastic variable. From here one can see that the dissipation term\\\noindent $- \eta_{ij}\left(\mathcal{M}^{-1}\right)_{jk} p_k$ represents a transfer of energy away from the collective motion of the system, while the random fluctuation term $g_{ij}\Gamma_j(t)$ does the opposite.
 
-The fluctuation-dissipation theorem is given by the expression $\sum_k g_{ik}g_{jk} = \eta_{ij}k_BT$. It effectively couples the collective and intrinsic via the system temperature, given by $k_BT = \sqrt{E^*/a}$ where $a=A/10$MeV$^{-1}$ parameterizes the level density and the excitation energy $E^* = V(s_{out}) - V(\mathbf{x}) - \frac{1}{2}\sum\left(\mathcal{M}^{-1}\right)_{ij}p_i p_j$.
-
-Dissipation is treated in our work as a parameter, as a self-consistent description of dissipation is not yet known. However, work along this line has been started (maybe?) in refs 291-293 of \cite{Schmidt2018} (see Section 4.1.1 for the context). In the meantime, we use the values from \cite{Sadhukhan2016} (Is this too specific for a thesis? You're not worried about the little numerical details, right? Just the big-picture ideas?)
+Dissipation is treated in our work as a parameter, as a self-consistent description of dissipation is not yet known.  In the meantime, we use the values from \cite{Sadhukhan2016}, which were fitted to reproduce the $^{240}$Pu fragment yields.% However, work along this line has been started (maybe?) in refs 291-293 of \cite{Schmidt2018} (see Section 4.1.1 for the context).
 
