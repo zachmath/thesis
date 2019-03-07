@@ -17,7 +17,7 @@ Apart from the issue of walltime, generating a PES creates a lot of output files
 In particular, a submodule was created to interface between PES Tools and Fission Tools \cite{fission_tools}, a set of codes which have relevance to fission calculations. Many of these codes are described in the following sections.
 
 \section{Calculating the collective inertia}\label{sect:M_numerical}
-The partial derivatives from equation \ref{eq:mATDHFB-np} are computed using the Lagrange three-point formula:
+The partial derivatives from equation \eqref{eq:mATDHFB-np} are computed using the Lagrange three-point formula:
 
 \begin{equation}\label{eq:finite-diffs}
 \left(\frac{\partial \mathcal{R}}{\partial q}\right)_{q=q_0} \approx 
@@ -44,7 +44,7 @@ Figure \ref{fig:num-dqspacing} shows the effect of different values of $\delta q
 	\label{fig:num-rhoconv}
 \end{figure}
 
-Figure \ref{fig:num-dqspacing} shows the norm of the matrix which corresponds to the difference between the density matrix at the last iteration and the second-to-last iteration. Predictably, the norm decreases as the convergence parameter becomes tighter. This gives a sense of the uncertainty associated with the density, which in turn should be propagated through equations \ref{eq:finite-diffs} and \ref{eq:mATDHFB-np}.
+Figure \ref{fig:num-dqspacing} shows the norm of the matrix which corresponds to the difference between the density matrix at the last iteration and the second-to-last iteration. Predictably, the norm decreases as the convergence parameter becomes tighter. This gives a sense of the uncertainty associated with the density, which in turn should be propagated through equations \eqref{eq:finite-diffs} and \eqref{eq:mATDHFB-np}.
 
 There are additional complications which arise in the finite-temperature formalism. These are discussed in Appendix \ref{append:TD-ATDHFB}.
 
@@ -61,4 +61,4 @@ The inductive step which connects layers $n$ and $n+1$ involves several small, i
 \section{Langevin}
 Once the action and relative probability are known for a set of points along the outer turning line, Langevin trajectories are computed originating from each outer turning point. These are straightforwardly evaluated at discrete time steps over a discretized PES mesh.
 
-Because of the random force term in equation \ref{eq:langevin}, a large number of trajectories per outer turning point must be computed to reduce statistical uncertainty. Fortunately, each trajectory is completely independent of every other trajectory, lending the code readily to shared-memory parallelism. However, for the Fission Tools Langevin code, distributed-memory parallelism was chosen over shared-memory parallelism in order to simplify access to shared resources, such as variables and output files.
+Because of the random force term in equation \eqref{eq:langevin}, a large number of trajectories per outer turning point must be computed to reduce statistical uncertainty. Fortunately, each trajectory is completely independent of every other trajectory, lending the code readily to shared-memory parallelism. However, for the Fission Tools Langevin code, distributed-memory parallelism was chosen over shared-memory parallelism in order to simplify access to shared resources, such as variables and output files.
