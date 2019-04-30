@@ -2,20 +2,20 @@
 
 
 
-%Be sure to discuss the complications which arise in the finite temperature formalism, as promised in Chapter \ref{chap:Numerical}. In essence, you end up dividing by terms which are very small. You can avoid dividing by zero by introducing a cutoff. If the cutoff is too large, you lose some of the data in the tail. If the cutoff is too small, you divide by numbers that are smaller than the noise in the density. There are actual numbers in your dudeman4 Google Drive, in a file called Inertia Tensor Convergence.
+%Be sure to discuss the complications which arise in the finite temperature formalism, as promised in Chapter~\ref{chap:Numerical}. In essence, you end up dividing by terms which are very small. You can avoid dividing by zero by introducing a cutoff. If the cutoff is too large, you lose some of the data in the tail. If the cutoff is too small, you divide by numbers that are smaller than the noise in the density. There are actual numbers in your dudeman4 Google Drive, in a file called Inertia Tensor Convergence.
 
 \section{Fission at finite temperature}
 
-Everything which was shown in this dissertation assumed that the system was maintained at temperature $T=0$ and the nucleus behaved as a superfluid below the Fermi surface. However, in many environments (such as a neutron star merger or a nuclear blast) there may be quite a bit of excitation energy imparted to the system, which would raise the temperature above the Fermi surface. Additionally, and more relevant to this dissertation, a finite-temperature formalism is used to describe neutron-induced fission in, e.g. \cite{Mcdonnell2014}. In the $T\neq0$ case, pairs may be broken and various excited states are accessible, resulting in changes to the the potential energy surface and, as will be shown in this chapter, the collective inertia.
+Everything which was shown in this dissertation assumed that the system was maintained at temperature $T=0$ and the nucleus behaved as a superfluid below the Fermi surface. However, in many environments (such as a neutron star merger or a nuclear blast) there may be quite a bit of excitation energy imparted to the system, which would raise the temperature above the Fermi surface. Additionally, and more relevant to this dissertation, a finite-temperature formalism is used to describe neutron-induced fission in, e.g.~\cite{Mcdonnell2014}. In the $T\neq0$ case, pairs may be broken and various excited states are accessible, resulting in changes to the the potential energy surface and, as will be shown in this chapter, the collective inertia.
 
-%The idea of considering fission as a finite temperature process stems from trying to develop a picture of induced fission. In induced fission, a neutron which carries some amount of energy is captured by a heavy nucleus in its ground state. That extra energy's gotta go somewhere, but where? In a large nucleus, you have all sorts of places, including any number of single particle excitations, or combination of single particle excitations, or perhaps the entire nucleus moves together as one large collective excitation. Apparently some people went through and did the combinatorics of these possible excitations and decided that the number of them was huge (like, $\sim10^{12}$ huge) \cite{Hilaire2012}. So handling them explicitly just isn't going to work.
+%The idea of considering fission as a finite temperature process stems from trying to develop a picture of induced fission. In induced fission, a neutron which carries some amount of energy is captured by a heavy nucleus in its ground state. That extra energy's gotta go somewhere, but where? In a large nucleus, you have all sorts of places, including any number of single particle excitations, or combination of single particle excitations, or perhaps the entire nucleus moves together as one large collective excitation. Apparently some people went through and did the combinatorics of these possible excitations and decided that the number of them was huge (like, ${\sim}10^{12}$ huge)~\cite{Hilaire2012}. So handling them explicitly just isn't going to work.
 %
-%Additionally, DFT might not be the best tool for performing finite-temperature calculations. This is because DFT is typically implemented as a variational method, which means it's good for ground state calculations. But highly-deformed nuclei are inherently \textit{not} in their ground state. In fact, this is true even for ``zero-temperature" DFT as well. In practice the results we get are pretty good (most likely the system has time to equilibrate to its ``deformed ground state" at each deformation step, or in other words the path to scission proceeds $\sim$adiabatically), but it's something to definitely keep in mind that (I suspect) could strongly affect your half-life predictions and fragment energies in particular. Furthermore, it's not clear to me how you might correct that should the need arise.
+%Additionally, DFT might not be the best tool for performing finite-temperature calculations. This is because DFT is typically implemented as a variational method, which means it's good for ground state calculations. But highly-deformed nuclei are inherently \textit{not} in their ground state. In fact, this is true even for ``zero-temperature" DFT as well. In practice the results we get are pretty good (most likely the system has time to equilibrate to its ``deformed ground state" at each deformation step, or in other words the path to scission proceeds ${\sim}$adiabatically), but it's something to definitely keep in mind that (I suspect) could strongly affect your half-life predictions and fragment energies in particular. Furthermore, it's not clear to me how you might correct that should the need arise.
 %
 %A third thing that Nicolas claims is that the temperature should depend on the actual deformation. I'm not sure where exactly this comes from but it sounds plausible to me.
 
 
-A lot of these ideas I'm getting from \cite{Schunck2015b} as well as Nicolas' own temperature-dependent HFB notes.
+A lot of these ideas I'm getting from~\cite{Schunck2015b} as well as Nicolas' own temperature-dependent HFB notes.
 
 \section{Finite-temperature density}
 
@@ -47,7 +47,7 @@ Defining the HF density matrix $\rho_{ij}=Tr\left[\hat{D}_{HF}c_j^\dagger c_i\ri
 Tr\left[\hat{D}_{HF}\hat{A}\right] &= tr\left[\rho\hat{A}\right] = \sum_{ij}\rho_{ij}\hat{A}_{ij}
 \end{align}
 
-\noindent where $\hat{A}$ is an arbitrary operator in the single-particle basis. Similar things happen for the HFB case. At the end of the day in HFB, things work out to be pretty similar to the way they were before (see the full derivation in \cite{Goodman1981}), except the density in the quasiparticle basis is replaced by
+\noindent where $\hat{A}$ is an arbitrary operator in the single-particle basis. Similar things happen for the HFB case. At the end of the day in HFB, things work out to be pretty similar to the way they were before (see the full derivation in~\cite{Goodman1981}), except the density in the quasiparticle basis is replaced by
 
 \begin{equation}
 \mathcal{R} =
@@ -101,7 +101,7 @@ With the adiabatic assumption in place, we can write the density as an expansion
 &= \mathcal{R}_0 + \mathcal{R}_1 + \mathcal{R}_2 + \dots
 \end{align}
 
-\noindent where $\chi$ is assumed to be ``small" (which is explained more rigorously in \cite{Baranger1978}) and
+\noindent where $\chi$ is assumed to be ``small" (which is explained more rigorously in~\cite{Baranger1978}) and
 
 \begin{align}\label{eqn:densities1}
 \mathcal{R}_1 &= i\left[\chi, \mathcal{R}_0\right] \\
@@ -534,7 +534,7 @@ $\mathcal{\bar{M}}$ is given by column in Table \eqref{eqn:full_ATDHFB}.
 
 Now we have an expression for the energy in terms of an inertia tensor $\mathcal{\bar{M}}$ and the expansion parameter $\chi$. We already know that $\chi$ is related to time-dependent changes in the density $\mathcal{\dot{R}}_0$; now let us further try to relate $\chi$ to changes in the collective shape multipole moments of the nucleus $\dot{q}$.% You can use equations \eqref{eqn:chi-rdot_uncranked} or \eqref{eqn:chi-rdot} to change variables to $\mathcal{\dot{R}}_0$ instead of $\chi$, but I'm going to skip that for now because what we really want is to use $\dot{q}$ and I'm running out of $\mathcal{M}$'s.
 
-\noindent\textit{Sanity Check:} As in the case of the ATDHFB equations from Section \ref{sect:chi-rdot}, in the $T=f=0$ case, the $^{11}$ and $^{22}$ terms vanish completely in the lines leading up to \eqref{eqn:H0R2_inertia} and \eqref{eqn:H1R1_inertia} and we are left with familiar [zero-temperature] ATDHFB expressions. In essence, the rank of the problem reduces from dealing with a 4x4 matrix to dealing with a 2x2 matrix.
+\noindent\textit{Sanity Check:} As in the case of the ATDHFB equations from Section~\ref{sect:chi-rdot}, in the $T=f=0$ case, the $^{11}$ and $^{22}$ terms vanish completely in the lines leading up to \eqref{eqn:H0R2_inertia} and \eqref{eqn:H1R1_inertia} and we are left with familiar [zero-temperature] ATDHFB expressions. In essence, the rank of the problem reduces from dealing with a 4x4 matrix to dealing with a 2x2 matrix.
 
 % Note: if you uncomment this, there might be a sign error on your $E_a+E_b$ terms (see the 5-5-17 correction on p.23 of your handwritten notes)
 %\begin{sidewaystable}
@@ -556,7 +556,7 @@ Now we have an expression for the energy in terms of an inertia tensor $\mathcal
 
 \subsubsection{Cranking approximation}
 
-We already introduced the cranking approximation briefly in Section \ref{sect:chi-rdot} to simplify the relation between $\chi$ and $\mathcal{\dot{R}}_0$ when we assumed that changes in the density will have approximately no effect on the mean field ($\mathcal{H}_1 \approx 0$). We can apply this to the energy expression, and then the inertia tensor is much simpler:
+We already introduced the cranking approximation briefly in Section~\ref{sect:chi-rdot} to simplify the relation between $\chi$ and $\mathcal{\dot{R}}_0$ when we assumed that changes in the density will have approximately no effect on the mean field ($\mathcal{H}_1 \approx 0$). We can apply this to the energy expression, and then the inertia tensor is much simpler:
 
 \begin{equation}\label{eqn:cranked_ATDHFB}
 \mathcal{\bar{M}} = \frac{1}{4}\left(\begin{array}{@{}c@{}c@{}c@{}c@{}}
@@ -584,7 +584,7 @@ Suppose there is a set of collective variables $(q_1,q_2,\dots,q_n)$ which descr
 \chi^{22}_{ab} &= \sum_{\mu=1}^{n}\frac{\hbar\dot{q_\mu}}{(E_a-E_b)(f_b-f_a)}\frac{\partial\mathcal{R}^{22}_{(0),ab}}{\partial q_\mu} \\
 \end{align}
 
-\noindent Of course, we should be careful here if the temperature is allowed to approach zero. In that case, then from equation \eqref{eqn:chi-rdot} we see that $\mathcal{\dot{R}}^{11}=\mathcal{\dot{R}}^{22}=0$. We should not have any $\chi^{11}$ or $\chi^{22}$ terms in the zero temperature case. The final form of the inertia tensor will also be affected. Likewise we should be careful not to divide by zero in the case of $E_a=E_b$ as mentioned earlier at the end of Section \ref{sect:chi-rdot}.% Everything should work out fine since $\chi^{11}$ and $\chi^{22}$ are [potentially] finite numbers which are then multiplied by zero in the expression for $\mathcal{\bar{M}}$, but just be careful.
+\noindent Of course, we should be careful here if the temperature is allowed to approach zero. In that case, then from equation \eqref{eqn:chi-rdot} we see that $\mathcal{\dot{R}}^{11}=\mathcal{\dot{R}}^{22}=0$. We should not have any $\chi^{11}$ or $\chi^{22}$ terms in the zero temperature case. The final form of the inertia tensor will also be affected. Likewise we should be careful not to divide by zero in the case of $E_a=E_b$ as mentioned earlier at the end of Section~\ref{sect:chi-rdot}.% Everything should work out fine since $\chi^{11}$ and $\chi^{22}$ are [potentially] finite numbers which are then multiplied by zero in the expression for $\mathcal{\bar{M}}$, but just be careful.
 
 If we take this now and plug it into our energy expression \eqref{eqn:kinetic_energy} using the cranked inertia tensor \eqref{eqn:cranked_ATDHFB}, the result is the following:
 
@@ -609,7 +609,7 @@ If we take this now and plug it into our energy expression \eqref{eqn:kinetic_en
 
 \section{Numerical implementation}
 
-Numerical implementations of the FT-ATDHFB inertia may encounter some challenges. First,  as discussed in Section \ref{sect:M_numerical} we know there is an ideal range of values $\delta q$ to use when computing derivatives of $\mathcal{R}$ using finite differences. Too large, and the derivative is artificially-smoothed out; too small, and densities of adjacent points can become indistinguishable (dependent on the HFB convergence parameter). Additionally, there may be problems when dealing with small, non-zero temperatures (or, more generally, when $f_b-f_a$ is small).
+Numerical implementations of the FT-ATDHFB inertia may encounter some challenges. First,  as discussed in Section~\ref{sect:M_numerical} we know there is an ideal range of values $\delta q$ to use when computing derivatives of $\mathcal{R}$ using finite differences. Too large, and the derivative is artificially-smoothed out; too small, and densities of adjacent points can become indistinguishable (dependent on the HFB convergence parameter). Additionally, there may be problems when dealing with small, non-zero temperatures (or, more generally, when $f_b-f_a$ is small).
 %
 %Densities computed in HFODD are accurate to within about 10\% of the convergence parameter. So this means that we can't probably trust our densities to any precision greater than, roughly speaking, the convergence parameter.
 %

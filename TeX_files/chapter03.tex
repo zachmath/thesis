@@ -3,7 +3,7 @@
 Since this modern era of fission theory takes advantage of high-performance computers, it is worth taking some time to discuss some of the issues which came up during the course of this research, and how modern computing tools were used to solve the problem.
 
 \section{Calculating the PES}
-By far, the most time-intensive part of a microscopic fission calculation is the calculation of the PES. For this we use a pair of DFT solvers, HFODD \cite{Schunck2017} and HFBTHO \cite{Perez2017}. These programs solve the HFB equations in a basis of deformed harmonic oscillators. The solver HFBTHO is limited to shapes with axial symmetry, while HFODD allows for the breaking of any symmetry needed. Broken symmetries mean that each matrix element must be computed independently, while good symmetries mean However, since the major bottleneck of each of these programs involves constructing matrices representing Skyrme densities and currents and then diagonalizing the matrix representing the HFB Hamiltonian, this flexibility drastically increases the time-to-solution.
+By far, the most time-intensive part of a microscopic fission calculation is the calculation of the PES. For this we use a pair of DFT solvers, HFODD~\cite{Schunck2017} and HFBTHO~\cite{Perez2017}. These programs solve the HFB equations in a basis of deformed harmonic oscillators. The solver HFBTHO is limited to shapes with axial symmetry, while HFODD allows for the breaking of any symmetry needed. Broken symmetries mean that each matrix element must be computed independently, while good symmetries reduce the number of calculations which must be performed. However, since the major bottleneck of each of these programs involves constructing matrices representing Skyrme densities and currents and then diagonalizing the matrix representing the HFB Hamiltonian, this flexibility drastically increases the time-to-solution.
 
 On the positive side, the problem of calculating a PES is embarrassingly-parallel. So while an individual point in the PES may be difficult to compute, many points can be computed simultaneously. This does have its limitations; highly-deformed configurations may be very unstable because of reasons. One fix may sometimes be to use a nearby point which converged successfully as a seed function
 
@@ -12,9 +12,9 @@ The procedure is performed iteratively: First, an ansatz is given for the densit
 %Certain parts of the procedure can be parallelized using shared-memory parallelism, such as QMULCM, which does what again? It readjusts the Lagrange parameters of the constraints based on the perturbative approximation fot he QRPA matrix.
 
 \subsection{PES Tools}
-Apart from the issue of walltime, generating a PES creates a lot of output files, which quickly becomes unwieldy. To help manage all this data, a Python module called PES Tools was created for manipulating, extracting, interpolating, and plotting PES data \cite{PES_tools}. Aside from solver-dependent parser scripts, which collect data from the output of a DFT run and store it in the XML file format, PES Tools is not dependent on a particular DFT solver.
+Apart from the issue of walltime, generating a PES creates a lot of output files, which quickly becomes unwieldy. To help manage all this data, a Python module called PES Tools was created for manipulating, extracting, interpolating, and plotting PES data~\cite{PES_tools}. Aside from solver-dependent parser scripts, which collect data from the output of a DFT run and store it in the XML file format, PES Tools is not dependent on a particular DFT solver.
 
-In particular, a submodule was created to interface between PES Tools and Fission Tools \cite{fission_tools}, a set of codes which have relevance to fission calculations. Many of these codes are described in the following sections.
+In particular, a submodule was created to interface between PES Tools and Fission Tools~\cite{fission_tools}, a set of codes which have relevance to fission calculations. Many of these codes are described in the following sections.
 
 \section{Calculating the collective inertia}\label{sect:M_numerical}
 The partial derivatives from equation \eqref{eq:mATDHFB-np} are computed using the Lagrange three-point formula:
@@ -35,7 +35,7 @@ The accuracy and precision of the collective inertia $\mathcal{M}$ are therefore
 	\label{fig:num-dqspacing}
 \end{figure}
 
-Figure \ref{fig:num-dqspacing} shows the effect of different values of $\delta q = \delta q'$ on the collective inertia for an arbitrary configuration of $^{240}$Pu.
+Figure~\ref{fig:num-dqspacing} shows the effect of different values of $\delta q = \delta q'$ on the collective inertia for an arbitrary configuration of $^{240}$Pu.
 
 \begin{figure}
 	\centering
@@ -44,18 +44,18 @@ Figure \ref{fig:num-dqspacing} shows the effect of different values of $\delta q
 	\label{fig:num-rhoconv}
 \end{figure}
 
-Figure \ref{fig:num-dqspacing} shows the norm of the matrix which corresponds to the difference between the density matrix at the last iteration and the second-to-last iteration. Predictably, the norm decreases as the convergence parameter becomes tighter. This gives a sense of the uncertainty associated with the density, which in turn should be propagated through equations \eqref{eq:finite-diffs} and \eqref{eq:mATDHFB-np}.
+Figure~\ref{fig:num-dqspacing} shows the norm of the matrix which corresponds to the difference between the density matrix at the last iteration and the second-to-last iteration. Predictably, the norm decreases as the convergence parameter becomes tighter. This gives a sense of the uncertainty associated with the density, which in turn should be propagated through equations \eqref{eq:finite-diffs} and \eqref{eq:mATDHFB-np}.
 
-There are additional complications which arise in the finite-temperature formalism. These are discussed in Appendix \ref{append:TD-ATDHFB}.
+There are additional complications which arise in the finite-temperature formalism. These are discussed in Appendix~\ref{append:TD-ATDHFB}.
 
 \section{Minimum action path}
-For the tunneling described in Section \ref{sect:wkb}, the dynamic programming method \cite{Baran1981} was used to minimize the action. The dynamic programming scheme proceeds inductively: Once the minimum action is known for all grid points up to a certain value of $Q_{20}$, say $q_{20}^n$, then the minimum action at each grid point in the layer with $Q_{20}=q_{20}^{n+1}$ is obtained by computing the action between each grid point in layer $n$ and each grid point in layer $n+1$, and then finding the path which minimizes the total action at each grid point in layer $n+1$:
+For the tunneling described in Section~\ref{sect:wkb}, the dynamic programming method~\cite{Baran1981} was used to minimize the action. The dynamic programming scheme proceeds inductively: Once the minimum action is known for all grid points up to a certain value of $Q_{20}$, say $q_{20}^n$, then the minimum action at each grid point in the layer with $Q_{20}=q_{20}^{n+1}$ is obtained by computing the action between each grid point in layer $n$ and each grid point in layer $n+1$, and then finding the path which minimizes the total action at each grid point in layer $n+1$:
 
 \begin{equation}
 \left.S_{min}(\vec{Q})\right|_{Q_{20}=q_{20}^{n+1}} = \mathrm{argmin}_{\vec{Q'}}\left.\left(S_{min}(\vec{Q'}) + \Delta S_{min}(\vec{Q},\vec{Q'})\right)\right|_{Q'_{20}=q_{20}^{n}, Q_{20}=q_{20}^{n+1}}.
 \end{equation}
 
-The inductive step which connects layers $n$ and $n+1$ involves several small, independent calculations which lend themselves well to shared-memory parallelism. This was implemented in the code using OpenMP, resulting in a walltime reduction from order $\mathcal{O}(n^D)$ to $\mathcal{O}(n^D/m)$, where $m$ is the number of processors (with the usual caveats that parallelization requires some additional overhead time, and that the actual speedup might be somewhat less when the number of processors $m$ reaches the same order as the number of points per layer $n^{D-1}$). In a 2D calculation, where the runtime is on the order of seconds, the difference is inconsequential. However, this speedup was essential for the analysis of a 4D PES, as described in Chapter \ref{chap:294Og}.
+The inductive step which connects layers $n$ and $n+1$ involves several small, independent calculations which lend themselves well to shared-memory parallelism. This was implemented in the code using OpenMP, resulting in a walltime reduction from order $\mathcal{O}(n^D)$ to $\mathcal{O}(n^D/m)$, where $m$ is the number of processors (with the usual caveats that parallelization requires some additional overhead time, and that the actual speedup might be somewhat less when the number of processors $m$ reaches the same order as the number of points per layer $n^{D-1}$). In a 2D calculation, where the runtime is on the order of seconds, the difference is inconsequential. However, this speedup was essential for the analysis of a 4D PES, as described in Chapter~\ref{chap:294Og}.
 
 
 \section{Langevin}
