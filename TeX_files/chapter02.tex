@@ -43,7 +43,7 @@ E(\rho, \kappa) = E_{kin} + E_{Coul} + E_{nuc} + E_{pair}
 \kappa(\vec{r},\vec{r}') &= \expval{c_{\vec{r}'} c_{\vec{r}}}{\psi_0}
 \end{align}
 
-\noindent Note that in nuclei, there are two $\rho$s and two $\kappa$s: one set for describing neutrons and another for protons. Each of the terms in \ref{eq:EDFterms} is described below.
+\noindent Note that in nuclei, there are two $\rho$s and two $\kappa$s: one set for describing neutrons and another for protons. Each of the terms in~\eqref{eq:EDFterms} is described below.
 
 \subsubsection{Kinetic energy term}
 
@@ -200,27 +200,27 @@ The major advantage nuclear DFT offers over microscopic-macroscopic models is a 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\linewidth]{TeX_files/methods_locali}
-	\caption[Proton and neutron densities (in nucleons/fm$^3$) and spatial localizations for $^{240}$Pu at several configurations along the most-probable path to fission.]{Proton and neutron densities (in nucleons/fm$^3$) and spatial localizations for $^{240}$Pu at several configurations along the most-probable path to fission. Source:~\cite{Zhang2016}}
+	\caption[Proton and neutron densities (in nucleons/fm$^3$) and spatial localizations for $^{240}$Pu at several configurations along the most-probable path to fission.]{Proton and neutron densities (in nucleons/fm$^3$) and spatial localizations for $^{240}$Pu at several configurations along the most-probable path to fission. Figure from~\cite{Zhang2016}.}
 	\label{fig:methodslocali}
 \end{figure}
 
 As demonstrated in Figure~\ref{fig:methodslocali}, the NLF offers greater insight into the underlying shell structure of a system than the nucleon density. In particular, when applied to fission as in~\cite{Sadhukhan2017}, it enables one to see the formation of well-defined prefragments whose shell structure is responsible for the peak of the fragment distribution.
 
 
-\section{Microscopic description of nuclear fission}
+\section{Microscopic description of nuclear fission}\label{sect:fissionmethod}
 With a nuclear many-body method now in hand, it can be used as a tool to describe fission. Recently in~\cite{Sadhukhan2016}, a nuclear DFT-based approach based on this assumption was used to compute fragment yields from a PES that was computed self-consistently, using the WKB approximation to describe tunneling and Langevin dynamics to describe post-tunneling dissipation. The half-life can be computed as in~\cite{Sadhukhan2013}. The entire procedure, illustrated schematically in Figure~\ref{fig:methodsoverview}, is described below.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\linewidth]{TeX_files/methods_overview}
-	\caption[Schematic overview of the Langevin framework for fission calculations used in this dissertation]{Schematic overview of the Langevin framework for fission calculations used in this dissertation. Source:~\cite{Sadhukhan2016}}
+	\caption[Schematic overview of the Langevin framework for fission calculations used in this dissertation]{Schematic overview of the Langevin framework for fission calculations used in this dissertation. Figure from~\cite{Sadhukhan2016}.}
 	\label{fig:methodsoverview}
 \end{figure}
 
 \subsection{Potential energy surfaces}
 The primary degrees of freedom in the adiabatic approximation are nuclear collective shapes, and the basic ingredient to fission calculations is a potential energy surface (PES). One could describe any three-dimensional shape using an infinite-dimensional PES; however, for practical computations one must use a truncated set of only a few collective coordinates. Thus, an important challenge for researchers is to select the most relevant collective coordinates, ideally while demonstrating that others can be safely neglected. Often one will use the first few lowest-order multipole moments, but there is some discussion within the community about whether these are the best for describing shapes which occur during fission, especially near scission (see, for instance,~\cite{younes2012}). Other collective coordinates which are sometimes used in the literature include $q_N$, which controls the size of the neck, and non-geometric variables which control pairing and pairing fluctuations such as the pairing gap $\Delta$ or $\left\langle \Delta \hat{N}^2 \right\rangle$, the mean value of particle number fluctuations.
 
-Once the appropriate shape constraints $\vec{q}\equiv(q_1, q_2, \dots)$ are chosen, the PES is computed as a mesh: one DFT calculation per grid point. The density at each point $\vec{q}$ is then used to compute the HFB energy $E'(\vec{q})$ \ref{eq:routhian}.
+Once the appropriate shape constraints $\vec{q}\equiv(q_1, q_2, \dots)$ are chosen, the PES is computed as a mesh: one DFT calculation per grid point. The density at each point $\vec{q}$ is then used to compute the HFB energy $E'(\vec{q})$~\eqref{eq:routhian}.
 
 \subsection{Collective inertia}
 Just as important as energy to the fission dynamics is the collective inertia, which describes the tendency of the system to resist configuration changes (such as shape changes). The form of the collective inertia used here is the non-perturbative adiabatic time-dependent HFB (ATDHFB) inertia with cranking~\cite{Baran2011}, which takes the form

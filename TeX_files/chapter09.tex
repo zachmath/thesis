@@ -114,7 +114,7 @@ With the adiabatic assumption in place, we can write the density as an expansion
 \mathcal{H} = \mathcal{H}_0 + \mathcal{H}_1 + \mathcal{H}_2 + \dots
 \end{equation}
 
-\noindent and together $\mathcal{R}$ and $\mathcal{H}$ are plugged into the TDHFB equation \eqref{eq:TDHFB}. Gathering terms in powers of $\chi$:
+\noindent and together $\mathcal{R}$ and $\mathcal{H}$ are plugged into the TDHFB equation~\eqref{eq:TDHFB}. Gathering terms in powers of $\chi$:
 
 \begin{align}
 i\hbar\mathcal{\dot{R}}_0 &= \left[\mathcal{H}_0, \mathcal{R}_1\right] + \left[\mathcal{H}_1, \mathcal{R}_0\right] \label{eq:ATDHFB1}\\
@@ -122,7 +122,7 @@ i\hbar\mathcal{\dot{R}}_1 &= \left[\mathcal{H}_0, \mathcal{R}_0\right] + \left[\
 + \left[\mathcal{H}_1, \mathcal{R}_1\right] + \left[\mathcal{H}_2, \mathcal{R}_0\right]
 \end{align}
 
-\noindent These two equations are the ATDHFB equations. They can be solved self-consistently to find both $\chi$ and $\mathcal{R}_0$; however, this is rarely done in practice. A more common trick is to exploit the fact that solutions to the ATDHFB equations are (by design) \textit{close} to true HFB solutions. One can then take an HFB solution and compute its time derivative by the first ATDHFB equation \eqref{eq:ATDHFB1} to get ATDHFB-like behavior without going through the full trouble of ATDHFB.
+\noindent These two equations are the ATDHFB equations. They can be solved self-consistently to find both $\chi$ and $\mathcal{R}_0$; however, this is rarely done in practice. A more common trick is to exploit the fact that solutions to the ATDHFB equations are (by design) \textit{close} to true HFB solutions. One can then take an HFB solution and compute its time derivative by the first ATDHFB equation~\eqref{eq:ATDHFB1} to get ATDHFB-like behavior without going through the full trouble of ATDHFB.
 
 One nice feature of using true HFB solutions instead of ATDHFB solutions is that the matrix $\mathcal{H}_0$ is diagonal in the HFB basis.
 
@@ -172,7 +172,7 @@ f & 0 \\
 \end{array}\right)
 \end{equation}
 
-\noindent Ultimately, by combining these with equations \eqref{eqn:densities1}, \eqref{eqn:densities2}, and \eqref{eq:ATDHFB1}, we arrive at the result:
+\noindent Ultimately, by combining these with equations~\eqref{eqn:densities1},~\eqref{eqn:densities2}, and~\eqref{eq:ATDHFB1}, we arrive at the result:
 
 \begin{align}\label{eqn:chi-rdot_uncranked}
 \begin{aligned}
@@ -282,11 +282,11 @@ A_{\mu\nu}-\left\{A,D\right\}_{\mu\nu} &= (1-D_\mu-D_\nu)A_{\mu\nu}
 
 \noindent where everything that isn't a $\chi$ has been absorbed into a single coefficient.
 
-Pausing for a moment to reflect on what has just happened: Remember that the goal all along has been to treat this piece of the energy as sort of a ``kinetic energy term" describing motion in a space of collective shape deformation coordinates. Then just now we found that, sure enough, we can factor this particular chunk into something that looks \textit{kind of} like $\frac{1}{2}mv^2$. And we already know from \eqref{eqn:chi-rdot} that $\chi$ is related to $\mathcal{\dot{R}}_0$. Eventually we'll try to relate $\mathcal{\dot{R}}_0$ to the collective shape coordinates $\dot{q}$, but first let's see if we can't get the other piece of the kinetic energy into the same form.
+Pausing for a moment to reflect on what has just happened: Remember that the goal all along has been to treat this piece of the energy as sort of a ``kinetic energy term" describing motion in a space of collective shape deformation coordinates. Then just now we found that, sure enough, we can factor this particular chunk into something that looks \textit{kind of} like $\frac{1}{2}mv^2$. And we already know from~\eqref{eqn:chi-rdot} that $\chi$ is related to $\mathcal{\dot{R}}_0$. Eventually we'll try to relate $\mathcal{\dot{R}}_0$ to the collective shape coordinates $\dot{q}$, but first let's see if we can't get the other piece of the kinetic energy into the same form.
 
 \subsubsection{Term proportional to $\mathcal{R}_1$}
 
-Recall that $\mathcal{R}_1 = i\left[\chi, \mathcal{R}_0\right]$; then we can almost copy from equation \eqref{eqn:H0R2} of the previous section:
+Recall that $\mathcal{R}_1 = i\left[\chi, \mathcal{R}_0\right]$; then we can almost copy from equation~\eqref{eqn:H0R2} of the previous section:
 
 \begin{align}\label{eqn:H1R1}
 \frac{1}{4}\mathrm{Tr}\left(\mathcal{H}_{1}\mathcal{R}_{1}\right) = \frac{i}{4}
@@ -419,7 +419,7 @@ The whole thing written out is
 &+ \left(V_{ai}^T V^*_{jb} K_{ij\alpha\beta}^{21} + V_{ai}^T U^*_{jb} \frac{L_{ij\alpha\beta}^{21}}{2} - U_{ai}^T V^*_{jb} \frac{L_{ij\alpha\beta}^{12*}}{2} + U_{ai}^T U^*_{jb} K_{ij\alpha\beta}^{12*}  \right)\left(1-f_\alpha-f_\beta\right)\chi^{21}_{\alpha\beta}
 \end{align}
 
-Looking back to \eqref{eqn:H1R1}, we see that we can write it in the same form as \eqref{eqn:H0R2_inertia}:
+Looking back to~\eqref{eqn:H1R1}, we see that we can write it in the same form as~\eqref{eqn:H0R2_inertia}:
 
 \begin{tcolorbox}
 	\begin{align}\label{eqn:H1R1_inertia}
@@ -453,7 +453,7 @@ Looking back to \eqref{eqn:H1R1}, we see that we can write it in the same form a
 
 \subsubsection{The total kinetic energy}
 
-Expressions \eqref{eqn:H0R2_inertia} and \eqref{eqn:H1R1_inertia} can be combined into one single expression involving the vector-like object $\chi$ and the matrix-like object $\mathcal{\bar{M}}=2(\mathcal{\bar{M'}+\bar{M''}})$
+Expressions~\eqref{eqn:H0R2_inertia} and~\eqref{eqn:H1R1_inertia} can be combined into one single expression involving the vector-like object $\chi$ and the matrix-like object $\mathcal{\bar{M}}=2(\mathcal{\bar{M'}+\bar{M''}})$
 
 
 \begin{equation}\label{eqn:kinetic_energy}
@@ -476,7 +476,7 @@ E_{kin} = \frac{1}{2}\chi^\dagger\mathcal{\bar{M}}\chi
 \right)
 \end{equation}
 
-$\mathcal{\bar{M}}$ is given by column in Table \eqref{eqn:full_ATDHFB}.
+$\mathcal{\bar{M}}$ is given by column in Table~\eqref{eqn:full_ATDHFB}.
 
 \begin{sidewaystable}
 	\caption{The full FT-ATDHFB matrix, listed by column}
@@ -532,9 +532,9 @@ $\mathcal{\bar{M}}$ is given by column in Table \eqref{eqn:full_ATDHFB}.
 \end{sidewaystable}
 
 
-Now we have an expression for the energy in terms of an inertia tensor $\mathcal{\bar{M}}$ and the expansion parameter $\chi$. We already know that $\chi$ is related to time-dependent changes in the density $\mathcal{\dot{R}}_0$; now let us further try to relate $\chi$ to changes in the collective shape multipole moments of the nucleus $\dot{q}$.% You can use equations \eqref{eqn:chi-rdot_uncranked} or \eqref{eqn:chi-rdot} to change variables to $\mathcal{\dot{R}}_0$ instead of $\chi$, but I'm going to skip that for now because what we really want is to use $\dot{q}$ and I'm running out of $\mathcal{M}$'s.
+Now we have an expression for the energy in terms of an inertia tensor $\mathcal{\bar{M}}$ and the expansion parameter $\chi$. We already know that $\chi$ is related to time-dependent changes in the density $\mathcal{\dot{R}}_0$; now let us further try to relate $\chi$ to changes in the collective shape multipole moments of the nucleus $\dot{q}$.% You can use equations~\eqref{eqn:chi-rdot_uncranked} or~\eqref{eqn:chi-rdot} to change variables to $\mathcal{\dot{R}}_0$ instead of $\chi$, but I'm going to skip that for now because what we really want is to use $\dot{q}$ and I'm running out of $\mathcal{M}$'s.
 
-\noindent\textit{Sanity Check:} As in the case of the ATDHFB equations from Section~\ref{sect:chi-rdot}, in the $T=f=0$ case, the $^{11}$ and $^{22}$ terms vanish completely in the lines leading up to \eqref{eqn:H0R2_inertia} and \eqref{eqn:H1R1_inertia} and we are left with familiar [zero-temperature] ATDHFB expressions. In essence, the rank of the problem reduces from dealing with a 4x4 matrix to dealing with a 2x2 matrix.
+\noindent\textit{Sanity Check:} As in the case of the ATDHFB equations from Section~\ref{sect:chi-rdot}, in the $T=f=0$ case, the $^{11}$ and $^{22}$ terms vanish completely in the lines leading up to~\eqref{eqn:H0R2_inertia} and~\eqref{eqn:H1R1_inertia} and we are left with familiar [zero-temperature] ATDHFB expressions. In essence, the rank of the problem reduces from dealing with a 4x4 matrix to dealing with a 2x2 matrix.
 
 % Note: if you uncomment this, there might be a sign error on your $E_a+E_b$ terms (see the 5-5-17 correction on p.23 of your handwritten notes)
 %\begin{sidewaystable}
@@ -575,7 +575,7 @@ Suppose there is a set of collective variables $(q_1,q_2,\dots,q_n)$ which descr
 \mathcal{\dot{R}}_0 = \sum_{\mu=1}^{n}\dot{q_\mu}\frac{\partial\mathcal{R}_0}{\partial q_\mu}
 \end{equation}
 
-\noindent Relating this back to $\chi$ using equations \eqref{eqn:chi-rdot} (we'll just stick with the cranking approximation here) gives
+\noindent Relating this back to $\chi$ using equations~\eqref{eqn:chi-rdot} (we'll just stick with the cranking approximation here) gives
 
 \begin{align}
 \chi^{11}_{ab} &= \sum_{\mu=1}^{n}\frac{\hbar\dot{q_\mu}}{(E_a-E_b)(f_b-f_a)}\frac{\partial\mathcal{R}^{11}_{(0),ab}}{\partial q_\mu} \\
@@ -584,9 +584,9 @@ Suppose there is a set of collective variables $(q_1,q_2,\dots,q_n)$ which descr
 \chi^{22}_{ab} &= \sum_{\mu=1}^{n}\frac{\hbar\dot{q_\mu}}{(E_a-E_b)(f_b-f_a)}\frac{\partial\mathcal{R}^{22}_{(0),ab}}{\partial q_\mu} \\
 \end{align}
 
-\noindent Of course, we should be careful here if the temperature is allowed to approach zero. In that case, then from equation \eqref{eqn:chi-rdot} we see that $\mathcal{\dot{R}}^{11}=\mathcal{\dot{R}}^{22}=0$. We should not have any $\chi^{11}$ or $\chi^{22}$ terms in the zero temperature case. The final form of the inertia tensor will also be affected. Likewise we should be careful not to divide by zero in the case of $E_a=E_b$ as mentioned earlier at the end of Section~\ref{sect:chi-rdot}.% Everything should work out fine since $\chi^{11}$ and $\chi^{22}$ are [potentially] finite numbers which are then multiplied by zero in the expression for $\mathcal{\bar{M}}$, but just be careful.
+\noindent Of course, we should be careful here if the temperature is allowed to approach zero. In that case, then from equation~\eqref{eqn:chi-rdot} we see that $\mathcal{\dot{R}}^{11}=\mathcal{\dot{R}}^{22}=0$. We should not have any $\chi^{11}$ or $\chi^{22}$ terms in the zero temperature case. The final form of the inertia tensor will also be affected. Likewise we should be careful not to divide by zero in the case of $E_a=E_b$ as mentioned earlier at the end of Section~\ref{sect:chi-rdot}.% Everything should work out fine since $\chi^{11}$ and $\chi^{22}$ are [potentially] finite numbers which are then multiplied by zero in the expression for $\mathcal{\bar{M}}$, but just be careful.
 
-If we take this now and plug it into our energy expression \eqref{eqn:kinetic_energy} using the cranked inertia tensor \eqref{eqn:cranked_ATDHFB}, the result is the following:
+If we take this now and plug it into our energy expression~\eqref{eqn:kinetic_energy} using the cranked inertia tensor~\eqref{eqn:cranked_ATDHFB}, the result is the following:
 
 \begin{tcolorbox}
 	\begin{equation}
