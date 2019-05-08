@@ -2,7 +2,7 @@
 
 %(Nicolas gave a good annotated presentation in 2017 that describes some of the philosophy, as well as some of the outstanding challenges of spontaneous fission in an adiabatic framework: \verb|https://t2.lanl.gov/fiesta2017/school/Schunck_NotesSlides.pdf|)
 
-Today there are two microscopic frameworks in which to study fission: time-dependent and static (time-independent). Since fission is an inherently time-dependent process, time-dependent methods offer deep insight into the fission process and the characteristics of the fragments, especially kinetic and excitation energies~\cite{Scamps2018, Scamps2015a, Simenel2014, Grineviciute2018, Umar2010}. However, they can only treat a single event at a time and are quite expensive, making them impractical for fission yield predictions. Despite efforts such as~\cite{Scamps2015, Bulgac2018}, there is currently no way to obtain a full yield distribution in a time-dependent framework. Furthermore, and most important to a discussion of spontaneous fission, is the fact that time-dependent approaches have no mechanism with which to describe quantum tunneling, making them totally unsuited to spontaneous fission calculations. Finally, time-dependent computations tend to break down after too many time steps. Even if the tunneling problem was solved, this approach would still fail for any nucleus with a reasonably-long lifetime (compared to a typical time step size around ${\sim}10^{-24}$ sec).
+Today there are two microscopic frameworks in which to study fission: time-dependent and static (time-independent). Since fission is an inherently time-dependent process, time-dependent methods offer deep insight into the fission process and the characteristics of the fragments, especially kinetic and excitation energies~\cite{Scamps2018, Scamps2015a, Simenel2014, Grineviciute2018, Umar2010}. However, they can only treat a single event at a time and are quite expensive, making them impractical for fission yield predictions. Despite efforts such as~\cite{Scamps2015, Bulgac2018}, there is currently no way to obtain a full yield distribution in a time-dependent framework. Furthermore, and most important to a discussion of spontaneous fission, is the fact that fully time-dependent approaches have no mechanism with which to describe quantum tunneling, making them totally unsuited to spontaneous fission calculations. Finally, time-dependent computations tend to break down after too many time steps. Even if the tunneling problem was solved, this approach would still fail for any nucleus with a reasonably-long lifetime (compared to a typical time step size around ${\sim}10^{-24}$ sec).
 
 In the other, so-called static approach, it is assumed that collective motions of the nucleus are slow compared to the motion of the intrinsic particles, and therefore that collective and intrinsic degrees of freedom can be decoupled. This assumption, called the adiabatic approximation, is supported by experimental evidence which suggests a characteristic timescale for fission (from saddle to scission, the point at which the neck snaps) of ${\sim}10^{-20}-10^{-18}$sec, compared to typical nuclear timescales on the order of ${\sim}10^{-22}$sec (see~\cite{Jacquet2009} for a review of fission timescale experiments). The validity of the adiabatic assumption was further discussed for fission and other nuclear processes in~\cite{Nazarewicz1993}.
 
@@ -20,7 +20,7 @@ As with all quantum systems, nuclei can in principle be described using the Schr
 \item Even if an interaction was known, nuclei are large systems made up of many protons and neutrons. Solving the Schr\"{o}dinger equation directly quickly becomes computationally intractable as the number of particles increases.
 \end{itemize}
 
-Nuclear density functional theory is one of several methods which has been developed to address these challenges. It is particularly useful for heavy nuclei, where more precise \textit{ab initio} methods become prohibitively expensive.
+Nuclear density functional theory is one of several methods which has been developed to address these challenges. It is particularly useful for heavy nuclei, where other approaches such as configuration interaction and \textit{ab initio} methods become prohibitively expensive.
 
 \subsection{Density functional theory}\label{sect:DFT}
 Nuclear DFT is rooted in the Hohenberg-Kohn theorems~\cite{Hohenberg1964}, which follow.
@@ -32,15 +32,15 @@ The second Hohenberg-Kohn theorem states that the functional which gives the ene
 The next step is to find the correct energy density functional. Unfortunately, neither the Hohenberg-Kohn theorems nor the Kohn-Sham method specify how this is to be done. Typically the total energy is assumed to be a sum of several contributions, which can each be treated individually in terms of the particle density $\rho_{ij} = \expval{c_j^\dagger c_i}{\psi_0}$ (and in the HFB case, a pairing density $\kappa_{ij} = \expval{c_jc_i}{\psi_0}$, which can be thought of as a coupling between the vacuum state and a state with two particles in states $i$ and $j$; see Section~\ref{sect:HFB}):
 
 \begin{equation}\label{eq:EDFterms}
-E(\rho, \kappa) = E_{kin} + E_{Coul} + E_{nuc} + E_{pair}
+E(\rho, \kappa) = E_{kin} + E_{Coul} + E_{nuc} + E_{pair},
 %E(\rho, \kappa) = \int d^3\vec{r}\sum_{t=0,1}\mathcal{H}_t = \int d^3\vec{r}\left(\mathcal{H}_{kin} + \mathcal{H}_{nuc} + \mathcal{H}_{Coul, dir} + \mathcal{H}_{Coul, exch} + \mathcal{H}_{pair}\right)
 \end{equation}
 
 \noindent where $E_{kin}$ is the kinetic energy term, $E_{Coul}$ contains the Coulomb interaction between protons, $E_{nuc}$ is a nucleon-nucleon interaction term, and $E_{pair}$ describes the tendency of nucleons to form pairs, a behavior which would otherwise be smeared out in non-interacting mean-field models, and where $c_i, c_i^\dagger$ are creation and annihilation operators which act on the vacuum state $\ket{\psi_0}$ to create single-particle states $c_i^\dagger\ket{\psi_0}$. In coordinate space, the density matrix $\rho$ and the pair tensor $\kappa$ take the form
 
 \begin{align}
-\rho(\vec{r},\vec{r}') &= \expval{c_{\vec{r}'}^\dagger c_{\vec{r}}}{\psi_0} \\
-\kappa(\vec{r},\vec{r}') &= \expval{c_{\vec{r}'} c_{\vec{r}}}{\psi_0}
+\rho(\vec{r},\vec{r}') &= \expval{c_{\vec{r}'}^\dagger c_{\vec{r}}}{\psi_0}, \\
+\kappa(\vec{r},\vec{r}') &= \expval{c_{\vec{r}'} c_{\vec{r}}}{\psi_0}.
 \end{align}
 
 \noindent Note that in nuclei, there are two $\rho$s and two $\kappa$s: one set for describing neutrons and another for protons. Each of the terms in~\eqref{eq:EDFterms} is described below.
@@ -50,7 +50,7 @@ E(\rho, \kappa) = E_{kin} + E_{Coul} + E_{nuc} + E_{pair}
 Defining the kinetic density $\tau_\alpha = \left.\nabla\cdot\nabla'\rho_\alpha(\vec{r},\vec{r}')\right|_{\vec{r}=\vec{r}'}$, $\alpha=p,n$, the kinetic energy contribution is
 
 \begin{equation}
-E_{kin} = \frac{\hbar^2}{2m} \left(1-\frac{1}{A}\right) \int d^3\vec{r} \left(\tau_n(\vec{r}) + \tau_p(\vec{r}) \right)
+E_{kin} = \frac{\hbar^2}{2m} \left(1-\frac{1}{A}\right) \int d^3\vec{r} \left(\tau_n(\vec{r}) + \tau_p(\vec{r}) \right),
 \end{equation}
 
 \noindent where $A$ is the number of nucleons and $m$ is the mass of a single nucleon. The $\left(1-\frac{1}{A}\right)$ term is a simple, approximate center-of-mass correction.
@@ -59,24 +59,24 @@ E_{kin} = \frac{\hbar^2}{2m} \left(1-\frac{1}{A}\right) \int d^3\vec{r} \left(\t
 The repulsive Coulomb interaction between protons is divided into a direct term and an exchange term, which is related to the antisymmetry of fermion wavefunctions:
 
 \begin{align}
-E_{Coul} &= E_{Coul, dir} + E_{Coul, exch} \\
-E_{Coul, dir}& = \frac{e^2}{2} \int d^3\vec{r}_1 d^3\vec{r}_2 \frac{\rho_p(\vec{r}_1)\rho_p(\vec{r}_2)}{\abs{\vec{r}_1-\vec{r}_2}} \\
-E_{Coul, exch} &= \frac{e^2}{2} \int d^3\vec{r}_1 d^3\vec{r}_2 \frac{\rho_p(\vec{r}_2,\vec{r}_1)\rho_p(\vec{r}_1,\vec{r}_2)}{\abs{\vec{r}_1-\vec{r}_2}}
+E_{Coul} &= E_{Coul, dir} + E_{Coul, exch}, \\
+E_{Coul, dir}& = \frac{e^2}{2} \int d^3\vec{r}_1 d^3\vec{r}_2 \frac{\rho_p(\vec{r}_1)\rho_p(\vec{r}_2)}{\abs{\vec{r}_1-\vec{r}_2}}, \\
+E_{Coul, exch} &= \frac{e^2}{2} \int d^3\vec{r}_1 d^3\vec{r}_2 \frac{\rho_p(\vec{r}_2,\vec{r}_1)\rho_p(\vec{r}_1,\vec{r}_2)}{\abs{\vec{r}_1-\vec{r}_2}}.
 \end{align}
 
 \noindent The direct term uses local densities, which are related to the nonlocal densities found in the exchange term: $\rho(\vec{r}) = \rho(\vec{r},\vec{r})$. Often the exchange term is computed in the Slater approximation~\cite{Slater1951, TitinSchnaider1974}:
 
 \begin{equation}
-E_{Coul, exch} \approx -\frac{3e^2}{4} \left(\frac{3}{\pi}\right)^\frac{1}{3} \int d^3\vec{r} \rho_p^\frac{4}{3}(\vec{r})
+E_{Coul, exch} \approx -\frac{3e^2}{4} \left(\frac{3}{\pi}\right)^\frac{1}{3} \int d^3\vec{r} \rho_p^\frac{4}{3}(\vec{r}).
 \end{equation}
 
-\subsubsection{Nuclear interaction term}
+\subsubsection{Nuclear interaction term}\label{sect:skyrmeterm}
 Describing the interaction between nucleons $E_{nuc}$ (and to a lesser extent, $E_{pair}$) continues to be an active area of research in nuclear theory today~\cite{Machleidt2011,Machleidt2016,Epelbaum2009,Detmold2015,Stroberg2019}. For nuclear DFT, the most commonly-used interactions belong to the Skyrme, Gogny, or covariant family of functionals (each of which is discussed in~\cite{bender2003}). We will primarily be using Skyrme functionals, which can be written as a sum of time-even and time-odd terms:
 
 \begin{align}
-E_{Skyrme} &= \int d^3\vec{r} \sum_{t=0,1} \left( \mathcal{H}^{even}_t + \mathcal{H}^{odd}_t \right)\\
-\mathcal{H}^{even}_t &= C^\rho_t\rho_t^2 + C_t^{\Delta\rho}\rho_t\Delta\rho_t + C^\tau_t\rho_t\tau_t + C^J_t\mathsf{J}^2_t + C^{\nabla J}_t\rho_t\nabla\cdot\vec{J}_t \\
-\mathcal{H}^{odd}_t &= C^s_t \vec{s}_t^2 + C_t^{\Delta s}\vec{s}_t\Delta\vec{s}_t + C^T_t\vec{s}_t\cdot\vec{T}_t + C^j_t\mathsf{j}^2_t + C^{\nabla j}_t\vec{s}_t\cdot(\nabla\times\vec{j}_t)
+E_{Skyrme} &= \int d^3\vec{r} \sum_{t=0,1} \left( \mathcal{H}^{even}_t + \mathcal{H}^{odd}_t \right),\\
+\mathcal{H}^{even}_t &= C^\rho_t\rho_t^2 + C_t^{\Delta\rho}\rho_t\Delta\rho_t + C^\tau_t\rho_t\tau_t + C^J_t\mathsf{J}^2_t + C^{\nabla J}_t\rho_t\nabla\cdot\vec{J}_t, \\
+\mathcal{H}^{odd}_t &= C^s_t \vec{s}_t^2 + C_t^{\Delta s}\vec{s}_t\Delta\vec{s}_t + C^T_t\vec{s}_t\cdot\vec{T}_t + C^j_t\mathsf{j}^2_t + C^{\nabla j}_t\vec{s}_t\cdot(\nabla\times\vec{j}_t),
 \end{align}
 
 \noindent where $\tau_t$ is called the kinetic energy density; $\mathsf{J}_t$ and $\vec{J}_{\kappa,t}$ are respectively the scalar and vector parts of the spin current density; $\vec{s}_t$ is the spin density; $\vec{T}_t$ is the spin kinetic density; and $\vec{j}_t$ is the momentum density (to see how these each relate to $\rho$, see, e.g.,~\cite{bender2003}). The index $t=0(1)$ refers to isoscalar(isovector) energy densities, e.g., $\rho_0 = \rho_n + \rho_p$ ($\rho_1 = \rho_n - \rho_p$). Note that $\mathcal{H}^{even}_t$ depends only on time-even densities (and similarly for $\mathcal{H}^{odd}_t$).
@@ -87,7 +87,7 @@ Since this interaction is phenomenological, based on a zero-range contact intera
 The mean field approximation fails to take into account some correlations between nucleons, especially short-range correlations between nucleons which occupy nearby states. Such nucleons (for example, those with equivalent orbital quantum numbers but opposite spins) have a tendency to form pairs, similar in mechanism to BCS superconductivity or $^3$He superfluidity. To help account for these correlations, we use a density-dependent pairing interaction:
 
 \begin{equation}
-E_{pair} = V_0 \int d^3\vec{r} \left( 1-\left(\frac{\rho(\vec{r})}{\rho_0}\right)^\alpha \right)
+E_{pair} = V_0 \int d^3\vec{r} \left( 1-\left(\frac{\rho(\vec{r})}{\rho_0}\right)^\alpha \right).
 \end{equation}
 
 \noindent As with the nuclear interaction term, the pairing interaction contains several adjustable parameters $V_0, \alpha,$ and $\rho_0$. The denominator $\rho_0$ determines whether pairing is concentrated within the volume ($\rho_0\rightarrow\infty$), around the surface ($\rho_0\approx0.16$ fm$^{-3}$), or somewhere in between. The exponent $\alpha$ can partially account for the formation of surface effects, such as neutron skins and halos, but is usually set to $\alpha=1$. The pairing strength $V_0$ may be adjusted to experimental odd-even mass differences.
@@ -95,26 +95,26 @@ E_{pair} = V_0 \int d^3\vec{r} \left( 1-\left(\frac{\rho(\vec{r})}{\rho_0}\right
 \subsection{Hartree-Fock-Bogoliubov method}\label{sect:HFB}
 \subsubsection{Kohn-Sham and Hartree-Fock methods}
 
-Having now chosen an energy density functional, the variational principle is invoked to find the density which minimizes the total energy, approximating the ground state of the system. The Kohn-Sham variational method was proposed soon following the Hohenberg-Kohn theorems in \cite{kohn1965}. Given the exact energy density functional, Kohn-Sham actually solves the many-body problem exactly; however, its use in nuclear physics is limited, principally because nuclei are self-bound systems with no external constraining potential. Kohn-Sham has been extended to self-bound systems (for instance in \cite{engel2007}), but the resulting expressions are complicated and in practice it is common to fall back on a mean-field approximation, such as Hartree-Fock.
+Having now chosen an energy density functional, the variational principle is invoked to find the density which minimizes the total energy, approximating the ground state of the system. The Kohn-Sham variational method was proposed soon following the Hohenberg-Kohn theorems in \cite{Kohn1965}. Given the exact energy density functional, Kohn-Sham actually solves the many-body problem exactly; however, its use in nuclear physics is limited, principally because nuclei are self-bound systems with no external constraining potential. Kohn-Sham has been extended to self-bound systems (for instance in \cite{engel2007}), but the resulting expressions are complicated and in practice it is common to fall back on a mean-field approximation, such as Hartree-Fock.
 
-The Hartree-Fock method, which actually predates Kohn-Sham by about 30 years, treats the system as a set of independent particles, each interacting with a mean field created by the other particles \cite{ring1980}. The mean-field approximation is well-justified in nuclear physics, its primary experimental evidence being the existence of magic numbers. The downside to mean-field approximations such as Hartree-Fock is that some correlations, such as short-range pairing correlations, are lost. The Hartree-Fock-Bogoliubov method reintroduces some of these correlations in the following way.
+The Hartree-Fock method, which actually predates Kohn-Sham by about 30 years, treats the system as a set of independent particles, each interacting with a mean field created by the other particles \cite{Ring1980}. The mean-field approximation is well-justified in nuclear physics, its primary experimental evidence being the existence of magic numbers. The downside to mean-field approximations such as Hartree-Fock is that some correlations, such as short-range pairing correlations, are lost. The Hartree-Fock-Bogoliubov method reintroduces some of these correlations in the following way.
 
 \subsubsection{Bogoliubov transformation}
 
-In anticipation of the HFB formalism below, we define the so-called Bogoliubov transformation. The fundamental entities in the Bogoliubov transformed basis are `quasiparticle' states, defined by quasiparticle creation and annihilation operators acting on a quasiparticle vacuum state $\ket{\Phi_0}$ (in contrast to the independent single particle operators from before). The quasiparticle annihilation and creation operators are given by
+In anticipation of the HFB formalism below, we define the so-called Bogoliubov transformation. The fundamental entities in the Bogoliubov transformed basis are `quasiparticle' states, defined by quasiparticle creation and annihilation operators acting on a quasiparticle vacuum state $\ket{\Phi_0}$ (in contrast to the independent single particle operators from Section~\ref{sect:skyrmeterm}). The quasiparticle annihilation and creation operators are given by
 
 \begin{align}
-\beta_\mu &= \sum_i U^*_{i\mu}c_i + \sum_i V^*_{i\mu}c_i^\dagger \\
-\beta_\mu^\dagger &= \sum_i U_{i\mu}c_i^\dagger + \sum_i V_{i\mu}c_i
+\beta_\mu &= \sum_i U^*_{i\mu}c_i + \sum_i V^*_{i\mu}c_i^\dagger, \\
+\beta_\mu^\dagger &= \sum_i U_{i\mu}c_i^\dagger + \sum_i V_{i\mu}c_i,
 \end{align}
 
 \noindent or in block matrix notation,
 
 \begin{equation}
 \left(\begin{array}{c} \beta \\ \beta^\dagger\end{array}\right) = 
-\left(\begin{array}{cc} U^\dagger & V^\dagger \\ V^T & U^T \end{array}\right)
+\left(\begin{array}{cc} U^\dagger & V^\dagger \\ V^T & U^T \end{array}\right),
 \left(\begin{array}{c} c \\ c^\dagger\end{array}\right)
-\equiv \mathcal{W}^\dagger \left(\begin{array}{c} c \\ c^\dagger\end{array}\right)
+\equiv \mathcal{W}^\dagger \left(\begin{array}{c} c \\ c^\dagger\end{array}\right),
 \end{equation}
 
 \noindent where the transformation matrix $\mathcal{W}$ must be unitary to ensure that $\beta, \beta^\dagger$ obey the fermion commutation relations~\cite{Ring1980}. In this transformed basis, the density matrix takes the form 
@@ -128,7 +128,7 @@ In anticipation of the HFB formalism below, we define the so-called Bogoliubov t
 \left(\begin{array}{cc}
 0 & 0 \\
 0 & I_N
-\end{array}\right)
+\end{array}\right).
 \end{equation}
 
 %In general, $E$ is a functional of the generalized density $\mathcal{R}$.
@@ -141,7 +141,7 @@ The ground state configuration of the system with a particular energy density fu
 \mathcal{R} = \left(\begin{array}{cc}
 \rho & \kappa \\
 -\kappa^* & 1-\rho^*
-\end{array}\right)
+\end{array}\right),
 \end{equation}
 
 \noindent which minimizes $E(\mathcal{R})$. The solution can be found through the variational principle, in which the energy is minimized with respect to the generalized density, subject to the constraint that $\mathcal{R}^2=\mathcal{R}$ \textminus or in other words, subject to the constraint that the state remains a quasiparticle vacuum. Defining the HFB Hamiltonian density $\mathcal{H}_{ba} \equiv 2 \partial E/\partial \mathcal{R}_{ab}$, this variation leads to the expression $\left[\mathcal{H},\mathcal{R}\right]=0$, which is called the Hartree-Fock-Bogoliubov equation.
@@ -149,7 +149,7 @@ The ground state configuration of the system with a particular energy density fu
 The HFB equation is not typically solved in its commutator form, but rather it is recast in the following way: Recalling that two Hermitian operators whose commutator is zero can be simultaneously diagonalized, we choose to diagonalize $\mathcal{H}$ using the same Bogoliubov transformation $\mathcal{W}$ which diagonalizes $\mathcal{R}$:
 
 \begin{equation}
-\mathcal{W}^\dagger \mathcal{H} \mathcal{W} \equiv \mathcal{E} \qquad\mathrm{or}\qquad \mathcal{H}\mathcal{W} = \mathcal{W}\mathcal{E}
+\mathcal{W}^\dagger \mathcal{H} \mathcal{W} \equiv \mathcal{E} \qquad\mathrm{or}\qquad \mathcal{H}\mathcal{W} = \mathcal{W}\mathcal{E},
 \end{equation}
 
 \noindent where
@@ -177,13 +177,13 @@ E_\mu & 0 \\
 Often one will want to minimize the energy of the system subject to a particular constraint. Constraints can be introduced via the method of Lagrange multipliers. Some common examples might be the shape of the nucleus, where a particular multipole moment might be constrained to the value $\bar{Q}_{\lambda\mu}$
 
 \begin{equation}\label{eq:routhian}
-E' = E - \sum_{\lambda\mu} C_{\lambda\mu} \left(\expval{\hat{Q}_{\lambda\mu}} - \bar{Q}_{\lambda\mu}\right)^2
+E' = E - \sum_{\lambda\mu} C_{\lambda\mu} \left(\expval{\hat{Q}_{\lambda\mu}} - \bar{Q}_{\lambda\mu}\right)^2.
 \end{equation}
 
 \noindent Since the Bogoliubov transformation breaks particle number symmetry, an important constraint is this simple form of particle number restoration:
 
 \begin{equation}
-E' = E - \lambda_n \expval{\hat{N}_n} - \lambda_p \expval{\hat{N}_p}
+E' = E - \lambda_n \expval{\hat{N}_n} - \lambda_p \expval{\hat{N}_p},
 \end{equation}
 
 \noindent where $\lambda_\alpha$ is determined later by the condition that $\expval{\hat{N}_\alpha} = N_\alpha$ (more sophisticated particle number restoration schemes also exist, such as the Lipkin-Nogami method~\cite{Lipkin1960, Nogami1964, Pradhan1973, Flocard1997}). Whenever a constraint is included, the Hamiltonian $E$ is replaced by with the Routhian $E'$ before variation. % Discuss PAV and VAP? Only if requested
@@ -192,7 +192,7 @@ E' = E - \lambda_n \expval{\hat{N}_n} - \lambda_p \expval{\hat{N}_p}
 The major advantage nuclear DFT offers over microscopic-macroscopic models is a direct link to the underlying many-body system. This can be visualized using the nucleon localization function (NLF), introduced in~\cite{Reinhard2011,Zhang2016}. The NLF is defined using the single particle densities $\rho, \tau$, and \textbf{j} from before in the following way (with q=isospin and $\sigma$=spin/signature quantum number):
 
 \begin{equation}
-\mathcal{C}_{q\sigma} = \left[1+\left(\frac{\tau_{q\sigma}\rho_{q\sigma}-\frac{1}{4}|\nabla\rho_{q\sigma}|^2-\mathbf{j}^2_{q\sigma}}{\rho_{q\sigma}\tau_{q\sigma}^{TF}}\right)^2\right]
+\mathcal{C}_{q\sigma} = \left[1+\left(\frac{\tau_{q\sigma}\rho_{q\sigma}-\frac{1}{4}|\nabla\rho_{q\sigma}|^2-\mathbf{j}^2_{q\sigma}}{\rho_{q\sigma}\tau_{q\sigma}^{TF}}\right)^2\right],
 \end{equation}
 
 \noindent where $\tau_{q\sigma}^{TF}=\frac{3}{5}(6\pi^2)^\frac{2}{3}\rho_{q\sigma}^\frac{5}{3}$. A localization value $\mathcal{C} \approx 1$ means that nucleons are well-localized; that is, the probability of finding two nucleons of equal spin and isospin in the same spatial region is low. A value of $\mathcal{C}=\frac{1}{2}$ corresponds to a Fermi gas of nucleons, as found in nuclear matter.
@@ -226,7 +226,7 @@ Once the appropriate shape constraints $\vec{q}\equiv(q_1, q_2, \dots)$ are chos
 Just as important as energy to the fission dynamics is the collective inertia, which describes the tendency of the system to resist configuration changes (such as shape changes). The form of the collective inertia used here is the non-perturbative adiabatic time-dependent HFB (ATDHFB) inertia with cranking~\cite{Baran2011}, which takes the form
 
 \begin{equation}\label{eq:mATDHFB-np}
-\mathsf{M}_{\mu\nu} =  \frac{\hbar^2}{2}\frac{1}{(E_a+E_b)}\left(\frac{\partial\mathcal{R}^{21}_{(0),ab}}{\partial q_\mu}\frac{\partial\mathcal{R}^{12}_{(0),ba}}{\partial q_\nu}+\frac{\partial\mathcal{R}^{12}_{(0),ab}}{\partial q_\mu}\frac{\partial\mathcal{R}^{21}_{(0),ba}}{\partial q_\mu}\right)
+\mathsf{M}_{\mu\nu} =  \frac{\hbar^2}{2}\frac{1}{(E_a+E_b)}\left(\frac{\partial\mathcal{R}^{21}_{(0),ab}}{\partial q_\mu}\frac{\partial\mathcal{R}^{12}_{(0),ba}}{\partial q_\nu}+\frac{\partial\mathcal{R}^{12}_{(0),ab}}{\partial q_\mu}\frac{\partial\mathcal{R}^{21}_{(0),ba}}{\partial q_\mu}\right),
 \end{equation}
 
 \noindent The subscripts and superscripts are explained in the full temperature-dependent derivation of the collective inertia found in Appendix~\ref{append:TD-ATDHFB}, but an important feature to note is that computing the inertia requires differentiating the density matrix with respect to a pair of collective coordinates. In expressions where the collective coordinates are shapes, the collective inertia acts as a masslike term to resist changes to the collective motion.
@@ -252,11 +252,11 @@ S(L) = \frac{1}{\hbar}\int_{s_{\rm in}}^{s_{\rm out}} \sqrt{2\mathcal{M}(s)\left
 
 \noindent and $E'(s)$ is the potential energy along $L(s)$. $E_0$ stands for the collective ground-state energy. The calculation is repeated for different outer turning points, and each of these points is then assigned an exit probability $P(s_{\rm out})=[1+\exp{2S(L)}]^{-1}$~\cite{Baran1978}. 
 
-The half-life corresponds to the pathway of minimum action, and the expression for the half-life is $T_{1/2} = \mathrm{ln}(2)/nP(s_\mathrm{min})$, where the parameter $n$ is the number of assaults on the fission barrier per unit time and we take it to be $n=10^{20.38} s^{-1}$. However, because of the exponential dependence of the half-life on the action, half-life calculations suffer from large uncertainties due to the uncertainties in the ingredients.
+The half-life corresponds to the pathway of minimum action, and the expression for the half-life is $T_{1/2} = \mathrm{ln}(2)/nP(s_\mathrm{min})$, where the parameter $n$ is the number of assaults on the fission barrier per unit time and which we set to the standard value $n=10^{20.38} s^{-1}$~\cite{Baran1978}. However, because of the exponential dependence of the half-life on the action, half-life calculations suffer from large uncertainties due to the uncertainties in the ingredients.
 
 \subsection{Langevin dynamics}
 
-Although the link between collective and intrinsic degrees of freedom was assumed away in the adiabatic approximation, it is worth reintroducing some connection between the two, especially in the region between the outer turning points and scission where the adiabatic assumption is weakest. Through the semiclassical Langevin approach~\cite{Abe1996,Frobrich1998,Sadhukhan2016}, we introduce a dissipation tensor $\eta$ that mimics energy exchange between intrinsic and collective modes. The dissipation tensor is related to a random force with strength $g$ via the fluctuation-dissipation theorem: $\sum_k g_{ik}g_{jk} = \eta_{ij}k_BT$. The fluctuation-dissipation theorem effectively couples collective and intrinsic degrees of freedom via the system temperature $T$, given by $k_BT = \sqrt{E^*/a}$ where $a=A/10$MeV$^{-1}$ parameterizes the level density and the excitation energy is given by $E^*(\vec{q}) = E'(s_{out}) - E'(\vec{q}) - \frac{1}{2}\sum\left(\mathcal{M}^{-1}\right)_{ij}p_i p_j$.
+Although the link between collective and intrinsic degrees of freedom was assumed away in the adiabatic approximation, it is necessary to reintroduce some connection between the two, especially in the region between the outer turning points and scission where the adiabatic assumption is weakest. Through the semiclassical Langevin approach~\cite{Abe1996,Frobrich1998,Sadhukhan2016}, we introduce a dissipation tensor $\eta$ that mimics energy exchange between intrinsic and collective modes. The dissipation tensor is related to a random force with strength $g$ via the fluctuation-dissipation theorem: $\sum_k g_{ik}g_{jk} = \eta_{ij}k_BT$. The fluctuation-dissipation theorem effectively couples collective and intrinsic degrees of freedom via the system temperature $T$, given by $k_BT = \sqrt{E^*/a}$ where $a=A/10$MeV$^{-1}$ parameterizes the level density and the excitation energy is given by $E^*(\vec{q}) = E'(s_{out}) - E'(\vec{q}) - \frac{1}{2}\sum\left(\mathcal{M}^{-1}\right)_{ij}p_i p_j$.
 
 After emerging from the classically-forbidden region of the PES, fission trajectories continue across the PES from the outer turning line, evolving according to the Langevin equations:
 \begin{gather}\label{eq:langevin} 
@@ -269,41 +269,7 @@ After emerging from the classically-forbidden region of the PES, fission traject
 
 Dissipation is treated in our work as a parameter, since a self-consistent description of dissipation has not yet been developed.  In the meantime, we use the values from~\cite{Sadhukhan2016}, which were fitted to reproduce the $^{240}$Pu spontaneous fission fragment yields.% However, work along this line has been started (maybe?) in refs 291-293 of~\cite{Schmidt2018} (see Section 4.1.1 for the context).
 
-\subsection{Localization plus Grand Canonical Ensemble}\label{sect:loc-frags}
-The Langevin approach represents the best of what static approaches currently have to offer in terms of quantitative reproduction of the yields; however, it can be expensive and time-consuming to perform a full Langevin calculation with non-perturbative collective inertia in a multidimensional collective space. For applications where the level of quantitative accuracy is somewhat flexible (an example would be r-process network calculations, which are explained in Chapter~\ref{chap:rprocess}), is it necessary to do all these calculations? Or is there some kind of physical insight that can be leveraged to reduce the workload?
+\subsection{Fragment identification via localization function}\label{sect:FragID}
+The Langevin approach represents the best of what static approaches currently have to offer in terms of quantitative reproduction of the yields; however, it can be expensive and time-consuming to perform a full Langevin calculation with non-perturbative collective inertia in a multidimensional collective space. For applications where the level of quantitative accuracy is somewhat flexible (an example would be r-process network calculations, which are explained in Chapter~\ref{chap:rprocess}), one might ask whether it is necessary to do all these calculations, or if there is some kind of physical insight that can be leveraged to reduce the workload.
 
-By studying nucleon localization functions (Section~\ref{sect:locali}) for deformed configurations of several fissioning nuclei, we observe that, in many cases, two distinct fragments start to form independently and then separate well before scission is reached. Thus, a fissioning nucleus can be thought of as two well-formed prefragments connected by a neck. At scission, the two prefragments separate and the remaining neck nucleons are distributed to either of the two prefragments in some predictable way.
-
-Based on this, we created the following prescription for identifying prefragments and estimating fragment yields at the outer turning line:
-
-\begin{itemize}
-	\item Identify possible prefragments using the density and nucleon localization function (see Figure~\ref{fig:methods240Pulocali}):
-		\subitem Along the primary axis of the nucleus, find the two locations (one for each fragment) at which the density is widest. This is taken to be the approximate center of each fragment.
-		\subitem For each fragment, start from the central value and locate the two nearest optima in the localization (maximum or minimum; one on either side). This gives you a range of possible central values.
-		\subitem Sum up the nucleons above (below) the central value and multiply by two to determine the identity of the upper (lower) prefragment.
-	\item The remaining neck nucleons are assumed to form into clusters: alpha particles first, then a deuteron if there is one of each nucleon left, plus some remaining free protons or neutrons.
-	\item The total binding energy of the prefragments and any particles/clusters is subtracted from the total energy of the system to get the energy of the neck, $E_{neck}$.
-		\subitem Use this energy to define the temperature of the system: $T = \sqrt{\left|E_{neck}/a\right|}$ where the level density parameter $a$ we take to be $a=A_p/10$ MeV$^{-1}$ with $A_p$ the mass number of the parent nucleus.
-	\item Use brute force combinatorics to find every possible way of assigning the neck particles to either of the prefragments (including the possibility that a particle/cluster might be emitted instead of flowing to a prefragment).
-	\item For each fragments + particles combination, look up the binding energy of each of the final fragments in a table (such as  MassExplorer \cite{massexplorer}).
-	\item The Coulomb repulsion energy between the fragments plus the total binding energy of the fragments and any remaining clusters is subtracted from the total energy of the system to get the residual (kinetic + intrinsic) energy, $E_{res}$.
-	\item I use this energy to define the a grand canonical ensemble (note that the chemical potentials are hidden in the binding energies): $Z = \sum e^{-\frac{E_{res}}{k_BT}}$
-	\item Calculate probabilities: $P(n_1,z_1,n_2,z_2) = \frac{1}{Z} e^{-\frac{E_{res}(n_1,z_1,n_2,z_2)}{k_BT}}$
-	\item [I convoluted those probabilities with a Gaussian, as we did in the paper.]
-\end{itemize}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.5\linewidth]{TeX_files/methods_overview}
-	\caption[Localization function for 240Pu with lines drawn to represent prefragment identification]{Localization function for 240Pu with lines drawn to represent prefragment identification}
-	\label{fig:methods240Pulocali}
-\end{figure}
-
-The fact that this can be estimated at the outer turning line instead of at scission is a tremendous reduction in the number of PES points which must be computed. Furthermore, our experience with the WKB approximation shows that most trajectories leading to the outer turning line actually follow the minimum action path, branching away only just before reaching the outer turning line. In Chapter~\ref{chap:rprocess}, we will compute a 1-dimensional PES between the ground state and the outer turning line (either the static path or the minimum action path), and a 2-dimensional PES in the region of the outer turning line. This is a substantial reduction compared to the Langevin calculations, but the $^{240}$Pu SF yields shown in Figure~\ref{fig:methods240Puyield} are similar, with similar peaks and widths, but with appropriately wider uncertainty bands for the localization + grand canonical ensemble method.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.5\linewidth]{TeX_files/methods_overview}
-	\caption[Computed spontaneous fission yields for 240Pu compared to experimental data. The Langevin yields are shown in ??? color and are taken from~\cite{Sadhukhan2016}. The localization yields are shown in ??? color. Experimental data is shown in ??? color and comes from ??? source.]{Computed spontaneous fission yields for 240Pu compared to experimental data. The Langevin yields are shown in ??? color and are taken from~\cite{Sadhukhan2016}. The localization yields are shown in ??? color. Experimental data is shown in ??? color and comes from ??? source.}
-	\label{fig:methods240Puyield}
-\end{figure}
+By studying nucleon localization functions (Section~\ref{sect:locali}) for deformed configurations of fissioning nuclei, we observe that, in many cases, two distinct fragments start to form independently and then separate well before scission is reached (see Figure~\ref{fig:methodslocali}, taken from~\cite{Zhang2016}, as well as Sections~\ref{sect:178Ptfrags} and~\ref{sect:294Ogfrags}). Thus, a fissioning nucleus can be thought of as two well-formed prefragments connected by a neck. At scission, the two prefragments separate and the remaining neck nucleons are distributed to either of the two prefragments in some predictable way. Based on this, we developed a prescription for identifying prefragments and estimating fragment yields at the outer turning line, which is described in Appendix~\ref{append:Fragments}.
