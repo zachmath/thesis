@@ -25,9 +25,9 @@ Nuclear density functional theory is one of several methods which has been devel
 \subsection{Density functional theory}\label{sect:DFT}
 Nuclear DFT is rooted in the Hohenberg-Kohn theorems~\cite{Hohenberg1964}, which are briefly described in the following.
 
-The first Hohenberg-Kohn theorem states that the energy of the system is a uniquely-defined functional of the particle density $\rho(\vec{r})$. This means one can describe a complicated system of N particles using a single density which depends on 3 coordinates, rather than many-body wavefunction depending on 3N coordinates - a huge simplification!
+The first Hohenberg-Kohn theorem states that the energy of the system is a uniquely-defined functional $E(\rho)$ of the particle density $\rho(\vec{r})$. This means one can describe a complicated system of N interacting particles using a single density which depends on 3 coordinates, rather than many-body wavefunction depending on 3N coordinates - a huge simplification!
 
-The second Hohenberg-Kohn theorem states that the functional which gives the energy of the system will give the ground state energy if, and only if, it acts on the true ground state density: $E(\rho)=E_{gs} \iff \rho = \rho_{gs}$. Thus, given a particular functional $E(\rho)$, one can vary the input density $\rho$ to minimize the total energy and be assured that one is approaching the ground state energy of the system. In the case of electronic systems, a variational prescription to compute the electron density was subsequently proposed by Kohn and Sham in~\cite{Kohn1965}. However, extensions of this prescription to nuclei, which are self-bound objects governed by an unknown Hamiltonian, led to a Kohn-Sham scheme that was too difficult to be applied~\cite{engel2007,barnea2007,messud2009}. Instead, the practical alternative is to introduce mean-field variational methods such as Hartree-Fock (HF) and Hartree-Fock-Bogoliubov (HFB), as we do in Section~\ref{sect:HFB}.
+The second Hohenberg-Kohn theorem states that the functional which gives the energy of the system will give the ground state energy if, and only if, it acts on the true ground state density: $E(\rho)=E_{gs} \iff \rho = \rho_{gs}$. Thus, given a particular functional $E(\rho)$, one can vary the input density $\rho$ to minimize the total energy and be assured that one is approaching the ground state energy of the system. In the case of electronic systems, a variational prescription to compute the electron density was subsequently proposed by Kohn and Sham in~\cite{Kohn1965}. However, extensions of this prescription to nuclei, which are self-bound objects governed by a poorly-known Hamiltonian, led to a Kohn-Sham scheme that was too difficult to be applied~\cite{engel2007,barnea2007,messud2009}. Instead, the practical alternative is to introduce mean-field variational methods such as Hartree-Fock (HF) and Hartree-Fock-Bogoliubov (HFB), as we do in Section~\ref{sect:HFB}.
 
 The next step is to find the correct energy density functional. Unfortunately, neither the Hohenberg-Kohn theorems nor the Kohn-Sham method specify how this is to be done. In anticipation of mean-field plus pairing methods such as HFB (see Section~\ref{sect:HFB}), the total energy will instead be assumed to be a sum of several contributions, each of which can be treated individually in terms of the particle density $\rho(\vec{r},\vec{r}')$:
 \begin{equation}\label{eq:EDFterms}
@@ -69,22 +69,22 @@ E_{Skyrme} &= \int d^3\vec{r} \sum_{t=0,1} \left( \mathcal{H}^{even}_t + \mathca
 
 \noindent where $\tau_t$ is the kinetic energy density; $\mathsf{J}_t$ and $\vec{J}_{\kappa,t}$ are, respectively, the scalar and vector parts of the spin current density; $\vec{s}_t$ is the spin density; $\vec{T}_t$ is the spin kinetic density; and $\vec{j}_t$ is the momentum density (to see how these each relate to $\rho$, see e.g.~\cite{bender2003}). The index $t=0(1)$ refers to isoscalar(isovector) energy densities, e.g. $\rho_0 = \rho_n + \rho_p$ ($\rho_1 = \rho_n - \rho_p$). Note that $\mathcal{H}^{even}_t$ depends only on time-even densities (and similarly for $\mathcal{H}^{odd}_t$).
 
-Since this energy density functional is phenomenological, based on a zero-range contact force between nucleons, the coefficients must be determined from experiment and/or \textit{ab initio} theory. There are dozens of Skyrme parameterizations on the market, each one optimized to a particular observable or set of observables. The parameter sets SkM*~\cite{Bartel1982} and UNEDF1~\cite{Kortelainen2012} (along with its sister, {\hfb}~\cite{Schunck2015}) are optimized to datasets which include fission data, making them suitable for fission calculations.
+Since this energy density functional is phenomenological, rooted in a zero-range contact force between nucleons, the coefficients must be determined from experiment and/or \textit{ab initio} theory. There are dozens of Skyrme parameterizations on the market, each one optimized to a particular observable or set of observables. The parameter sets SkM*~\cite{Bartel1982} and UNEDF1~\cite{Kortelainen2012} (along with its derivative, {\hfb}~\cite{Schunck2015}) are optimized to datasets which include fission data, making them suitable for fission calculations.
 
 \subsubsection{Pairing interaction term}
-The simplest mean field approximation fails to take into account some correlations between nucleons, especially correlations between nucleons which occupy nearby states. Such nucleons (for example, those with equivalent orbital quantum numbers but opposite spins) have a tendency to form pairs, similar in mechanism to BCS superconductivity or $^3$He superfluidity~\cite{brink2005}. To help account for these correlations, we use a density-dependent pairing interaction~\cite{chasman1976}:
+The simplest mean field approximation fails to take into account some correlations between nucleons, especially correlations between nucleons which occupy nearby states. Such nucleons (for example, those occupying orbitals with equivalent orbital quantum numbers but opposite spins) have a tendency to form pairs, similar in mechanism to BCS superconductivity or $^3$He superfluidity~\cite{brink2005}. To help account for these correlations, we use a density-dependent pairing functional~\cite{chasman1976}:
 \begin{equation}
 E_{pair} = V_0 \int d^3\vec{r} \left( 1-\left(\frac{\rho(\vec{r})}{\rho_0}\right)^\alpha \right).
 \end{equation}
 
-\noindent As with the nuclear interaction term, the pairing interaction contains adjustable parameters $V_0, \alpha,$ and $\rho_0$. The denominator $\rho_0$ determines whether pairing is concentrated within the volume ($\rho_0\rightarrow\infty$), around the surface ($\rho_0\approx0.16$ fm$^{-3}$), or somewhere in between. The exponent $\alpha$ can partially account for the formation of surface effects, such as neutron skins and halos, but is usually set to $\alpha=1$. The pairing strength $V_0$ may be adjusted to experimental odd-even mass differences.
+\noindent As with the nuclear interaction term, the pairing term contains adjustable parameters $V_0, \alpha,$ and $\rho_0$. The denominator $\rho_0$ determines whether pairing is concentrated within the volume ($\rho_0\rightarrow\infty$), around the surface ($\rho_0\approx0.16$ fm$^{-3}$), or somewhere in between. The exponent $\alpha$ can partially account for the formation of surface effects, such as neutron skins and halos, but is usually set to $\alpha=1$. The pairing strength $V_0$ may be adjusted to experimental odd-even mass differences.
 
 \subsection{Hartree-Fock-Bogoliubov method}\label{sect:HFB}
 \subsubsection{Kohn-Sham and Hartree-Fock methods}
 
 Having now chosen an energy density functional, the variational principle is invoked to find the density which minimizes the total energy, approximating the ground state of the system. The Kohn-Sham variational method was proposed soon following the Hohenberg-Kohn theorems in \cite{Kohn1965}. Given the exact energy density functional, Kohn-Sham actually solves the many-body problem exactly; however, as stated before, its use in nuclear physics is limited, principally because nuclei are self-bound systems with no external constraining potential. Kohn-Sham has been extended to self-bound systems (for instance in~\cite{engel2007,barnea2007,messud2009}), but the resulting expressions are complicated and in practice it is common to fall back on a mean-field approximation, such as Hartree-Fock.
 
-The Hartree-Fock method, which actually predates Kohn-Sham by about 30 years, treats the system as a set of independent particles, each interacting with a mean field created by the other particles~\cite{Ring1980}. The mean-field approximation is well-justified in nuclear physics, its primary experimental evidence being the existence of magic numbers. The downside to mean-field approximations such as Hartree-Fock is that some correlations, such as pairing correlations, are lost. The Hartree-Fock-Bogoliubov method reintroduces pairing correlations in the following way.
+The Hartree-Fock method, which actually predates Kohn-Sham by about 30 years, treats the system as a set of independent particles, each interacting with a mean field created by the other particles~\cite{Ring1980}. The mean-field approximation is well-justified in nuclear physics, its primary experimental evidence being the existence of magic numbers. The downside to Hartree-Fock is that some correlations, such as pairing correlations, are lost. The Hartree-Fock-Bogoliubov method reintroduces pairing correlations in the following way.
 
 \subsubsection{Bogoliubov transformation}
 
@@ -103,16 +103,16 @@ In anticipation of the HFB formalism below, we define the so-called Bogoliubov t
 \equiv \mathcal{W}^\dagger \left(\begin{array}{c} c \\ c^\dagger\end{array}\right),
 \end{equation}
 
-\noindent where $c_i^\dagger, c_i$ are single particle creation and annihilation operators, and where the transformation matrix $\mathcal{W}$ must be unitary to ensure that $\beta, \beta^\dagger$ obey the fermion commutation relations~\cite{Ring1980}. The HFB ground state $\ket{\Phi_0}$ is defined to be a quasiparticle vacuum, such that $\beta_\mu\ket{\Phi_0}=0, 1\leq\mu\leq N$.
+\noindent where $c_i^\dagger, c_i$ are single particle creation and annihilation operators, and where the transformation matrix $\mathcal{W}$ must be unitary to ensure that $\beta, \beta^\dagger$ obey the fermion commutation relations~\cite{Ring1980}. The HFB ground state $\ket{\Phi_0}$ is defined to be a quasiparticle vacuum, such that $\beta_\mu\ket{\Phi_0}=0$ for $1\leq\mu\leq N$.
 
-As before, the system is described using a density, which can be written in terms of single particle operators and an HFB vacuum state: $\rho_{ij} = \expval{c_j^\dagger c_i}{\Phi_0}$. In the HFB case, one must also define a second density, called the pairing density: $\kappa_{ij} = \expval{c_jc_i}{\Phi_0}$. %, which can be thought of as a coupling between a state with $N-2$ particles and a state with $N$ particles.
+As before, the system is described using a density matrix, which can be written in terms of single particle operators and an HFB vacuum state: $\rho_{ij} = \expval{c_j^\dagger c_i}{\Phi_0}$. In the HFB case, one must also define a second density matrix, called the pairing density: $\kappa_{ij} = \expval{c_jc_i}{\Phi_0}$. %, which can be thought of as a coupling between a state with $N-2$ particles and a state with $N$ particles.
 In coordinate space, the density matrix $\rho$ and the pair tensor $\kappa$ take the form
 \begin{align}
 \rho(\vec{r},\vec{r}') &= \expval{c_{\vec{r}'}^\dagger c_{\vec{r}}}{\Phi_0}, \\
 \kappa(\vec{r},\vec{r}') &= \expval{c_{\vec{r}'} c_{\vec{r}}}{\Phi_0}.
 \end{align}
 
-\noindent The densities $\rho$ and $\kappa$ are combined to form a single generalized density
+\noindent The densities $\rho$ and $\kappa$ are combined to form a single HFB generalized density matrix:
 \begin{equation}
 \mathcal{R} = \left(\begin{array}{cc}
 \rho & \kappa \\
@@ -120,20 +120,7 @@ In coordinate space, the density matrix $\rho$ and the pair tensor $\kappa$ take
 \end{array}\right).
 \end{equation}
 
-\noindent Note that in nuclei, there are two $\mathcal{R}$'s: one for describing neutrons and another for protons. In the transformed basis, the density matrix takes the diagonal form 
-\begin{equation}
-\mathsf{R} = \mathcal{W}^\dagger\mathcal{R}\mathcal{W} = 
-\left(\begin{array}{cc}
-\expval{\beta_\mu^\dagger \beta_\nu}{\Phi_0} & \expval{\beta_\mu \beta_\nu}{\Phi_0} \\
-\expval{\beta_\mu^\dagger \beta_\nu^\dagger}{\Phi_0} & \expval{\beta_\mu \beta_\nu^\dagger}{\Phi_0}
-\end{array}\right) = 
-\left(\begin{array}{cc}
-0 & 0 \\
-0 & I_N
-\end{array}\right),
-\end{equation}
-
-\noindent where $I_N$ is the $N\times N$ identity matrix.
+\noindent Note that in nuclei, there are two $\mathcal{R}$'s: one for describing neutrons and another for protons.
 %In general, $E$ is a functional of the generalized density $\mathcal{R}$.
 
 \subsubsection{HFB equations}

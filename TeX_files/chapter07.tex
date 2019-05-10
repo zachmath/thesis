@@ -37,7 +37,7 @@ Finally, to make the calculations described in this dissertation fully self-cons
 % Also, temp-dependence...
 
 
-\section{New computational tools}
+\section{Computational tools}
 As we look for and find new ways to study and apply fission, we might consider the availability of new computational tools, such as machine learning and GPUs.
 
 As stated earlier, our biggest bottleneck is the calculation of the PES. The expense of calculations has the side effect of forcing us to use small collective spaces with relatively-few collective variables, which may mean a loss of important physics. Therefore, it is worth investing in methods to reduce the burden of PES calculations. One potential solution is a machine learning method called speculative sampling. Speculative sampling works well for problems that have an expensive computational model, and calculations that must be performed for many inputs or in a large parameter space. The essence of this technique is to create an emulator for your model using machine learning, then initiate many calculations using the expensive model and terminate early any calculations which do not appear to diverge strongly from the emulator. In this way, we don't waste time calculating things that the emulator can already predict, and instead focus our efforts on those portions of the PES which provide new information. After this set of calculations converges, the emulator can be retrained using the new data and the procedure is repeated.
@@ -48,5 +48,5 @@ For microscopic calculations to become practical for r-process calculations, tho
 
 % See here for where you got the ideas: https://bout.llnl.gov/content/assets/docs/workshops/2018/2018-08-17_Spears.pdf
 
-\section{Conclusion}
+\section{Conclusions}
 It is an exciting time to study fission. New phenomena are being discovered as fission experiments are performed in unfamiliar regions of the nuclear landscape, and there is a healthy feedback loop between theory and experiment thanks in great part to modern computational tools. It is, in many ways, the culmination of years of theoretical development, but there is still much to be done.
