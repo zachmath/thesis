@@ -33,28 +33,27 @@ As a test case to benchmark this method, we estimate the $^{240}$Pu spontaneous 
 
 \begin{figure}%
 	\centering
-	\subfloat[$^{240}$Pu PES]{{\includegraphics[width=0.6\linewidth]{TeX_files/frags_240Pu-PES} }}%
+	\subfloat[$^{240}$Pu PES]{{\includegraphics[width=0.9\linewidth]{TeX_files/frags_240Pu-PES} }}%
 	\qquad
-	\subfloat[$^{240}$Pu yield]{{\includegraphics[width=0.32\linewidth]{TeX_files/frags_240Pu-yield} }}%
+	\subfloat[$^{240}$Pu yield]{{\includegraphics[width=0.7\linewidth]{TeX_files/frags_240Pu-yield} }}%
 	\caption{PES and yield distribution for spontaneous fission of $^{240}$Pu. On the left, the stars in the PES indicate outer turning points which were used to compute the cumulative yields. On the right, the black curve in the yields corresponds to the Langevin result, and experimental data comes from~\cite{Laidler1962, Thierens1981}.}%
 	\label{fig:240Pu-yield}%
 \end{figure}
 
-Comparing the localization-based results with those from experiment and from Langevin dynamics, the peak of the yield appears to be identified in all cases to within just a few nucleons of one another. That the tails are poorly-reproduced or that the uncertainty bands cover roughly an order of magnitude should not greatly concern us, as it was shown in~\cite{Sadhukhan2016, Sadhukhan2017} that the tails are due mainly to fluctuations beyond the outer turning line.
+Comparing the localization-based results with those from experiment and from Langevin dynamics, the peak of the yield appears to be identified in all cases to within just a few nucleons of one another. That the tails are poorly-reproduced or that the uncertainty bands cover roughly an order of magnitude should not be surprising, as it was shown in~\cite{Sadhukhan2016, Sadhukhan2017} that the tails of the distribution are due mainly to a dynamic interplay between fluctuations and the collective inertia which takes place beyond the outer turning line.
 
-As an additional test, we also show results computed for the nucleus {\Og} in Figure~\ref{fig:294Og-frags}. In this case, we use the PES computed with SkM$^*$ instead of {\hfb} because the outer turning line in the {\hfb} PES occurs before fragment asymmetry develops. Like the Langevin results, the yield is sharply peaked near {\Pb}. The discrepancy of several nucleons in the peak when comparing between Langevin and the localization-based method proposed here is comparable to the discrepancies found in Chapter~\ref{chap:294Og} when comparing between functionals, collective inertias, and values of the dissipation tensor strength.
+As an additional test, we also show results computed for the nucleus {\Og} in Figure~\ref{fig:294Og-frags}. Like the Langevin results, the yield is sharply peaked near {\Pb}. The discrepancy of several nucleons in the peak when comparing between Langevin and the localization-based method proposed here is comparable to the discrepancies found in Chapter~\ref{chap:294Og} when comparing between functionals, collective inertias, and values of the dissipation tensor strength. As in the $^{240}$Pu case, the tails of the distribution are poorly-reproduced compared to the Langevin result, especially on the more-symmetric side.
 
 \begin{figure}%
 	\centering
-	\subfloat[$^{294}$Og PES]{{\includegraphics[width=0.6\linewidth]{TeX_files/frags_294Og-PES} }}%
+	\subfloat[$^{294}$Og PES]{{\includegraphics[width=0.9\linewidth]{TeX_files/frags_294Og-PES} }}%
 	\qquad
-	\subfloat[$^{294}$Og yield]{{\includegraphics[width=0.32\linewidth]{TeX_files/frags_294Og-yield} }}%
+	\subfloat[$^{294}$Og yield]{{\includegraphics[width=0.7\linewidth]{TeX_files/frags_294Og-yield} }}%
 	\caption{Similar to Figure~\ref{fig:240Pu-yield} but for $^{294}$Og.}%
 	\label{fig:294Og-frags}%
 \end{figure}
 
-
-The fact that this can be estimated at the outer turning line instead of at scission is a tremendous reduction in the number of PES points which must be computed. Furthermore, our experience with the WKB approximation shows that most trajectories leading to the outer turning line actually follow the minimum action path, branching away only just before reaching the outer turning line. In Chapter~\ref{chap:rprocess} and in future survey-level calculations, we propose computing a 1-dimensional PES between the ground state and the outer turning line (either the static path or the minimum action path), and a 2-dimensional PES in the region of the outer turning line.
+The fact that yield peaks can be estimated at the outer turning line instead of at scission leads to a tremendous reduction in the number of PES points which must be computed. Furthermore, our experience with the WKB approximation shows that most trajectories leading to the outer turning line actually follow the minimum action path, branching away only just before reaching the outer turning line. In Chapter~\ref{chap:rprocess} and in future survey-level calculations, we propose computing a 1-dimensional PES between the ground state and the outer turning line (either the static path or the minimum action path), and a 2-dimensional PES in the region of the outer turning line.
 
 
 %\section{The problem of scission}
