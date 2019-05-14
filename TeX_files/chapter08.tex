@@ -1,41 +1,61 @@
 \chapter{Prescription for fragment identification via localization function}\label{append:Fragments}
-As mentioned in Section~\ref{sect:FragID}, we have developed a method for estimating primary fission yields using the nucleon localization function and a PES which has been computed out to the outer turning line. In fact, a 1D PES might be sufficient for some purposes, while still giving a distribution which is plausible.
+As mentioned in Section~\ref{sect:FragID}, we have developed a method for estimating primary fission yields using the nucleon localization function and a PES which has been computed out to the outer turning line. In fact, a 1D PES might be sufficient for some purposes, such as to estimate the location of the peak of the distribution.
 
 Our prescription is the following:
 
 \begin{itemize}
 	\item Identify possible prefragments using the density and nucleon localization function (see Figure~\ref{fig:methods240Pulocali}):
 	\subitem Along the primary axis of the nucleus, find the two locations (one for each fragment) at which the density is widest. This is taken to be the approximate center of each fragment.
-	\subitem For each fragment, start from the central value and locate the two nearest optima in the localization (maximum or minimum; one on either side). This gives you a range of possible central values.
+	\subitem For each fragment, start from the central value and locate the two nearest optima in the localization (maximum or minimum; one on either side). This gives you a range of possible central values (see Figure~\ref{fig:methods240Pulocali}).
 	\subitem Sum up the nucleons above (below) the central value and multiply by two to determine the identity of the upper (lower) prefragment.
 	\item The remaining neck nucleons are assumed to form into clusters: alpha particles first, then a deuteron if there is one of each nucleon left, plus some remaining free protons or neutrons.
 	\item The total binding energy of the prefragments and any particles/clusters is subtracted from the total energy of the system to get the energy of the neck, $E_{neck}$.
-	\subitem Use this energy to define the temperature of the system: $T = \sqrt{\left|E_{neck}/a\right|}$ where the level density parameter $a$ we take to be $a=A_p/10$ MeV$^{-1}$ with $A_p$ the mass number of the parent nucleus.
+	\subitem Use this energy to define the temperature of the system: $T = \sqrt{\left|E_{neck}/a\right|}$, where the level density parameter $a$ is taken to be $a=A_p/10$ MeV$^{-1}$ and with $A_p$ the mass number of the parent nucleus.
 	\item Use brute force combinatorics to find every possible way of assigning the neck particles to either of the prefragments (including the possibility that a particle/cluster might be emitted instead of flowing to a prefragment).
 	\item For each fragments + particles combination, look up the binding energy of each of the final fragments in a table (such as  MassExplorer \cite{massexplorer}).
 	\item The Coulomb repulsion energy between the fragments plus the total binding energy of the fragments and any remaining clusters is subtracted from the total energy of the system to get the residual (kinetic + intrinsic) energy, $E_{res}$.
-	\item I use this energy to define the a grand canonical ensemble (note that the chemical potentials are hidden in the binding energies): $Z = \sum e^{-\frac{E_{res}}{k_BT}}$
-	\item Calculate probabilities: $P(n_1,z_1,n_2,z_2) = \frac{1}{Z} e^{-\frac{E_{res}(n_1,z_1,n_2,z_2)}{k_BT}}$
+	\item This energy defines a state in the grand canonical ensemble (note that the chemical potentials are hidden in the binding energies): $Z = \sum e^{-\frac{E_{res}}{k_BT}}$.
+	\item Calculate probabilities: $P(n_1,z_1,n_2,z_2) = \frac{1}{Z} e^{-\frac{E_{res}(n_1,z_1,n_2,z_2)}{k_BT}}$.
 	\item Fold those probabilities with a Gaussian smoothing function.
 \end{itemize}
 
-\begin{figure}
+\begin{figure}%
 	\centering
-	\includegraphics[width=0.5\linewidth]{TeX_files/methods_overview}
-	\caption[Localization function for 240Pu with lines drawn to represent prefragment identification]{Localization function for 240Pu with lines drawn to represent prefragment identification}
-	\label{fig:methods240Pulocali}
+	\subfloat[$^{240}$Pu neutron localization function]{{\includegraphics[width=0.45\linewidth]{TeX_files/frags_240Pu_neutron} }}%
+	\qquad
+	\subfloat[$^{240}$Pu proton localization function]{{\includegraphics[width=0.45\linewidth]{TeX_files/frags_240Pu_proton} }}%
+	\caption{Localization function for $^{240}$Pu with lines drawn to represent prefragment identification}%
+	\label{fig:methods240Pulocali}%
 \end{figure}
 
-The fact that this can be estimated at the outer turning line instead of at scission is a tremendous reduction in the number of PES points which must be computed. Furthermore, our experience with the WKB approximation shows that most trajectories leading to the outer turning line actually follow the minimum action path, branching away only just before reaching the outer turning line. In Chapter~\ref{chap:rprocess}, we will compute a 1-dimensional PES between the ground state and the outer turning line (either the static path or the minimum action path), and a 2-dimensional PES in the region of the outer turning line. This is a substantial reduction compared to the Langevin calculations, but the $^{240}$Pu SF yields shown in Figure~\ref{fig:methods240Puyield} are similar, with similar peaks and widths, but with appropriately wider uncertainty bands for the localization + grand canonical ensemble method.
 
-\begin{figure}
+As a test case to benchmark this method, we estimate the $^{240}$Pu spontaneous fission yield, which was also estimated theoretically using Langevin dynamics in~\cite{Sadhukhan2016}. Experimental data exists for this nucleus as well, in~\cite{Laidler1962, Thierens1981}. These results are shown in Figure~\ref{fig:240Pu-yield}.
+
+\begin{figure}%
 	\centering
-	\includegraphics[width=0.5\linewidth]{TeX_files/methods_overview}
-	\caption[Computed spontaneous fission yields for 240Pu compared to experimental data. The Langevin yields are shown in ??? color and are taken from~\cite{Sadhukhan2016}. The localization yields are shown in ??? color. Experimental data is shown in ??? color and comes from ??? source.]{Computed spontaneous fission yields for 240Pu compared to experimental data. The Langevin yields are shown in ??? color and are taken from~\cite{Sadhukhan2016}. The localization yields are shown in ??? color. Experimental data is shown in ??? color and comes from ??? source.}
-	\label{fig:methods240Puyield}
+	\subfloat[$^{240}$Pu PES]{{\includegraphics[width=0.6\linewidth]{TeX_files/frags_240Pu-PES} }}%
+	\qquad
+	\subfloat[$^{240}$Pu yield]{{\includegraphics[width=0.32\linewidth]{TeX_files/frags_240Pu-yield} }}%
+	\caption{PES and yield distribution for spontaneous fission of $^{240}$Pu. On the left, the stars in the PES indicate outer turning points which were used to compute the cumulative yields. On the right, the black curve in the yields corresponds to the Langevin result, and experimental data comes from~\cite{Laidler1962, Thierens1981}.}%
+	\label{fig:240Pu-yield}%
 \end{figure}
 
-We should also show {\Og} calculations here, and perhaps even {\Pt} calculations too, if you can get them in time.
+Comparing the localization-based results with those from experiment and from Langevin dynamics, the peak of the yield appears to be identified in all cases to within just a few nucleons of one another. That the tails are poorly-reproduced or that the uncertainty bands cover roughly an order of magnitude should not greatly concern us, as it was shown in~\cite{Sadhukhan2016, Sadhukhan2017} that the tails are due mainly to fluctuations beyond the outer turning line.
+
+As an additional test, we also show results computed for the nucleus {\Og} in Figure~\ref{fig:294Og-frags}. In this case, we use the PES computed with SkM$^*$ instead of {\hfb} because the outer turning line in the {\hfb} PES occurs before fragment asymmetry develops. Like the Langevin results, the yield is sharply peaked near {\Pb}. The discrepancy of several nucleons in the peak when comparing between Langevin and the localization-based method proposed here is comparable to the discrepancies found in Chapter~\ref{chap:294Og} when comparing between functionals, collective inertias, and values of the dissipation tensor strength.
+
+\begin{figure}%
+	\centering
+	\subfloat[$^{294}$Og PES]{{\includegraphics[width=0.6\linewidth]{TeX_files/frags_294Og-PES} }}%
+	\qquad
+	\subfloat[$^{294}$Og yield]{{\includegraphics[width=0.32\linewidth]{TeX_files/frags_294Og-yield} }}%
+	\caption{Similar to Figure~\ref{fig:240Pu-yield} but for $^{294}$Og.}%
+	\label{fig:294Og-frags}%
+\end{figure}
+
+
+The fact that this can be estimated at the outer turning line instead of at scission is a tremendous reduction in the number of PES points which must be computed. Furthermore, our experience with the WKB approximation shows that most trajectories leading to the outer turning line actually follow the minimum action path, branching away only just before reaching the outer turning line. In Chapter~\ref{chap:rprocess} and in future survey-level calculations, we propose computing a 1-dimensional PES between the ground state and the outer turning line (either the static path or the minimum action path), and a 2-dimensional PES in the region of the outer turning line.
+
 
 %\section{The problem of scission}
 %For practical reasons discussed in Chapter~\ref{chap:Model}, we are limited to describing complicated shapes in terms of just a few parameters, leading to uncertainty in the properties of the fragment. In particular, the part of the process at which the neck snaps and one nucleus becomes two, called scission, is not well-defined in static approaches.

@@ -44,6 +44,30 @@ It should be noted that Figure~\ref{fig:rprocimportant-fissions} shows isotopes 
 % Also, it sounds like maybe you'll outline the formalism in ch. 2, and simply refer back to it here
 Using Figure~\ref{fig:rprocimportant-fissions} as a guide, the isotopes $^{254}$Pu, $^{264}$Pu, $^{288}$Pu, $^{270}$Cm, and $^{276}$Cf were selected for study. For each isotope, a 1D PES was calculated up to the outermost isomer state by constraining $Q_{20}$ and leaving the other degrees of freedom unconstrained. Between the isomer state and the outer turning line, the PES was expanded to include $Q_{30}$ in order to account for mass asymmetry between the fragments. The WKB method was used to estimate relative probabilities along the outer turning line, at which stage fragment pairs were identified using the localization-based method described in Appendix~\ref{append:Fragments} or maybe actually in Section~\ref{sect:loc-frags}. The resulting distributions will be shown in Figure \verb|\ref{???}| whenever I have them.
 
+\begin{figure}%
+	\centering
+	\subfloat[$^{254}$Pu PES]{{\includegraphics[width=0.6\linewidth]{TeX_files/rproc_254Pu-PES} }}%
+	\qquad
+	\subfloat[$^{254}$Pu yield]{{\includegraphics[width=0.33\linewidth]{TeX_files/rproc_254Pu-yield} }}%
+	\caption{PES and yield distribution for spontaneous fission of $^{254}$Pu. The stars in the PES indicate outer turning points which were used to compute the cumulative yields.}%
+	\label{fig:254Pu-yield}%
+\end{figure}
+
+\section{$^{290}$Fm}
+I don't know exactly how you're going to justify this calculation, but the result you're getting is interesting. The PES looks to be pretty symmetric, at least so far as you've calculated it, but the yield you're getting is very slightly asymmetric, just by like 5-10 nucleons. What does this show? If this finding can be reproduced in some other way (likely not experiment, but perhaps with a more detailed calculation), then it might show that barrier symmetry/asymmetry is not sufficient to estimate the character of the yield. Also, this is $Z\approx54$, which I'm thinking may be in line with what Cedric and Guillame suggest.
+
+%Will you not also want/need to mention your work on 290Fm? This {\Cf} is not all that neutron rich, nor is it far from the region most-commonly studied. So perhaps you should say and do a bit more work on Fermium. Even just to say that triaxiality is not important here is something and not nothing. The reason you began to study this particular nucleus, though, is that based on Trevor Sprouse's r process network calculations (which utilized Peter Moller's fission calculations) and depending on the specifics of the astrophysical conditions, fission terminates the r process in a region of the N-Z plane. 290Fm falls into the range identified in one of these calculations (it would be good to cite it) and was selected by Trevor as one which may be particularly significant. However, looking back over my emails, it seems like this is not a robust finding. Other predictions (like the ones I have from Samuel and Marius Eichler) seem to perhaps indicate that I'd be better off looking in the region for which 280Fm is the northeast corner, perhaps.
+
+\begin{figure}%
+	\centering
+	\subfloat[$^{290}$Fm PES]{{\includegraphics[width=0.6\linewidth]{TeX_files/rproc_290Fm-PES} }}%
+	\qquad
+	\subfloat[$^{290}$Fm yield]{{\includegraphics[width=0.33\linewidth]{TeX_files/rproc_290Fm-yield} }}%
+	\caption{Similar to Figure~\ref{fig:254Pu-yield}, but for $^{290}$Fm.}%
+	\label{fig:290Fm-yield}%
+\end{figure}
+
+
 %[Maybe the methods portion of this project, and/or the justification of the method, should be moved to another Appendix instead of the main body of the text. It's important, certainly, but it's not central to the narrative]
 
 \section{Kilonova and $^{254}$Cf}
@@ -65,7 +89,3 @@ The effect of {\Cf} on kilonova heating and the light curve depends on the energ
 %Heating - Is exactly what it sounds like. When a nucleus decays, it loses energy. Some of that energy escapes in the form of neutrinos or photons, while other energy is absorbed elsewhere in the medium. A related concept is opacity. Heavier nuclei with a large level density tend to be more opaque because they can more readily absorb photons than smaller, less opaque nuclei. And the process by which all of this energy exchange takes place is called thermalization.
 
 
-%\section{$^{290}$Fm}
-%
-%Will you not also want/need to mention your work on 290Fm? This {\Cf} is not all that neutron rich, nor is it far from the region most-commonly studied. So perhaps you should say and do a bit more work on Fermium. Even just to say that triaxiality is not important here is something and not nothing. The reason you began to study this particular nucleus, though, is that based on Trevor Sprouse's r process network calculations (which utilized Peter Moller's fission calculations) and depending on the specifics of the astrophysical conditions, fission terminates the r process in a region of the N-Z plane. 290Fm falls into the range identified in one of these calculations (it would be good to cite it) and was selected by Trevor as one which may be particularly significant. However, looking back over my emails, it seems like this is not a robust finding. Other predictions (like the ones I have from Samuel and Marius Eichler) seem to perhaps indicate that I'd be better off looking in the region for which 280Fm is the northeast corner, perhaps.
-%
