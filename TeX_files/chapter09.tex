@@ -8,7 +8,7 @@ The calculations presented in this dissertation assumed that the system was main
 
 In the $T\neq0$ case, pairs may be broken and various excited states are accessible, resulting in changes to the PES and the collective inertia. A finite-temperature formalism for calculating the PES has already been developed (see~\cite{Schunck2015b, Mcdonnell2014}), as have perturbative expressions for the finite-temperature adiabatic time-dependent Hartree-Fock-Bogoliubov (FT-ATDHFB) inertia with cranking~\cite{Egido1986, Martin2009, Schunck2019edf}. Since the yields in Chapter~\ref{chap:294Og} showed a dependence on whether the collective inertia was computed perturbatively or non-perturbatively, this chapter is dedicated to deriving a non-perturbative finite-temperature expression for the collective inertia.
 
-We will begin with a brief overview of ATDHFB theory and finite temperature HFB. Then we present the resulting collective inertia without derivation, which is straightforward.
+We will begin with a brief overview of ATDHFB theory and finite temperature HFB. Then we present the resulting collective inertia without detailed derivation, which is straightforward.
 
 
 %### How much of the derivation mirrors Nicolas'? Should we just briefly introduce ATDHFB, finite-temp, and then just present the cranking expression without any real derivation? That kind of defeats the purpose of what you were thinking but as long as it makes Witek happy...###
@@ -53,7 +53,7 @@ Once the system is described in terms of collective coordinates and velocities, 
 
 \section{Finite-temperature density}
 
-As in any statistical theory, one first must determine which sort of ensemble properly describes the system. Nuclei are finite systems which have a conserved number of particles; however, HFB theory explicitly breaks particle number symmetry. In principle, we should perhaps use a microcanonical ensemble to describe a nucleus as a closed, isolated system, but that turns out to be challenging to solve because it requires a full knowledge of the eigenspectrum of the nucleus. Based on the particle non-conserving nature of HFB theory, we instead describe our system using the grand canonical ensemble.
+As in any statistical theory, one first must determine which sort of ensemble properly describes the system. Nuclei are finite systems which have a conserved number of particles; however, HFB theory explicitly breaks particle number symmetry. In principle, we should use a microcanonical ensemble to describe a nucleus as a closed, isolated system, but that turns out to be challenging to solve because it requires a full knowledge of the eigenspectrum of the nucleus. Based on the particle non-conserving nature of HFB theory, we instead describe our system using the grand canonical ensemble.
 
 The formalism to do this is shown in~\cite{Goodman1981}. In the end, finite-temperature HFB looks almost identical to standard zero-temperature HFB, except the density in the quasiparticle basis is replaced by
 \begin{equation}
@@ -100,7 +100,22 @@ i\hbar\mathcal{\dot{R}}_1 &= \left[\mathcal{H}_0, \mathcal{R}_0\right] + \left[\
 
 \noindent These two equations are the ATDHFB equations. They can be solved self-consistently to find both $\chi$ and $\mathcal{R}_0$; however, this is rarely done in practice. A more common approach is to exploit the fact that solutions to the ATDHFB equations are (by design) \textit{close} to true HFB solutions. One can then take an HFB solution and compute its time derivative by the first ATDHFB equation~\eqref{eq:ATDHFB1} to get ATDHFB-like behavior instead of a true solution to the ATDHFB equations.
 
-One finds, by combining the finite-temperature density~\eqref{eq:FTdensity} with equations~\eqref{eqn:densities1},~\eqref{eqn:densities2}, and~\eqref{eq:ATDHFB1}, that the perturbation parameter $\chi$ is related to $\mathcal{\dot{R}}_0$, which was assumed to be small by the adiabatic hypothesis:
+Working in the HFB quasiparticle basis, in which
+\begin{equation}
+\mathcal{H}_0 =
+\left(\begin{array}{cc}
+E & 0 \\
+0 & -E
+\end{array}\right),
+\qquad
+\mathcal{R}_0 =
+\left(\begin{array}{cc}
+f & 0 \\
+0 & 1-f
+\end{array}\right),
+\end{equation}
+
+\noindent one finds by combining equations~\eqref{eqn:densities1} and~\eqref{eq:ATDHFB1} that the perturbation parameter $\chi$ is related to $\mathcal{\dot{R}}_0$, which was assumed to be small by the adiabatic hypothesis:
 \begin{align}\label{eqn:chi-rdot_uncranked}
 \begin{aligned}
 \hbar \dot{\mathcal{R}}_{(0),ab}^{11} &= (E_a-E_b)(f_b-f_a)\chi_{ab}^{11} + (f_b-f_a)\mathcal{H}^{11}_{(1),ab}, \\
@@ -159,16 +174,16 @@ We might consider introducing a cutoff on the difference $f_b-f_a$. If we make o
 
 As an example, suppose we take a finite-difference spacing $\delta q = 10^{-3}$ and set our HFB convergence parameter to $10^{-7}$. Roughly-speaking, then, we would expect that we can set a cutoff for $f_b-f_a$ of something around $10^{-4}$ or so and still obtain reasonable results.
 
-This was done for a $^{240}$Pu calculation with a few different cutoff values. First the exact T=0 inertia was computed. Then the inertia was computed again using the same densities which had been computed at T=0, but introducing a fake temperature T=0.05 MeV to calculate the inertia. The results, shown in the following table, indicate the presence of an ideal cutoff parameter that is in the neighborhood of our prediction.
+This was done for a $^{240}$Pu calculation ($Q_{20}=77$b, $Q_{22}=1$b, chosen at random from the $^{240}$Pu PES) with a few different cutoff values. First the exact T=0 inertia was computed. Then the inertia was computed again using the same T=0 densities, but with a fake temperature T=0.05 MeV. The results, shown in the following table, indicate the presence of an ideal cutoff parameter that is in the neighborhood of our prediction.
 
 \begin{tabular}{|ccc|}
 	\hline Convergence: & $10^{-7}$ & MeV \\ 
 	$\delta q$: & $10^{-3}$ & b \\ 
 	Actual T=0 inertia: & 1.585632$\times10^{-2}$ & $\frac{\hbar^2}{\mathrm{MeV \cdot b}^2}$ \\ \hline
 	\textbf{Cutoff} & \textbf{Inertia} $\left(\frac{\hbar^2}{\mathrm{MeV \cdot b}^2}\right)$ & \textbf{\% error} \\ \hline
-	$10^{-4}$ & 1.585205$\times10^{-2}$ & -2.692933$\times10^{-4}$ \\
-	$10^{-5}$ & 1.585622$\times10^{-2}$ & -6.306634$\times10^{-6}$ \\
-	$10^{-6}$ & 1.585697$\times10^{-2}$ & 4.099312$\times10^{-5}$ \\
-	$10^{-7}$ & 1.587771$\times10^{-2}$ & 1.348989$\times10^{-3}$ \\
-	$10^{-8}$ & 1.612200$\times10^{-2}$ & 1.675546$\times10^{-2}$ \\ \hline
+	$10^{-4}$ & 1.585205$\times10^{-2}$ & -2.692933$\times10^{-2}$ \\
+	$10^{-5}$ & 1.585622$\times10^{-2}$ & -6.306634$\times10^{-4}$ \\
+	$10^{-6}$ & 1.585697$\times10^{-2}$ & 4.099312$\times10^{-3}$ \\
+	$10^{-7}$ & 1.587771$\times10^{-2}$ & 1.348989$\times10^{-1}$ \\
+	$10^{-8}$ & 1.612200$\times10^{-2}$ & 1.675546 \\ \hline
 \end{tabular} 

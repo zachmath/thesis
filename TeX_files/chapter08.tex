@@ -5,12 +5,16 @@ Our prescription is the following:
 
 \begin{itemize}
 	\item Identify possible prefragments using the density and nucleon localization function (see Figure~\ref{fig:methods240Pulocali}):
-	\subitem Along the primary axis of the nucleus, find the two locations (one for each fragment) at which the density is widest. This is taken to be the approximate center of each fragment.
-	\subitem For each fragment, start from the central value and locate the two nearest optima in the localization (maximum or minimum; one on either side). This gives you a range of possible central values (see Figure~\ref{fig:methods240Pulocali}).
-	\subitem Sum up the nucleons above (below) the central value and multiply by two to determine the identity of the upper (lower) prefragment.
+	\begin{itemize}
+		\item Along the primary axis of the nucleus, find the two locations (one for each fragment) at which the density is widest. This is taken to be the approximate center of each fragment.
+		\item For each fragment, start from the central value and locate the two nearest optima in the localization (maximum or minimum; one on either side). This gives you a range of possible central values (see Figure~\ref{fig:methods240Pulocali}).
+		\item Sum up the nucleons above (below) the central value and multiply by two to determine the identity of the upper (lower) prefragment.
+	\end{itemize}
 	\item The remaining neck nucleons are assumed to form into clusters: alpha particles first, then a deuteron if there is one of each nucleon left, plus some remaining free protons or neutrons.
 	\item The total binding energy of the prefragments and any particles/clusters is subtracted from the total energy of the system to get the energy of the neck, $E_{neck}$.
-	\subitem Use this energy to define the temperature of the system: $T = \sqrt{\left|E_{neck}/a\right|}$, where the level density parameter $a$ is taken to be $a=A_p/10$ MeV$^{-1}$ and with $A_p$ the mass number of the parent nucleus.
+	\begin{itemize}
+		\item Use this energy to define the temperature of the system: $T = \sqrt{\left|E_{neck}/a\right|}$, where the level density parameter $a$ is taken to be $a=A_p/10$ MeV$^{-1}$ and with $A_p$ the mass number of the parent nucleus.
+	\end{itemize}
 	\item Use brute force combinatorics to find every possible way of assigning the neck particles to either of the prefragments (including the possibility that a particle/cluster might be emitted instead of flowing to a prefragment).
 	\item For each fragments + particles combination, look up the binding energy of each of the final fragments in a table (such as  MassExplorer \cite{massexplorer}).
 	\item The Coulomb repulsion energy between the fragments plus the total binding energy of the fragments and any remaining clusters is subtracted from the total energy of the system to get the residual (kinetic + intrinsic) energy, $E_{res}$.
