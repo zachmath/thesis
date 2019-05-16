@@ -7,7 +7,7 @@ Our prescription is the following:
 	\item Identify possible prefragments using the density and nucleon localization function (see Figure~\ref{fig:methods240Pulocali}):
 	\begin{itemize}
 		\item Along the primary axis of the nucleus, find the two locations (one for each fragment) at which the density is widest. This is taken to be the approximate center of each fragment.
-		\item For each fragment, start from the central value and locate the two nearest optima in the localization (maximum or minimum; one on either side). This gives you a range of possible central values (see Figure~\ref{fig:methods240Pulocali}).
+		\item For each fragment, start from the central value and locate the two nearest optima in the localization (maximum or minimum; one on either side). This gives you a range of possible central values (see Figure~\ref{fig:methods240Pulocali}), which leads to a built-in uncertainty band in the calculated yields.
 		\item Sum up the nucleons above (below) the central value and multiply by two to determine the identity of the upper (lower) prefragment.
 	\end{itemize}
 	\item The remaining neck nucleons are assumed to form into clusters: alpha particles first, then a deuteron if there is one of each nucleon left, plus some remaining free protons or neutrons.
@@ -27,7 +27,7 @@ Our prescription is the following:
 	\centering
 	\subfloat[$^{240}$Pu neutron localization function]{{\includegraphics[width=0.45\linewidth]{TeX_files/frags_240Pu_neutron} }}%
 	\qquad
-	\subfloat[$^{240}$Pu proton localization function]{{\includegraphics[width=0.45\linewidth]{TeX_files/frags_240Pu_proton} }}%
+	\subfloat[$^{240}$Pu proton localization function]{{\includegraphics[width=0.455\linewidth]{TeX_files/frags_240Pu_proton} }}%
 	\caption{Localization function for $^{240}$Pu with lines drawn to represent prefragment identification}%
 	\label{fig:methods240Pulocali}%
 \end{figure}
@@ -57,7 +57,7 @@ As an additional test, we also show results computed for the nucleus {\Og} in Fi
 	\label{fig:294Og-frags}%
 \end{figure}
 
-The fact that yield peaks can be estimated at the outer turning line instead of at scission leads to a tremendous reduction in the number of PES points which must be computed. Furthermore, our experience with the WKB approximation shows that most trajectories leading to the outer turning line actually follow the minimum action path, branching away only just before reaching the outer turning line. In Chapter~\ref{chap:rprocess} and in future survey-level calculations, we propose computing a 1-dimensional PES between the ground state and the outer turning line (either the static path or the minimum action path), and a 2-dimensional PES in the region of the outer turning line.
+The fact that yield peaks can be estimated at the outer turning line instead of at scission leads to a tremendous reduction in the number of PES points which must be computed. Furthermore, our experience with the WKB approximation shows that most trajectories leading to the outer turning line actually follow the minimum action path, branching away only just before reaching the outer turning line. Since the yields computed in this manner depend not on the absolute WKB probabilities, but on the relative probability of points along the outer turning line, we propose further reducing the number of PES calculations by computing a 1-dimensional PES between the ground state and the outer turning line (either the static path or the minimum action path), and a 2-dimensional PES in the region of the outer turning line.
 
 
 %\section{The problem of scission}
