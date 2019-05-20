@@ -115,7 +115,7 @@ f & 0 \\
 \end{array}\right),
 \end{equation}
 
-\noindent one finds by combining equations~\eqref{eqn:densities1} and~\eqref{eq:ATDHFB1} that the perturbation parameter $\chi$ is related to $\mathcal{\dot{R}}_0$, which was assumed to be small by the adiabatic hypothesis:
+\noindent one finds by combining equations~\eqref{eqn:densities1} and~\eqref{eq:ATDHFB1} that the ATDHFB equations can be written as:
 \begin{align}\label{eqn:chi-rdot_uncranked}
 \begin{aligned}
 \hbar \dot{\mathcal{R}}_{(0),ab}^{11} &= (E_a-E_b)(f_b-f_a)\chi_{ab}^{11} + (f_b-f_a)\mathcal{H}^{11}_{(1),ab}, \\
@@ -172,9 +172,9 @@ Numerical implementations of the finite-temperature ATDHFB inertia may encounter
 
 We might consider introducing a cutoff on the difference $f_b-f_a$. If we make our cutoff too tight, we start cutting off physics (the tail of the Fermi distribution). If we leave our cutoff too small, we start dividing by numbers that are smaller than the noise in the density matrix which will lead to the inertia blowing up.
 
-As an example, suppose we take a finite-difference spacing $\delta q = 10^{-3}$ and set our HFB convergence parameter to $10^{-7}$. Roughly-speaking, then, we would expect that we can set a cutoff for $f_b-f_a$ of something around $10^{-4}$ or so and still obtain reasonable results.
+As an example, suppose we take a finite-difference spacing $\delta q = 10^{-3}$ b and set our HFB convergence parameter to $10^{-7}$. Roughly-speaking, then, we would expect that we can set a cutoff for $f_b-f_a$ of something around $10^{-4}$ or so and still obtain reasonable results.
 
-This was done for a $^{240}$Pu calculation ($Q_{20}=77$b, $Q_{22}=1$b, chosen at random from the $^{240}$Pu PES) with a few different cutoff values. First the exact T=0 inertia was computed. Then the inertia was computed again using the same T=0 densities, but with a fake temperature T=0.05 MeV. The results, shown in the following table, indicate the presence of an ideal cutoff parameter that is in the neighborhood of our prediction.
+This was done for a $^{240}$Pu calculation ($Q_{20}=77$ b, $Q_{22}=1$ b, chosen at random from the $^{240}$Pu PES) with a few different cutoff values. First the exact T=0 inertia was computed. Then the inertia was computed again using the same T=0 densities, but with a fake temperature T=0.05 MeV. The results, shown in the following table, indicate the presence of an ideal cutoff parameter that is in the neighborhood of our prediction.
 
 \begin{tabular}{|ccc|}
 	\hline Convergence: & $10^{-7}$ & MeV \\ 
