@@ -16,7 +16,6 @@ In particular, a submodule was created to interface between PES Tools and Fissio
 
 \section{Calculating the collective inertia}\label{sect:M_numerical}
 The partial derivatives from equation~\eqref{eq:mATDHFB-np} are computed using the Lagrange three-point formula~\cite{Baran2011}:
-
 \begin{equation}\label{eq:finite-diffs}
 \left(\frac{\partial \mathcal{R}}{\partial q}\right)_{q=q_0} \approx 
     \frac{-\delta q'}{\delta q \left(\delta q + \delta q'\right)}\mathcal{R}(q_0-\delta q) + 
@@ -29,7 +28,7 @@ The partial derivatives from equation~\eqref{eq:mATDHFB-np} are computed using t
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{TeX_files/Num-dq_spacing}
-	\caption[$\mathcal{M}_{q20q20}$ calculated for some configuration of $^{240}$Pu as a function of finite-difference spacing $\delta q$.]{$\mathcal{M}_{q20q20}$ calculated for some configuration of $^{240}$Pu as a function of finite-difference spacing $\delta q$.}
+	\caption{$\mathcal{M}_{q20q20}$ calculated for some configuration of $^{240}$Pu as a function of finite-difference spacing $\delta q$.}
 	\label{fig:num-dqspacing}
 \end{figure}
 
@@ -38,7 +37,7 @@ Finite-difference calculations such as~\eqref{eq:finite-diffs} are dependent on 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{TeX_files/Num-rho_conv}
-	\caption[Norm of the difference matrix between subsequent iterations of the density]{Norm of the difference matrix between subsequent iterations of the density.}
+	\caption{Norm of the difference matrix between subsequent iterations of the density.}
 	\label{fig:num-rhoconv}
 \end{figure}
 
@@ -48,7 +47,6 @@ There are additional complications which arise in the finite-temperature formali
 
 \section{Minimum action path}
 For the tunneling part of the collective evolution described in Section~\ref{sect:wkb}, the dynamic programming method~\cite{Baran1981} was used to minimize the action. The dynamic programming method proceeds inductively: once the minimum action is known for all grid points up to a certain value of $Q_{20}$, say $q_{20}^n$, then the minimum action at each grid point in the $(n+1)$th layer with $Q_{20}=q_{20}^{n+1}$ is obtained by computing the action between each grid point in layer $n$ and each grid point in layer $n+1$, and then selecting the path which minimizes the total action at each grid point in layer $n+1$:
-
 \begin{equation}
 \left.S_{min}(\vec{Q})\right|_{Q_{20}=q_{20}^{n+1}} = \mathrm{argmin}_{\vec{Q'}}\left.\left(S_{min}(\vec{Q'}) + \Delta S_{min}(\vec{Q},\vec{Q'})\right)\right|_{Q'_{20}=q_{20}^{n}, Q_{20}=q_{20}^{n+1}}.
 \end{equation}

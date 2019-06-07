@@ -25,8 +25,7 @@
 
 % These are to get an APS-like bibliography
 % See: https://tex.stackexchange.com/questions/15677/revtex-4-1-bibliography-style-in-other-classes
-\usepackage[sort&compress,numbers]{natbib}
-%\usepackage[style=phys]{biblatex}
+\usepackage[sort&compress,numbers]{natbib} % For some reason, this blocks the Bibliography from appearing in the table of contents and doesn't create the required bibliography title page. I've manually added those things back later in the document, but it's a messy fix. On the other hand, I could get rid of this line but then my bibliography uses authors throughout the text instead of numbers. There might be a better way to do that instead, but whatever. I've got something that works so I'm calling it good.
 \usepackage{doi}
 \usepackage{hyperref}
 \usepackage{tcolorbox}
@@ -56,7 +55,6 @@
 %% IMPORTANT: Load only those packages you know you will use.
 %% Some packages can cause conflicts resulting in improper formatting.
 \author{Zachary Matheson} %% Put your name in full as it is officially recognized by Michigan State University here.
-%\title{Fission in Exotic Nuclei} %% Put the title of your dissertation here.
 \title{Fission in Exotic Nuclei Using Density Functional Theory} %% Put the title of your dissertation here.
 %% Go to http://grad.msu.edu/etd/docs/DegreeGrantingUnits.pdf
 %% and find your GRADUATE DEGREE GRANTING UNIT/PROGRAM
@@ -68,7 +66,7 @@
 %% Put additional preamble items here.
 
 \begin{document}
-
+\bibliographystyle{apsrev4-1} % I don't know what bibliography style to use, so this is a placeholder
 \maketitlepage %%This command will produce the title page of your thesis.
 
 %% If you wish to include a "public abstract" (i.e.; in layman's terms), remove the "%" 
@@ -104,6 +102,7 @@ Historically, most experimental and theoretical studies of fission have centered
 
 \begin{dedication} 
 % Type your dedication here. A dedication is optional.
+\centering
 Dedicated to Eli.
 \end{dedication}
 
@@ -141,7 +140,7 @@ And finally, love and gratitude to my wife and family. Melon, Beaky, KJ+N8, Krys
 
 %% If your document contains tables, remove the "%" in front of 
 %%  the following line.
-%\LOT
+\LOT
 
 %% If your document contains figures, remove the "%" in front of
 %% the following line.
@@ -202,6 +201,8 @@ And finally, love and gratitude to my wife and family. Melon, Beaky, KJ+N8, Krys
 \include{./TeX_files/chapter09} % Appendix B: Temperature-dependence of collective inertia
 \include{./TeX_files/chapter10} % Appendix C: List of my contributions
 
+\tocentry{BIBLIOGRAPHY}{Bibliography}% Pretty hacky way of getting this to actually show up in the Table of Contents, but it seems to work
+
 %% In either case to start your first appendix, which will be labeled
 %% as Appendix A, just type \chapter{<appendix 1 name>}
 %% and enter the text of the appendix as you would a chapter,
@@ -236,8 +237,16 @@ And finally, love and gratitude to my wife and family. Melon, Beaky, KJ+N8, Krys
 %% The bibliography may be made using BibTeX.
 %% To do so the necessary commands must be entered in the 
 %% preamble and here.
+\clearpage\thispagestyle{plain}\vspace*{\fill} % More hacky workaround...
+\begin{center}
+	\large{\textbf{BIBLIOGRAPHY}}
+	\vspace{\baselineskip}%
+\end{center}
+\vfill
+\newpage
+
 \bibliography{main}
-\bibliographystyle{apsrev4-1} % I don't know what bibliography style to use, so this is a placeholder
+
 
 %% If the Bibliography is made from scratch,
 %% remove the "%" in front of \begin{thebibliography}{???}

@@ -165,9 +165,10 @@ E' = E - \lambda_n \expval{\hat{N}_n} - \lambda_p \expval{\hat{N}_p},
 
 \noindent where $\lambda_\alpha$ is determined by the condition that $\expval{\hat{N}_\alpha} = N_\alpha$ (more sophisticated particle number restoration schemes also exist, such as the Lipkin-Nogami method~\cite{Stoitsov2007, Lipkin1960, Nogami1964, Pradhan1973, Flocard1997}). % Discuss PAV and VAP? Only if requested
 
-The collective coordinates employed in this dissertation are described in the following table:
+The collective coordinates employed in this dissertation are described in Table~\ref{tab:coords}.
 
-
+\begin{table}
+	\centering
 \begin{tabular}{|ccc|}
 	\hline \textbf{Coordinate} & \textbf{Units} & \textbf{Description} \\ \hline
 	$Q_{20}$ & b & Axial quadrupole moment \\
@@ -176,7 +177,10 @@ The collective coordinates employed in this dissertation are described in the fo
 	$Q_{30}$ & b$^\frac{3}{2}$ & Axial octupole moment \\
 	& & Roughly corresponds to mass asymmetry \\
 	$\lambda_{2}$ & MeV & Dynamic pairing fluctuations \\ \hline
-\end{tabular} 
+\end{tabular}
+	\caption{A list of collective coordinates used throughout this dissertation to generate potential energy surfaces.}
+	\label{tab:coords}
+\end{table}
 
 \subsection{Nucleon localization function}\label{sect:locali}
 The major advantage nuclear DFT offers over microscopic-macroscopic models is a direct link to the underlying many-body structure. This can be visualized using the nucleon localization function (NLF), originally introduced for the identification of localized electronic groups in atomic and molecular systems in~\cite{Becke1990} and then applied to nuclei in~\cite{Reinhard2011,Zhang2016}. The NLF is defined using the single particle densities $\rho, \tau$, and \textbf{j}, and is related to the probability of finding two nucleons of the same spin $\sigma$ and isospin $q$ at locations $\vec{r}$ and $\vec{r'}$:
@@ -201,7 +205,7 @@ Suppose we fix the location $\vec{r}$ of one nucleon, and consider only a small 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\linewidth]{TeX_files/methods_locali}
-	\caption[Proton and neutron densities $\rho_p,\rho_n$ (in nucleons/fm$^3$) and spatial localizations $\mathcal{C}_p,\mathcal{C}_n$ for $^{240}$Pu at several configurations along the most-probable path to fission. Figure from~\cite{Zhang2016}.]{Proton and neutron densities $\rho_p,\rho_n$ (in nucleons/fm$^3$) and spatial localizations $\mathcal{C}_p,\mathcal{C}_n$ for $^{240}$Pu at several configurations along the most-probable path to fission. Figure from~\cite{Zhang2016}.}
+	\caption{Proton and neutron densities $\rho_p,\rho_n$ (in nucleons/fm$^3$) and spatial localizations $\mathcal{C}_p,\mathcal{C}_n$ for $^{240}$Pu at several configurations along the most-probable path to fission. Figure from~\cite{Zhang2016}.}
 	\label{fig:methodslocali}
 \end{figure}
 
@@ -214,7 +218,7 @@ With a nuclear many-body method now in hand, it can be used as a tool to describ
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\linewidth]{TeX_files/methods_overview}
-	\caption[Schematic overview of the Langevin framework for fission calculations used in this dissertation]{Schematic overview of the Langevin framework for fission calculations used in this dissertation. Figure from~\cite{Sadhukhan2016}.}
+	\caption{Schematic overview of the Langevin framework for fission calculations used in this dissertation. Figure from~\cite{Sadhukhan2016}.}
 	\label{fig:methodsoverview}
 \end{figure}
 

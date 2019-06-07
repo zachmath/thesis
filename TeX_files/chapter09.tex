@@ -174,8 +174,10 @@ We might consider introducing a cutoff on the difference $f_b-f_a$. If we make o
 
 As an example, suppose we take a finite-difference spacing $\delta q = 10^{-3}$ b and set our HFB convergence parameter to $10^{-7}$. Roughly-speaking, then, we would expect that we can set a cutoff for $f_b-f_a$ of something around $10^{-4}$ or so and still obtain reasonable results.
 
-This was done for a $^{240}$Pu calculation ($Q_{20}=77$ b, $Q_{22}=1$ b, chosen at random from the $^{240}$Pu PES) with a few different cutoff values. First the exact T=0 inertia was computed. Then the inertia was computed again using the same T=0 densities, but with a fake temperature T=0.05 MeV. The results, shown in the following table, indicate the presence of an ideal cutoff parameter that is in the neighborhood of our prediction.
+This was done for a $^{240}$Pu calculation ($Q_{20}=77$ b, $Q_{22}=1$ b, chosen at random from the $^{240}$Pu PES) with a few different cutoff values. First the exact T=0 inertia was computed. Then the inertia was computed again using the same T=0 densities, but with a fake temperature T=0.05 MeV. The results, shown in Table~\ref{tab:cutoff}, indicate the presence of an ideal cutoff parameter that is in the neighborhood of our prediction.
 
+\begin{table}
+	\centering
 \begin{tabular}{|ccc|}
 	\hline Convergence: & $10^{-7}$ & MeV \\ 
 	$\delta q$: & $10^{-3}$ & b \\ 
@@ -186,4 +188,8 @@ This was done for a $^{240}$Pu calculation ($Q_{20}=77$ b, $Q_{22}=1$ b, chosen 
 	$10^{-6}$ & 1.585697$\times10^{-2}$ & 4.099312$\times10^{-3}$ \\
 	$10^{-7}$ & 1.587771$\times10^{-2}$ & 1.348989$\times10^{-1}$ \\
 	$10^{-8}$ & 1.612200$\times10^{-2}$ & 1.675546 \\ \hline
-\end{tabular} 
+\end{tabular}
+%	\raggedleft
+	\caption{As explained in the text, a cutoff for $f_b-f_a$ may be needed to reduce numerical noise in the collective inertia. This table shows how the calculated inertia changes depending on the size of the cutoff.}
+	\label{tab:cutoff}
+\end{table}
