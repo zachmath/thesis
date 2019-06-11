@@ -1,35 +1,38 @@
-%% Before beginning to type your dissertation, download and READ 
-%% the Graduate School's formatting guide, which can be found at 
-%% http://grad.msu.edu/etd
-%% and clicking Formatting Guide in the left hand column.
+%%This is the final version of the template I ended up using - your milage may vary.
+%%In particular, the class file with this is set up to play nice with the hyperref
+%%package and produce good bookmarks in the PDF file, as well as conform slightly better
+%%to the grad school formatting guidelines than the original by Cliff Weil.  
+%%Cliff did do the vast bulk of the work on this, however, and I would be remiss
+%%if I didn't explictly point out that this is his file with some minor modifications
+%%that I added.  - Dan Alt
+
+%% Before beginning to type your dissertation, read the formatting guide, 
+%% which can be found at http://grad.msu.edu/etd/docs/formattingguide.pdf
 %% Also get the latest version of  msuphddissertation.cls and the template file
 %% at http://www.math.msu.edu/~weil/MSU_Ph.D._Dissertation.zip
 %% Send questions to weil@math.msu.edu
+\documentclass{altmsuphddissertation}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%  NOTE   %%%%%%%%%%%%%%
-%% PREPARING A DISSERTATION WITH THIS CLASS FILE DOES NOT %%%
-%% GUARANTEE THAT THE GRADUATE SCHOOL WILL APPROVE IT. %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Insert packages you wish to use except setspace and subfig. 
+%% Those packages are loaded automatically.
+%% IMPORTANT: Load only those packages you know you will use.
+%% Some packages can cause conflicts resulting in improper formatting.
 
-%% To view a video presentation of this template, visit
-%%  https://www.math.msu.edu/latex/dissertation/
-
-\documentclass{msuphddissertation}
-%% This is the first command that must appear in your thesis.
-%% Insert packages you wish to use except setspace, subfig
-%% geometry and pdflscape. 
-%% These packages are loaded automatically.
-\usepackage{graphicx, amsmath, physics}
-\usepackage{bm}% bold math
-
-% These are to get an APS-like bibliography
-% See: https://tex.stackexchange.com/questions/15677/revtex-4-1-bibliography-style-in-other-classes
-\usepackage[sort&compress,numbers]{natbib} % For some reason, this blocks the Bibliography from appearing in the table of contents and doesn't create the required bibliography title page. I've manually added those things back later in the document, but it's a messy fix. On the other hand, I could get rid of this line but then my bibliography uses authors throughout the text instead of numbers. There might be a better way to do that instead, but whatever. I've got something that works so I'm calling it good.
-\usepackage{doi}
-\usepackage{hyperref}
-\usepackage{tcolorbox}
+%% These are the ones I used - you probably don't need them all.  I'd keep hyperref, though. - DMA
+\usepackage{standalone}
+\usepackage{textgreek}
+\usepackage{booktabs}
+\usepackage{graphicx} %%For loading graphic files
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
 \usepackage{rotating}
+\usepackage{hyperref}
+\usepackage{physics}
+\usepackage{doi}
+\usepackage{bm}
 
 \newcommand{\hfb}{UNEDF1$_{\mathrm{HFB}}$}
 %\newcommand{\Og}{$^{294}_{118}$Og$_{176}$}
@@ -52,64 +55,88 @@
 \newcommand{\MATDHFp}{$\mathcal{M}^{\rm AP}$}
 \newcommand{\MATDHF}{$\mathcal{M}^{\rm A}$}
 \newcommand{\Mcons}{$\mathcal{M}^{\rm cst}$}
-%% IMPORTANT: Load only those packages you know you will use.
-%% Some packages can cause conflicts resulting in improper formatting.
+
+%% Use this if you want to put all your graphics in a specific directory - it's a relative path from
+%% wherever you store this template. - DMA
+\graphicspath{ {TeX_files/}}
+
 \author{Zachary Matheson} %% Put your name in full as it is officially recognized by Michigan State University here.
 \title{Fission in Exotic Nuclei Using Density Functional Theory} %% Put the title of your dissertation here.
-%% Go to http://grad.msu.edu/etd/docs/DegreeGrantingUnits.pdf
-%% and find your GRADUATE DEGREE GRANTING UNIT/PROGRAM
-%% and DEGREE.
-\unit{Physics --- Doctor of Philosophy \\ Computational Mathematics, Science and Engineering --- Dual Major} %% Copy and paste these two items here 
-%% separated by a dash, created by typing ---.
-%% ONLY ENTRIES FROM LIST MENTIONED ARE ACCEPTABLE!!
+\unit{Physics --- Doctor of Philosophy \\ Computational Mathematics, Science and Engineering --- Dual Major}
+%%GRADUATE DEGREE GRANTING UNIT/PROGRAM
+%% and the DEGREE  from the complete list of these at
+%% http://grad.msu.edu/etd/docs/DegreeGrantingUnits.pdf
 
 %% Put additional preamble items here.
 
+%%%%%% LANDSCAPE PAGES  %%%%%%
+%% To produce text, graphics or tables in
+%% landscape mode, use the following template.
+%\begin{landscape}
+%\thispagestyle{empty}
+%\begin{minipage}{\linewidth}
+%% Insert the graphics or table that is to be
+%% in landscape mode. Use the figure or table
+%% environment. You may wish to center 
+%% the float. 
+%\end{minipage}
+%\end{landacape}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%  NOTE   %%%%%%%%%%%%%%
+%% PREPARING A DISSERTATION WITH THIS CLASS FILE DOES NOT %%%
+%% GUARANTEE THAT THE GRADUATE SCHOOL WILL APPROVE IT %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% WARNING %%%%%%%%%%%%%%%
+%% The Graduate School requires that all text, except superscripts %%
+%% and subscripts, but including text in imported %%
+%% graphics files be in 12 point. For that reason it's recommended %%
+%% that no text be part of any imported files. %%
+
+%% Once your document has been filed with the Graduate School,
+%% if you wish to produce a version of it whose subscripts and superscripts
+%% are in traditional smaller proportion, remove the "%" sign 
+%% in front of following command. 
+%\DeclareMathSizes{12}{12}{10}{8}
+%% To single space your document, find and remove the 
+%% two commands \begin{doublespace}
+%% and \end{doublespace} below.
+
+%%\includeonly{TeX_files/chapter1,TeX_files/chapter2,TeX_files/chapter3}
+
 \begin{document}
-\bibliographystyle{apsrev4-1} % I don't know what bibliography style to use, so this is a placeholder
+\bibliographystyle{altbibstyle}  %%This is my  custom bibliography style file.  Change if you like. - DMA
+\frontmatter
 \maketitlepage %%This command will produce the title page of your thesis.
-
-%% If you wish to include a "public abstract" (i.e.; in layman's terms), remove the "%" 
-%% in from of the command \begin{pub abstract} and remove the "%" in front of
-%% \end{pub abstract} below. A public abstract isn't required, but might be useful
-%% for some readers.
-%\begin{pubabstract}
-%%Type the text of your public abstract here. A public abstract is optional.
-%\end{pubabstract}
-
 \begin{abstract}
-%% Type your abstract here. An abstract is REQUIRED and limited to two pages.
-%% The abstract must not include any figures.
 Historically, most experimental and theoretical studies of fission have centered around the region of actinides near $^{235}$U, which includes isotopes of uranium, plutonium, and thorium relevant for reactor physics and stockpile stewardship. Isotopes in this region tend to fission asymmetrically, with the larger prefragment influenced by the doubly-magic shell structure of $^{132}$Sn and resulting in a heavy fragment distribution centered around $^{140}$Te. However, fission is a common decay mode of nuclei, both lighter and heavier than the actinides. Given the nuclear physics community's interest in rare and exotic nuclei, we have applied nuclear density functional theory to study spontaneous fission primary fragment yields in exotic systems found in other regions of the nuclear chart, including neutron-deficient {\Pt}, superheavy {\Og}, and neutron-rich nuclei with relevance to the r-process such as $^{254}$Pu.
 \end{abstract}
 
-%% If you wish to have a copyright page, remove the "%" 
-%% in front of \begin{copyrt}
+%% If you wish to have a copyright page, remove the "%" in front of \begin{copyrt}
 %% and remove the "%" in front of \end{copyrt}.
-%% An acceptable form of a copyright page  
-%% will be generated automatically. 
-%% TO INCLUDE A COPYRIGHT, YOU MUST REGISTER
-%% IT. See the Formatting Guide for instructions. 
+%% The mandatory form of the Copyright will be generated automatically. 
+%% A copyright statement is optional.
+
 %\begin{copyrt}
 %\end{copyrt}
 
-
 %% If you wish to have a dedication, remove the "%" in front of
-%% \begin{dedication} and remove the "%" in front of
-%% \end{dedication} below.
+%% \begin{dedication}
+%% and remove the "%" in front of 
+%% \end{dedication}
 %% A dedication must be single-spaced and 
-%% centered on the page. Both will be done automatically. 
+%% centered on the page.  Both will be done automatically. 
 
-\begin{dedication} 
-% Type your dedication here. A dedication is optional.
+\begin{dedication}
 \centering
 Dedicated to Eli.
 \end{dedication}
 
 %% If you wish to have an acknowledgment, remove the "%" in front of  \begin{acknowledgment}
-%% and remove the "%" in front of  \end{acknowledgment} below.  
+%% and remove the "%" in front of  \end{acknowledgment}  
 \begin{acknowledgment}
-% Type your acknowledgment here. An acknowledgment is optional.
 I first and foremost wish to express my gratitude to Witek, for providing direction, perspective, and so many wonderful opportunities. I consider myself very lucky to have been one of Witek's graduate students.
 
 I would like to acknowledge my fission collaborators, Nicolas, Jhilam, and Samuel. Thank you for your patience and support. I can't stress that enough.
@@ -130,14 +157,17 @@ And finally, love and gratitude to my wife and family. Melon, Beaky, KJ+N8, Krys
 \end{acknowledgment}
 
 %% If you wish to have a preface, remove the "%" in front of \begin{preface}
-%% and remove the "%" in front of \end{preface} below. The formatting of
-%% a preface isn't specified, but it is included in the TOC.
+%% and remove the "%" in front of \end{preface}. The formatting of
+%% a preface isn't specified.
 %\begin{preface}
 %% Type your preface here. A preface is optional.
 %\end{preface}
 
-\TOC %% This command produces the Table of Contents. DO NOT REMOVE IT!
+\TOC %% This command produces the Table of Contents. DO NOT REMOVE!
 
+%% Remove \addvspace (extra space) between figures/tables of different chapters
+%%\let\origaddvspace\addvspace
+%%\renewcommand{\addvspace}[1]{}
 %% If your document contains tables, remove the "%" in front of 
 %%  the following line.
 \LOT
@@ -145,19 +175,29 @@ And finally, love and gratitude to my wife and family. Melon, Beaky, KJ+N8, Krys
 %% If your document contains figures, remove the "%" in front of
 %% the following line.
 \LOF
+%%\renewcommand{\addvspace}[1]{\origaddvspace{#1}}
+%% If any of your figures contain color, you must
+%% include the following disclaimer in the caption of your first figure.
+%% "For interpretation of the references to color in this and all other figures, 
+%% the reader is referred to the electronic version of this thesis."
 
 %%%% LIST OF SYMBOLS OR LIST OF ABBREVIATIONS %%%%
 %% If you wish to have a list of symbols or a list of abbreviations, 
 %% it should be here. For a list of symbols remove the "%" in front of 
-%% \begin{symbols} and remove the "%" in front of \end{symbols} below.
+%% \begin{symbols} and remove the "%" in front of \end{symbols}.
 %\begin{symbols}
 %% Type your list using a list environment here.
 %\end{symbols}
 %% Similarly for a list of abbreviations remove the "%" in front of 
-%% \begin{abbrev} and remove the "%" in front of \end{abbrev} below.
+%% \begin{abbrev} and remove the "%" in front of \end{abbrev}.
+
+
+%% Replace ANL and ARTEMIS with your own abbreviations.  Or leave them in.  It's up to you! - DMA
 %\begin{abbrev}
-%% Type your list using a list environment here.
+%\begin{itemize}
+%\end{itemize}
 %\end{abbrev}
+
 %% The list will be included in the TOC as
 %% KEY TO SYMBOLS or KEY TO ABBREVIATIONS
 %%%%%%%%%%
@@ -166,106 +206,58 @@ And finally, love and gratitude to my wife and family. Melon, Beaky, KJ+N8, Krys
 \pagenumbering{arabic}
 \begin{doublespace}
 
-%% Put the body of your dissertation here. 
-%% DO NOT include the bibliography or any appendices.
-%% These topics will be discussed later.
-\include{./TeX_files/chapter01} % Introduction
-\include{./TeX_files/chapter02} % Intro to nuclear DFT
-\include{./TeX_files/chapter03} % Numerical considerations
-\include{./TeX_files/chapter04} % Two fission modes in 178Pt
-\include{./TeX_files/chapter05} % Cluster decay in 294Og
-\include{./TeX_files/chapter06} % R-process
-\include{./TeX_files/chapter07} % Outlook
+%%If the introduction is to be an unnumbered chapter, put it here.
 
-%%%%%% LANDSCAPE PAGES  %%%%%%
-%% To produce graphics or tables in landscape mode,
-%% begin by removing the "%" in the next two lines.
-%\begin{landscape}
-%\thispagestyle{empty}
-%% The contents of the page can be centered using the center environment
-%% or the \centering command. Insert either a table with the tabular environment
-%% or input a graphics file.
-%% Use \captionof{table}{caption_text} (or figure in place of table) 
-%% to create the caption for a short table or a figure. 
-%% Insert a long table in a table environment. It disables double spacing
-%% which is permitted for long tables. Finally remove the "%" from the next line.
-%\end{landacape}
+%% Put the body of your dissertation here. 
+%% DO NOT include  the bibliography
+
+\mainmatter
+%%I chose to have each of my chapters in a separate file in a subdirectory called ``chapters''.  If you want to do that, 
+%%here's how: - DMA
+\include{TeX_files/chapter01}
+\include{TeX_files/chapter02}
+\include{TeX_files/chapter03}
+\include{TeX_files/chapter04}
+\include{TeX_files/chapter05}
+\include{TeX_files/chapter06}
+\include{TeX_files/chapter07}
 
 %%%%%%%    APPENDICES    %%%%%%%%%%
-%% If you wish to include just one appendix, remove the "%" 
-%% in front of \appendix below. To include two or more appendices,
-%% remove the "%" in front of \appendices.
-%\appendix
+%% Uncomment ``\appendix'' for one appendix, ``\appendices'' for more than one, and neither for none.
+%%\appendix
 \appendices
-\include{./TeX_files/chapter08} % Appendix A: Fragment ID
-\include{./TeX_files/chapter09} % Appendix B: Temperature-dependence of collective inertia
-\include{./TeX_files/chapter10} % Appendix C: List of my contributions
 
-\tocentry{BIBLIOGRAPHY}{Bibliography}% Pretty hacky way of getting this to actually show up in the Table of Contents, but it seems to work
+\include{TeX_files/chapter08}
+\include{TeX_files/chapter09}
+\include{TeX_files/chapter10}
 
-%% In either case to start your first appendix, which will be labeled
-%% as Appendix A, just type \chapter{<appendix 1 name>}
-%% and enter the text of the appendix as you would a chapter,
-%% with one exception. If you use any subdivisions, such as 
-%% section, subsection etc., use the starred version; that is,
-%% \section*{section name}.  Such subdivisions are not to be 
-%% listed in the Table of Contents.
-
-%%%%%%% A NOTE ABOUT APPENDICES %%%%%%%%%
-%% Some appendices may be single-spaced such as survey examples
-%% or letters. See the Graduate School's formatting guide for details.
-%% To single space an appendix first remove the "%" from 
-%% the following two lines.
-%\end{doublespace}
-%\chapter{<appendix name>}
-%% Insert the name of the appendix.
-%% Insert the text of the appendix.
-%% Remove the "%" from the following line.
-%\begin{doublespace}
-%% Any text entered now will be double spaced.
+%%If you're not using the \include method, 
+%% just type \chapter{<appendix 1 name>}
+%% and enter the text of the appendix as you would a chapter.
 
 \end{doublespace}
 
 %%%%%%  Bibliography %%%%%
 %% A bibliography is required. By default it is called, "Bibliography"
-%% You may use ï¿½LITERATURE CITEDï¿½, ï¿½WORKS CITEDï¿½ or ï¿½REFERENCESï¿½ 
-%% instead of ï¿½BIBLIOGRAPHYï¿½ if that is the convention in your discipline. 
-%% To do so, copy and paste your choice into the empty argument 
+%% You may use ÒLiterature CitedÓ, ÒWorks CitedÓ or ÒReferencesÓ 
+%% instead of ÒBibliographyÓ if that is the convention in your discipline. 
+%% To do so, place your choice in the  empty argument 
 %% of the following command and remove the "%".
 %\renewcommand{\bibname}{}
 
 %% The bibliography may be made using BibTeX.
 %% To do so the necessary commands must be entered in the 
-%% preamble and here.
-\clearpage\thispagestyle{plain}\vspace*{\fill} % More hacky workaround...
-\begin{center}
-	\large{\textbf{BIBLIOGRAPHY}}
-	\vspace{\baselineskip}%
-\end{center}
-\vfill
-\newpage
-
+%% preamble and here. 
+%% Note - do NOT include an extension to the filename below - If your bibtex file is ``BibliographyFilename.bib'', do this: - DMA
 \bibliography{main}
 
-
 %% If the Bibliography is made from scratch,
-%% remove the "%" in front of \begin{thebibliography}{???}
+%% remove the "%" in front of "\begin{thebibliography}{???}"
 %% replacing the ??? with the appropriate entry and 
-%% remove the "%" in front of \end{thebibliography} below.
+%% remove the "%" in front of "\end{thebibliography}"
 % \begin{thebibliography}{???}
 %%  Enter the bibliography here.
 % \end{thebibliography}
 %% In either case, the bibliography is automatically entered
 %% in the Table of Contents.
 \end{document}
-
-%%%%%% FINAL COMMENTS %%%%
-%% Before submitting your dissertation to the Graduate School
-%% Make sure there isn't any text in the right margins. To do 
-%% in the .log file look for error messages beginning with, 
-%% "Overfull \hbox ". 
-
-%% Once your document has been filed with the Graduate School,
-%% if you wish to produce a single spaced version of your document, 
-%% find and remove the commands \begin{doublespace}
-%% and \end{doublespace} above.
